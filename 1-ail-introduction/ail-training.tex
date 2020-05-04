@@ -438,7 +438,7 @@ response platforms.
             \item Use infoleak taxonomy\footnote{\url{https://www.misp-project.org/taxonomies.html}}
         \item Add your own tags
 	\item Export AIL objects to MISP core format
-	\item Download it or Create a MISP\footnote{\url{https://www.misp-standard.org/rfc/misp-standard-core.txt}}
+	\item Download it or Create a MISP Event\footnote{\url{https://www.misp-standard.org/rfc/misp-standard-core.txt}}
     \end{enumerate}
 \end{frame}
 
@@ -471,7 +471,7 @@ response platforms.
         \item Extending AIL to add a new {\bf analysis module} can be done in 50 lines of Python
         \item The framework {\bf supports multi-processors/cores by default}. Any analysis module can be started multiple times to support faster processing during peak times or bulk import
         \item \textbf{Multiple} concurrent \textbf{data input}
-        \item Tor Crawler
+        \item Tor Crawler (handle cookies authentication)
     \end{itemize}
 \end{frame}
 
@@ -571,15 +571,15 @@ response platforms.
     \end{itemize}
 \end{frame}
 
-\begin{frame}
-    \frametitle{Decoder: Practical Part}
-    \begin{itemize}
-    	\item[] Which type of decoded file have the highest size ?
-    \end{itemize}
-\end{frame}
+%\begin{frame}
+%    \frametitle{Decoder: Practical Part}
+%    \begin{itemize}
+%    	\item[] Which type of decoded file have the highest size ?
+%    \end{itemize}
+%\end{frame}
 
 \begin{frame}
-    \frametitle{Decoder: Practical Part}
+    \frametitle{Decoder:}
     \centerline{
         \includegraphics[scale=0.23]{images/decoded-dos.png}
     }
@@ -650,6 +650,21 @@ response platforms.
 		    \item crawl next url (max depth = 1)
 		\end{enumerate}
     \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Crawler: Cookiejar}
+    Use your cookies to login and bypass captcha
+    \centerline{
+        \includegraphics[scale=0.23]{screenshot/crawler-cookiejar-edit.png}
+    }
+\end{frame}
+
+\begin{frame}
+    \frametitle{Crawler: Cookiejar}
+    \centerline{
+        \includegraphics[scale=0.23]{screenshot/crawler-cookiejar-domain-crawled.png}
+    }
 \end{frame}
 
 \begin{frame}
@@ -746,7 +761,6 @@ cd AIL-framework
 \lstset{style=bash}
 \begin{frame}[fragile]
     \frametitle{Running your own instance from source}
-    {\scriptsize Make sure that ZMQ\_Global$\rightarrow$address = \texttt{tcp://crf.circl.lu:5556,tcp://127.0.0.1:5556} in configs/core.cfg}
     \begin{tcblisting}{colback=black!85,coltext=green,listing only,
         title=Accessing the environment and starting AIL, fonttitle=\bfseries}
 
@@ -773,95 +787,39 @@ cd bin/
 
 \end{frame}
 
-\section{AIL ecosystem - Challenges and design}
-\begin{frame}
-    \frametitle{AIL ecosystem: Technologies used}
-    \begin{itemize}
-        \item[] \textbf{Programming language:} Full python3
-        \item[] \textbf{Databases:} Redis and ARDB
-        \item[] \textbf{Server:} Flask
-        \item[] \textbf{Data message passing:} ZMQ, Redis list and Redis Publisher/Subscriber
-    \end{itemize}
+\begin{frame}[fragile]
+    \frametitle{Updating AIL}
+    \begin{tcblisting}{colback=black!85,coltext=green,listing only,
+        title=Launch the updater:, fonttitle=\bfseries}
+cd bin/
+# git pull and launch all updates:
+./LAUNCH -u
+
+
+# PS:
+# The Updater is launched by default each time
+# you start the framework with
+# ./LAUNCH -l
+\end{tcblisting}
+
 \end{frame}
 
-
-\begin{frame}
-    \frametitle{AIL global architecture: Data streaming between module}
-    \centerline{\includegraphics[scale=0.15]{images/module-data-flow.png}}
-\end{frame}
-
-\begin{frame}
-    \frametitle{AIL global architecture: Data streaming between module (Credential example)}
-    \centerline{\includegraphics[scale=0.31]{images/stream_exemp_cred.png}}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Message consuming}
-    \begin{center}
-    \begin{tikzpicture}[scale=1.0]
-    %styles
-    \tikzstyle{queue}=[ellipse,draw,align=center]
-    \tikzstyle{module}=[rectangle,draw, align=center, fill={rgb:red,1;green,2;blue,5}]
-    \tikzstyle{commu}=[->,>=latex,very thick]
-    %nodes
-    \node[module] (m0) at (0,2) {\color{white}Module$_x$};
-    \node[queue] (rps1) at (0,0) {Redis set};
-    \node[module] (m1) at (-2,-2) {\color{white}Module$_y$};
-    \node[module] (m2) at (2,-2) {\color{white}Module$_y$};
-
-    \node (t1) at (-1.6,-1) {\texttt{SPOP}};
-    \node (t2) at (1.6,-1) {\texttt{SPOP}};
-    \node (t3) at (0.5,1) {\texttt{SADD}};
-    %arraws
-    \draw[commu] (m0)--(rps1);
-    \draw[commu] (rps1)--(m1);
-    \draw[commu] (rps1)--(m2);
-
-    \end{tikzpicture}
-
-
-    \vskip 1em
-    \begin{itemize}
-        \item[] $\rightarrow$ No message lost nor double processing
-        \item[] $\rightarrow$ Multiprocessing!
-    \end{itemize}
-    \end{center}
-\end{frame}
-
-
+%FEEDER AND IMPORTER
 \section{Feeding the framework}
 \begin{frame}
 \frametitle{Feeding AIL}
     There are different way to feed AIL with data:
     \begin{enumerate}
-        \item Be a trusted partner with CIRCL and ask to get access to our feed {\tiny \href{mailto:info@circl.lu}{info@circl.lu}}
+%        \item Be a trusted partner with CIRCL and ask to get access to our feed {\tiny \href{mailto:info@circl.lu}{info@circl.lu}}
         \item Setup \textit{pystemon} and use the custom feeder
             \begin{itemize}
                 \item \textit{pystemon} will collect items for you
             \end{itemize}
+        \item Use the new JSON Feeder (twitter)
         \item Feed your own data using the API or the \texttt{import\_dir.py} script
         \item Feed your own file/text using the UI (\texttt{Submit section})
     \end{enumerate}
 \end{frame}
-
-\begin{frame}
-\frametitle{Feeding AIL}
-    There are different way to feed AIL with data:
-    \begin{enumerate}
-        \item CIRCL trusted partners can ask to access our feed {\tiny \href{mailto:info@circl.lu}{info@circl.lu}}
-            \begin{itemize}
-                \item[$\rhd$] You already have access
-            \end{itemize}
-        \item \st{Setup \textit{pystemon} and use the custom feeder}
-            \begin{itemize}
-                \item \st{\textit{pystemon} will collect items for you}
-            \end{itemize}
-        \item Feed your own data using the API or \texttt{import\_dir.py} script
-        \item Feed your own file/text using the UI (\texttt{Submit section})
-    \end{enumerate}
-\end{frame}
-
-
 
 \begin{frame}
     \frametitle{Via the UI (1)}
@@ -918,6 +876,61 @@ cd bin/
                 \item \texttt{import\_dir.py -d dir\_path}
             \end{itemize}
     \end{enumerate}
+\end{frame}
+
+\section{AIL ecosystem - Challenges and design}
+\begin{frame}
+    \frametitle{AIL ecosystem: Technologies used}
+    \begin{itemize}
+        \item[] \textbf{Programming language:} Full python3
+        \item[] \textbf{Databases:} Redis and ARDB
+        \item[] \textbf{Server:} Flask
+        \item[] \textbf{Data message passing:} ZMQ, Redis list and Redis Publisher/Subscriber
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{AIL global architecture: Data streaming between module}
+    \centerline{\includegraphics[scale=0.15]{images/module-data-flow.png}}
+\end{frame}
+
+\begin{frame}
+    \frametitle{AIL global architecture: Data streaming between module (Credential example)}
+    \centerline{\includegraphics[scale=0.31]{images/stream_exemp_cred.png}}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Message consuming}
+    \begin{center}
+    \begin{tikzpicture}[scale=1.0]
+    %styles
+    \tikzstyle{queue}=[ellipse,draw,align=center]
+    \tikzstyle{module}=[rectangle,draw, align=center, fill={rgb:red,1;green,2;blue,5}]
+    \tikzstyle{commu}=[->,>=latex,very thick]
+    %nodes
+    \node[module] (m0) at (0,2) {\color{white}Module$_x$};
+    \node[queue] (rps1) at (0,0) {Redis set};
+    \node[module] (m1) at (-2,-2) {\color{white}Module$_y$};
+    \node[module] (m2) at (2,-2) {\color{white}Module$_y$};
+
+    \node (t1) at (-1.6,-1) {\texttt{SPOP}};
+    \node (t2) at (1.6,-1) {\texttt{SPOP}};
+    \node (t3) at (0.5,1) {\texttt{SADD}};
+    %arraws
+    \draw[commu] (m0)--(rps1);
+    \draw[commu] (rps1)--(m1);
+    \draw[commu] (rps1)--(m2);
+
+    \end{tikzpicture}
+
+
+    \vskip 1em
+    \begin{itemize}
+        \item[] $\rightarrow$ No message lost nor double processing
+        \item[] $\rightarrow$ Multiprocessing!
+    \end{itemize}
+    \end{center}
 \end{frame}
 
 %DEVELOPING NEW FEATURES
@@ -1018,9 +1031,10 @@ if __name__ == '__main__':
 \begin{frame}
     \frametitle{Ongoing developments}
         \begin{itemize}
+        	\item New JSON feeders
             \item Python API wrapper
-            \item {\bf Data retention (export/import)}
-            \item MISP format support (MISP modules expansion)
+            \item Data retention (export/import)
+            \item MISP modules expansion
             \item auto Classify content by set of terms
             \begin{itemize}
             	\item CE contents
@@ -1031,7 +1045,7 @@ if __name__ == '__main__':
             \begin{itemize}
             	\item duplicate crawled domains
             	\item tor indexer
-            	\item new crawler manager and proxy (coming in one or two week) 
+            	\item {\bf New crawler and proxy manager (coming in one or two week) }
             \end{itemize}
         \end{itemize}
 \end{frame}
