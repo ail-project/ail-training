@@ -155,8 +155,7 @@
         \begin{itemize}
                 \item Many modules in AIL can process personal data and even special categories of data as defined in GDPR (Art. 9).
                 \item The data controller is often the operator of the AIL framework (limited to the organisation) and has to define {\bf legal grounds for processing personal data}.
-                \item To help users of AIL framework, a document is available which describe points of AIL in regards to the regulation\footnote{\url{https://www.circl.lu/assets/files/inform
-ation-leaks-analysis-and-gdpr.pdf}}.
+                \item To help users of AIL framework, a document is available which describe points of AIL in regards to the regulation\footnote{\url{https://www.circl.lu/assets/files/information-leaks-analysis-and-gdpr.pdf}}.
         \end{itemize}
 \end{frame}
 
@@ -208,22 +207,22 @@ ation-leaks-analysis-and-gdpr.pdf}}.
         \tikzstyle{rect}=[rectangle,draw, align=center]
         \tikzstyle{simplenode}=[align=center]
 
-        \node[simplenode] (pastebin) at (0, 0) {\includegraphics[scale=0.20]{images/pastebin.png}};
+        \node[simplenode] (item) at (0, 0) {\includegraphics[scale=0.20]{images/file_text_icon.png}};
         \node[simplenode] (leaks) at (4, -2) {Other leaks};
         \node[simplenode] (ail) at (4, 0) {\includegraphics[scale=0.14]{images/ail-project.png}};
         \node[simplenode] (res) at (8, 0) {\includegraphics[scale=0.1]{images/alert.png}};
 
         \begin{scope}
-            \draw[flux] (pastebin.east) to (ail.west);
+            \draw[flux] (item.east) to (ail.west);
         \foreach \i in {-2,...,-1}{% 
             \pgfmathsetlengthmacro{\radius}{(sin(atan(\i*0.1))+0.1)*1cm}
-            %\draw[->] ([yshift=\i * 0.2 cm]pastebin.east) to [out=-50,in=-130] ([yshift=\i * 0.2 cm]ail.west) ;}
-            %\draw[->] ([xshift=\radius,yshift=\i * 0.2 cm]pastebin.east) to [out=-10+\i*10,in=-130] ([yshift=\i * 0.2 cm]ail.west) ;}
-            \draw[flux] ([xshift=\radius,yshift=\i * 0.2 cm]pastebin.east) to [out=-10+\i*10,in=-130] ([xshift=-\i*0.05cm,yshift=\i * 0.2 cm]ail.west) ;}
+            %\draw[->] ([yshift=\i * 0.2 cm]item.east) to [out=-50,in=-130] ([yshift=\i * 0.2 cm]ail.west) ;}
+            %\draw[->] ([xshift=\radius,yshift=\i * 0.2 cm]item.east) to [out=-10+\i*10,in=-130] ([yshift=\i * 0.2 cm]ail.west) ;}
+            \draw[flux] ([xshift=\radius,yshift=\i * 0.2 cm]item.east) to [out=-10+\i*10,in=-130] ([xshift=-\i*0.05cm,yshift=\i * 0.2 cm]ail.west) ;}
 
         \foreach \i in {1,...,3}{% 
             \pgfmathsetlengthmacro{\radius}{(sin(atan(\i*0.1))-0.1)*1cm}
-            \draw[flux] ([xshift=-\radius,yshift=\i * 0.2 cm]pastebin.east) to [out=10+\i*10,in=130] ([xshift=\i*0.05cm,yshift=\i * 0.2 cm]ail.west) ;}
+            \draw[flux] ([xshift=-\radius,yshift=\i * 0.2 cm]item.east) to [out=10+\i*10,in=130] ([xshift=\i*0.05cm,yshift=\i * 0.2 cm]ail.west) ;}
         \draw[->,>=latex, very thick] (ail) to (res);
         \draw[->,>=latex, very thick] (leaks) to (ail);
         \end{scope}
@@ -292,7 +291,7 @@ response platforms
 \begin{frame}
     \frametitle{Sources of leaks: Paste monitoring}
     \begin{itemize}
-        \item Example: \url{http://pastebin.com/}
+        \item Example: \url{https://gist.github.com/}
             \begin{itemize}
                 \item Easily storing and sharing text online
                 \item Used by programmers and legitimate users
@@ -353,7 +352,7 @@ response platforms
     \begin{itemize}
         \item Monitored paste sites: 27
             \begin{itemize}
-                \item \textit{pastebin.com}
+                \item \textit{gist.github.com}
                 \item \textit{ideone.com}
                 \item \textit{...}
             \end{itemize}
@@ -685,21 +684,21 @@ response platforms.
 \end{frame}
 
 \begin{frame}
-    \frametitle{Example: Pastes Metadata (1)}
+    \frametitle{Example: Items Metadata (1)}
     \begin{figure}
         \includegraphics[scale=0.21, angle=0]{images/ail_15.png}
     \end{figure}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Example: Pastes Metadata (2)}
+    \frametitle{Example: Items Metadata (2)}
     \begin{figure}
         \includegraphics[scale=0.28, angle=0]{images/ail_16.png}
     \end{figure}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Example: Pastes Metadata (3)}
+    \frametitle{Example: Items Metadata (3)}
     \begin{figure}
         \includegraphics[scale=0.28, angle=0]{images/ail_17.png}
     \end{figure}
@@ -742,6 +741,38 @@ cd AIL-framework
 \end{tcblisting}
 \end{frame}
 
+%STARTING THE SYSTEM
+\section{Starting the framework}
+\lstset{style=bash}
+\begin{frame}[fragile]
+    \frametitle{Running your own instance from source}
+    {\scriptsize Make sure that ZMQ\_Global$\rightarrow$address = \texttt{tcp://crf.circl.lu:5556,tcp://127.0.0.1:5556} in configs/core.cfg}
+    \begin{tcblisting}{colback=black!85,coltext=green,listing only,
+        title=Accessing the environment and starting AIL, fonttitle=\bfseries}
+
+# Launch the system and the web interface
+cd bin/
+./LAUNCH -l
+
+\end{tcblisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Running your own instance using the virtual machine}
+    \begin{tcblisting}{colback=black!85,coltext=green,listing only,
+        title=Login and passwords:, fonttitle=\bfseries}
+# Web interface (default network settings)
+    https://127.0.0.1:7000/
+# Web interface:
+    admin@admin.test
+    Password1234
+# SSH:
+    ail
+    Password1234
+\end{tcblisting}
+
+\end{frame}
+
 \section{AIL ecosystem - Challenges and design}
 \begin{frame}
     \frametitle{AIL ecosystem: Technologies used}
@@ -751,161 +782,6 @@ cd AIL-framework
         \item[] \textbf{Server:} Flask
         \item[] \textbf{Data message passing:} ZMQ, Redis list and Redis Publisher/Subscriber
     \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]
-    \textbf{\large AIL global architecture 1/2}\\
-
-    \begin{figure}
-        \centering
-        \begin{tikzpicture}[scale=1.2]
-        %styles
-        \tikzstyle{mymatrix}=[matrix of nodes, nodes=typetag, row sep=0.3em, draw=gray, fill={rgb:red,0.04;green,0.43;blue,0.89}]
-        \tikzstyle{mycontainer}=[draw=gray, inner sep=1ex]
-        \tikzstyle{typetag}=[draw=gray, inner sep=1ex, anchor=west, color=lightgray]
-        \tikzstyle{title}=[draw=none, color=white, inner sep=0pt]
-    
-        \tikzstyle{feeder}=[rounded rectangle,draw, align=center, fill={rgb:red,1;green,5;blue,2}]
-        \tikzstyle{ail}=[rectangle,draw, align=center, fill={rgb:red,0.04;green,0.43;blue,0.89}]
-        \tikzstyle{ail2}=[rectangle,draw, align=center, fill={rgb:red,0.74;green,0.43;blue,0.89}]
-        \tikzstyle{storage}=[ellipse,draw, align=center, fill={rgb:red,3;green,3;blue,3}]
-        \tikzstyle{commu}=[->,>=latex,very thick]
-        \tikzstyle{commuboth}=[<->,>=latex,very thick]
-    
-        %nodes
-        \node[feeder] (f1) at (0,0) {\color{white}ZMQ feed};
-        \node[feeder] (f2) at (0,-0.5) {\color{white}\texttt{API}};
-        \node[feeder] (f3) at (0,-1) {\color{white}Via GUI};
-    
-        \node[storage] (st1) at (2.5,-0.5) {\color{white}ZMQ};
-    
-        \matrix[mymatrix] (a2) at (4,-3) {
-            |[title]|AIL framework\\
-            Credentials & credit-cards\\
-            CVEs & API keys\\
-            Emails & Bank account\\
-            Onions & $\cdots$\\
-        };
-    
-        \node[storage] (st2) at (5,0) {\color{white}Redis\\\color{white}ARDB (RocksDB)};
-        \node[ail2] (a3) at (5,1.5) {\color{white}Flask web interface};
-        
-        %arraws
-        \draw[commu] (f1)--(st1);
-        \draw[commu] (f2)--(a2);
-        \draw[commu] (f3)--(a2);
-    
-        \draw[commu] (st1)--(a2);
-    
-        \draw[commuboth] (a2)--(st2);
-    
-        \draw[commuboth] (st2)--(a3);
-        
-        \end{tikzpicture}
-    \end{figure}
-\end{frame}
-
-\begin{frame}
-    \textbf{\large AIL global architecture 2/2}\\
-    {\tiny Redis PubSub 1: port 6380, channel queuing}\\
-    \vskip -0.5em
-    {\tiny Redis PubSub 2: port 6380, channel script}
-    
-    \begin{center}
-    \vskip -2.0em
-    \begin{tikzpicture}[scale=1.0]
-    %styles
-    \tikzstyle{queue}=[ellipse,draw,align=center]
-    \tikzstyle{module}=[rectangle,draw, align=center, fill={rgb:red,1;green,2;blue,5}]
-    \tikzstyle{commu}=[->,>=latex,very thick]
-    \tikzstyle{subs}=[->,dashed,very thick]
-    %nodes
-    \node[module] (py) at (0,0.5) {\color{white}Pystemon};
-    \node[module] (imp) at (4,0.5) {\color{white}\texttt{API}};
-    \node[queue] (zmq) at (0,-0.7) {ZMQ};
-    \node[module] (ail) at (0,-2) {\color{white}AIL Mixer};
-    \node[queue] (rps1) at (-4,-3) {\tiny Redis set 1};
-    \node[queue] (rps2) at (0,-3) {\tiny Redis set 2};
-    \node[queue] (rps3) at (4,-3) {\tiny Redis set 3};
-    \node[module] (m1) at (-2,-4) {\color{white}Module$_x$};
-    \node[module] (m4) at (-4,-4) {\color{white}Module$_x$};
-    \node[module] (m2) at (0,-4) {\color{white}Module$_y$};
-    \node[module] (m3) at (2,-4) {\color{white}Module$_z$};
-    \node[queue] (rps4) at (0,-5) {\tiny Redis PubSub};
-    \node[module] (flask) at (0,-6.5) {\color{white}Flask server};
-    
-    %arraws
-    \draw[commu] (py)--(zmq);
-    \draw[commu] (imp)--(zmq);
-    \draw[subs]  (ail)--(zmq);
-    \draw[commu] (ail)--(rps1);
-    \draw[commu] (ail)--(rps2);
-    \draw[commu] (ail)--(rps3);
-    \draw[commu] (rps1)--(m1);
-    \draw[commu] (rps1)--(m4);
-    \draw[commu] (rps2)--(m2);
-    \draw[commu] (rps3)--(m3);
-    \draw[commu] (m1)--(rps4);
-    \draw[commu] (m4)--(rps4);
-    \draw[commu] (m3)--(rps4);
-    \draw[subs]  (flask)--(rps4);
-
-    \end{tikzpicture}
-    \end{center}
-
-\end{frame}
-
-\begin{frame}
-    \frametitle{Data feeder: Gathering pastes with pystemon}
-    \textbf{\large Pystemon global architecture}\\
-    {\tiny Redis PubSub 1: port 6380, channel queuing}\\
-    \vskip -0.5em
-    {\tiny Redis PubSub 2: port 6380, channel script}
-    
-    \begin{center}
-    %\vskip -2.0em
-    \begin{tikzpicture}[scale=1.2]
-    %styles
-    \tikzstyle{queue}=[ellipse,draw,align=center]
-    \tikzstyle{module}=[rectangle,draw, align=center, fill={rgb:red,1;green,2;blue,5}]
-    \tikzstyle{commu}=[->,>=latex,very thick]
-    \tikzstyle{subs}=[->,dashed,very thick]
-    %nodes
-    \node[module] (py1) at (-0.5,1) {\color{white}\texttt{Pystemon$_1$}};
-    \node[module] (py2) at (-0.5,0) {\color{white}\texttt{Pystemon$_2$}};
-    \node[module] (py3) at (-0.5,-1) {\color{white}\texttt{Pystemon$_3$}};
-        \node[queue] (red) at (2,0) {{\scriptsize Redis set}};
-    \node[module] (dis) at (4,0) {\color{white}Dispatcher};
-    \node[queue] (zmq) at (7,0) {\texttt{ZMQ:5555}};
-    \node[module] (soc) at (7,1) {\color{white}\texttt{SOCAT:5555}};
-    \node[module] (ail) at (7,-2) {\color{white}AIL Subscriber};
-
-    \node (c1) at (5.5,1.8) {Org};
-    \node (c2) at (5,1.4) {Org};
-    \node (c3) at (5,1)   {Org};
-    \node (c4) at (6.5,1.8) {Org};
-    \node (c5) at (7.5,1.8) {Org};
-
-
-    %arraws
-    \draw[commu] (py1)--(red);
-    \draw[commu] (py2)--(red);
-    \draw[commu] (py3)--(red);
-    \draw[commu] (dis)--(red);
-    \draw[commu] (dis)--(zmq);
-    \draw[commu] (soc)--(zmq);
-    \draw[subs] (ail)--(zmq);
-
-    \draw[commu] (c1)--(soc);
-    \draw[commu] (c2)--(soc);
-    \draw[commu] (c3)--(soc);
-    \draw[commu] (c4)--(soc);
-    \draw[commu] (c5)--(soc);
-
-    \end{tikzpicture}
-    \end{center}
-
-
 \end{frame}
 
 
@@ -953,38 +829,6 @@ cd AIL-framework
 \end{frame}
 
 
-%STARTING THE SYSTEM
-\section{Starting the framework}
-\lstset{style=bash}
-\begin{frame}[fragile]
-    \frametitle{Running your own instance from source}
-    {\scriptsize Make sure that ZMQ\_Global$\rightarrow$address = \texttt{tcp://crf.circl.lu:5556,tcp://127.0.0.1:5556} in configs/core.cfg}
-    \begin{tcblisting}{colback=black!85,coltext=green,listing only,
-        title=Accessing the environment and starting AIL, fonttitle=\bfseries}
-
-# Launch the system and the web interface
-cd bin/
-./LAUNCH -l
-
-\end{tcblisting}
-\end{frame}
-
-\begin{frame}[fragile]
-    \frametitle{Running your own instance using the virtual machine}
-    \begin{tcblisting}{colback=black!85,coltext=green,listing only,
-        title=Login and passwords:, fonttitle=\bfseries}
-# Web interface (default network settings)
-    https://127.0.0.1:7000/
-# Web interface:
-    admin@admin.test
-    Password1234
-# SSH:
-    ail
-    Password1234
-\end{tcblisting}
-
-\end{frame}
-
 \section{Feeding the framework}
 \begin{frame}
 \frametitle{Feeding AIL}
@@ -993,7 +837,7 @@ cd bin/
         \item Be a trusted partner with CIRCL and ask to get access to our feed {\tiny \href{mailto:info@circl.lu}{info@circl.lu}}
         \item Setup \textit{pystemon} and use the custom feeder
             \begin{itemize}
-                \item \textit{pystemon} will collect pastes for you
+                \item \textit{pystemon} will collect items for you
             \end{itemize}
         \item Feed your own data using the API or the \texttt{import\_dir.py} script
         \item Feed your own file/text using the UI (\texttt{Submit section})
@@ -1010,7 +854,7 @@ cd bin/
             \end{itemize}
         \item \st{Setup \textit{pystemon} and use the custom feeder}
             \begin{itemize}
-                \item \st{\textit{pystemon} will collect pastes for you}
+                \item \st{\textit{pystemon} will collect items for you}
             \end{itemize}
         \item Feed your own data using the API or \texttt{import\_dir.py} script
         \item Feed your own file/text using the UI (\texttt{Submit section})
@@ -1018,15 +862,6 @@ cd bin/
 \end{frame}
 
 
-
-%\begin{frame}
-%    \frametitle{Plug-in AIL to the CIRCL feed}
-%        You can freely access the CIRCL feed during this workshop!
-%        \begin{itemize}
-%            \item In the file \texttt{\large{bin/package/config.cfg}},
-%            \item Set \texttt{ZMQ\_Global->address} to \texttt{tcp://crf.circl.lu:5556}
-%        \end{itemize}
-%\end{frame}
 
 \begin{frame}
     \frametitle{Via the UI (1)}
@@ -1132,29 +967,6 @@ if __name__ == '__main__':
     \end{lstlisting}
 \end{frame}
 
-\section{Practical part}
-\begin{frame}
-    \frametitle{Practical part: Pick your choice}
-
-    \begin{enumerate}
-        \item Update support of docker/ansible
-        \item Graph database on \texttt{Credential.py}
-        \begin{itemize}
-            \item Top used passwords, most compromised user, ...
-        \end{itemize}
-        \item Webpage scrapper
-        \begin{itemize}
-            \item Download html from URL found in pastes
-            \item Re-inject html as paste in AIL
-        \end{itemize}
-    \item Improvement of \texttt{Phone.py}
-        \begin{itemize}
-            \item Way to much false positive as of now. Exploring new ways to validate phone numbers could be interesting
-        \end{itemize}
-
-        \item \textbf{Your custom feature}
-    \end{enumerate}
-\end{frame}
 
 
 \section{Contribution rules}
@@ -1219,7 +1031,7 @@ if __name__ == '__main__':
             \begin{itemize}
             	\item duplicate crawled domains
             	\item tor indexer
-            	\item crawler cookie authentication
+            	\item new crawler manager and proxy (coming in one or two week) 
             \end{itemize}
         \end{itemize}
 \end{frame}
@@ -1254,13 +1066,6 @@ screen -r Script
     \end{tabular}
 \end{table}
 \end{frame}
-
-
-\begin{frame}[fragile]
-    \frametitle{Managing your modules: Using the helper}
-    \centerline{\includegraphics[scale=0.22]{images/moduleManager.png}}
-\end{frame}
-
 
 
 \end{document}
