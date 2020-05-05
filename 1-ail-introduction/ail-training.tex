@@ -755,6 +755,19 @@ response platforms.
 
 \section{API}
 
+\begin{frame}[fragile]
+AIL exposes a ReST API which can be used to interact with the back-end\footnote{\url{https://github.com/ail-project/ail-framework/blob/master/doc/README.md}}.
+
+        \begin{lstlisting}
+curl https://127.0.0.1:7000/api/v1/get/item/default
+        --header "Authorization: iHc1_ChZxj1aXmiFiF1mkxxQkzawwriEaZpPqyTQj "
+        -H "Content-Type: application/json"
+        --data @input.json -X POST
+        \end{lstlisting}
+        \begin{itemize}
+                \item AIL API is currently covering 60\% of the functionality of back-end.
+        \end{itemize}
+\end{frame}
 
 \section{Setting up the framework}
 \lstset{style=bash}
