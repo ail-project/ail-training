@@ -388,92 +388,6 @@ response platforms
 
 
 
-\section{MISP}
-
-\begin{frame}
-    \frametitle{MISP Taxonomies}
-        \begin{itemize}
-            \item {\bf Tagging} is a simple way to attach a classification to an event or anattribute.
-            \item {\bf Classification must be globally used to be efficient.}
-            \item Provide a set of already defined classifications modeling estimative language
-            \item Taxonomies are implemented in a simple JSON format \footnote{\url{https://github.com/MISP/misp-taxonomies}}.
-            \item Can be easily cherry-picked or extended
-        \end{itemize}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Taxonomies useful in AIL}
-        \begin{itemize}
-            \item {\bf infoleak}: Information classified as being potential leak.
-            \item {\bf estimative-language}: Describe quality and credibility of underlying sources, data, and methodologies.
-            \item {\bf admiralty-scale}: Rank the reliability of a source and the credibility of an information
-            \item {\bf fpf\footnote{Future of Privacy Forum}}: Evaluate the degree of identifiability of personal data and the types of pseudonymous data, de-identified data and anonymous data.
-        \end{itemize}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Taxonomies useful in AIL}
-        \begin{itemize}
-            \item {\bf tor}: Describe Tor network infrastructure.
-            \item {\bf dark-web}: Criminal motivation on the dark web.
-            \item {\bf copine-scale\footnote{Combating Paedophile Information Networks in Europe}}: Categorise the severity of images of child sex abuse.
-        \end{itemize}
-\end{frame}
-
-\begin{frame}
-    \frametitle{threat sharing and incident response platforms}
-    \centerline{
-        \includegraphics[scale=0.14]{images/ail-project.png}
-        \hskip 2em 
-        $\longrightarrow$
-        \hskip 2em
-        \includegraphics[scale=0.8]{images/MISP.png}
-    }
-
-    \vskip 2em
-    \textbf{Goal:} submission to threat sharing and incident
-response platforms.
-\end{frame}
-
-\begin{frame}
-    \frametitle{threat sharing and incident response platforms}
-    \centerline{
-        \includegraphics[scale=0.12]{images/ail-project.png}
-        \hskip 2em
-        $\longrightarrow$
-        \hskip 2em
-        \includegraphics[scale=0.8]{images/MISP.png}
-    }
-
-    \vskip 2em
-    \begin{enumerate}
-            \item Use infoleak taxonomy\footnote{\url{https://www.misp-project.org/taxonomies.html}}
-        \item Add your own tags
-	\item Export AIL objects to MISP core format
-	\item Download it or Create a MISP Event\footnote{\url{https://www.misp-standard.org/rfc/misp-standard-core.txt}}
-    \end{enumerate}
-\end{frame}
-
-\begin{frame}
-    \frametitle{MISP Export}
-    \centerline{\includegraphics[scale=0.35]{screenshot/bitcoin-misp.png}}
-\end{frame}
-
-\begin{frame}
-    \frametitle{MISP Export}
-    \centerline{\includegraphics[scale=0.35]{screenshot/domain-misp.png}}
-\end{frame}
-
-\begin{frame}
-    \frametitle{MISP Export}
-    \centerline{\includegraphics[scale=0.25]{screenshot/misp-export.png}}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Automatic submission on tags}
-    \centerline{\includegraphics[scale=0.25]{screenshot/tag_auto_export.png}}
-\end{frame}
-
 
 \section{Current capabilities}
 
@@ -752,6 +666,92 @@ response platforms.
         \includegraphics[scale=0.26, angle=0]{images/ail_14.png}
     \end{figure}
 \end{frame}
+\section{MISP}
+
+\begin{frame}
+    \frametitle{MISP Taxonomies}
+        \begin{itemize}
+            \item {\bf Tagging} is a simple way to attach a classification to an event or anattribute.
+            \item {\bf Classification must be globally used to be efficient.}
+            \item Provide a set of already defined classifications modeling estimative language
+            \item Taxonomies are implemented in a simple JSON format \footnote{\url{https://github.com/MISP/misp-taxonomies}}.
+            \item Can be easily cherry-picked or extended
+        \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Taxonomies useful in AIL}
+        \begin{itemize}
+            \item {\bf infoleak}: Information classified as being potential leak.
+            \item {\bf estimative-language}: Describe quality and credibility of underlying sources, data, and methodologies.
+            \item {\bf admiralty-scale}: Rank the reliability of a source and the credibility of an information
+            \item {\bf fpf\footnote{Future of Privacy Forum}}: Evaluate the degree of identifiability of personal data and the types of pseudonymous data, de-identified data and anonymous data.
+        \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Taxonomies useful in AIL}
+        \begin{itemize}
+            \item {\bf tor}: Describe Tor network infrastructure.
+            \item {\bf dark-web}: Criminal motivation on the dark web.
+            \item {\bf copine-scale\footnote{Combating Paedophile Information Networks in Europe}}: Categorise the severity of images of child sex abuse.
+        \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{threat sharing and incident response platforms}
+    \centerline{
+        \includegraphics[scale=0.14]{images/ail-project.png}
+        \hskip 2em 
+        $\longrightarrow$
+        \hskip 2em
+        \includegraphics[scale=0.8]{images/MISP.png}
+    }
+
+    \vskip 2em
+    \textbf{Goal:} submission to threat sharing and incident
+response platforms.
+\end{frame}
+
+\begin{frame}
+    \frametitle{threat sharing and incident response platforms}
+    \centerline{
+        \includegraphics[scale=0.12]{images/ail-project.png}
+        \hskip 2em
+        $\longrightarrow$
+        \hskip 2em
+        \includegraphics[scale=0.8]{images/MISP.png}
+    }
+
+    \vskip 2em
+    \begin{enumerate}
+            \item Use infoleak taxonomy\footnote{\url{https://www.misp-project.org/taxonomies.html}}
+        \item Add your own tags
+	\item Export AIL objects to MISP core format
+	\item Download it or Create a MISP Event\footnote{\url{https://www.misp-standard.org/rfc/misp-standard-core.txt}}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+    \frametitle{MISP Export}
+    \centerline{\includegraphics[scale=0.35]{screenshot/bitcoin-misp.png}}
+\end{frame}
+
+\begin{frame}
+    \frametitle{MISP Export}
+    \centerline{\includegraphics[scale=0.35]{screenshot/domain-misp.png}}
+\end{frame}
+
+\begin{frame}
+    \frametitle{MISP Export}
+    \centerline{\includegraphics[scale=0.25]{screenshot/misp-export.png}}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Automatic submission on tags}
+    \centerline{\includegraphics[scale=0.25]{screenshot/tag_auto_export.png}}
+\end{frame}
+
 
 \section{API}
 
