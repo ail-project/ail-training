@@ -768,54 +768,6 @@ cd AIL-framework
 \end{tcblisting}
 \end{frame}
 
-%STARTING THE SYSTEM
-\section{Starting the framework}
-\lstset{style=bash}
-\begin{frame}[fragile]
-    \frametitle{Running your own instance from source}
-    \begin{tcblisting}{colback=black!85,coltext=green,listing only,
-        title=Accessing the environment and starting AIL, fonttitle=\bfseries}
-
-# Launch the system and the web interface
-cd bin/
-./LAUNCH -l
-
-\end{tcblisting}
-\end{frame}
-
-\begin{frame}[fragile]
-    \frametitle{Running your own instance using the virtual machine}
-    \begin{tcblisting}{colback=black!85,coltext=green,listing only,
-        title=Login and passwords:, fonttitle=\bfseries}
-# Web interface (default network settings)
-    https://127.0.0.1:7000/
-# Web interface:
-    admin@admin.test
-    Password1234
-# SSH:
-    ail
-    Password1234
-\end{tcblisting}
-
-\end{frame}
-
-\begin{frame}[fragile]
-    \frametitle{Updating AIL}
-    \begin{tcblisting}{colback=black!85,coltext=green,listing only,
-        title=Launch the updater:, fonttitle=\bfseries}
-cd bin/
-# git pull and launch all updates:
-./LAUNCH -u
-
-
-# PS:
-# The Updater is launched by default each time
-# you start the framework with
-# ./LAUNCH -l
-\end{tcblisting}
-
-\end{frame}
-
 %FEEDER AND IMPORTER
 \section{Feeding the framework}
 \begin{frame}
@@ -889,6 +841,55 @@ cd bin/
             \end{itemize}
     \end{enumerate}
 \end{frame}
+
+%STARTING THE SYSTEM
+\section{Starting the framework}
+\lstset{style=bash}
+\begin{frame}[fragile]
+    \frametitle{Running your own instance from source}
+    \begin{tcblisting}{colback=black!85,coltext=green,listing only,
+        title=Accessing the environment and starting AIL, fonttitle=\bfseries}
+
+# Launch the system and the web interface
+cd bin/
+./LAUNCH -l
+
+\end{tcblisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Running your own instance using the virtual machine}
+    \begin{tcblisting}{colback=black!85,coltext=green,listing only,
+        title=Login and passwords:, fonttitle=\bfseries}
+# Web interface (default network settings)
+    https://127.0.0.1:7000/
+# Web interface:
+    admin@admin.test
+    Password1234
+# SSH:
+    ail
+    Password1234
+\end{tcblisting}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Updating AIL}
+    \begin{tcblisting}{colback=black!85,coltext=green,listing only,
+        title=Launch the updater:, fonttitle=\bfseries}
+cd bin/
+# git pull and launch all updates:
+./LAUNCH -u
+
+
+# PS:
+# The Updater is launched by default each time
+# you start the framework with
+# ./LAUNCH -l
+\end{tcblisting}
+
+\end{frame}
+
 
 \section{AIL ecosystem - Challenges and design}
 \begin{frame}
