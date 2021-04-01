@@ -138,7 +138,7 @@
   \end{frame}
 }
 
-\author{\Large{Alexandre Dulaunoy}\\ \scriptsize{alexandre.dulaunoy@circl.lu}\\ \large{Aurélien Thirion}\\ \scriptsize{aurelien.thirion@circl.lu}\\ \large{Sami Mokaddem}\\ \scriptsize{sami.mokaddem@circl.lu}\\}
+\author{\Large{Alexandre Dulaunoy}\\ \scriptsize{alexandre.dulaunoy@circl.lu}\\ \large{Aurelien Thirion}\\ \scriptsize{aurelien.thirion@circl.lu}\\ \large{Jean-Louis Huynen}\\ \scriptsize{jean-louis.huynen@circl.lu}\\}
 \title{AIL Framework for Analysis of Information Leaks}
 \subtitle{data mining - website and darkweb correlation}
 \institute{info@circl.lu}
@@ -287,7 +287,7 @@ response platforms
 				\item MISP
 				\item TheHive
 			\end{itemize}
-		    \item Term/Regex monitoring for local companies/government
+		    \item Term/Regex/YARA monitoring for local companies/government
         \end{itemize}
 \end{frame}
 
@@ -410,9 +410,9 @@ response platforms
         \item Submission to threat sharing and incident response platform (\textbf{MISP} and \textbf{TheHive})
         \item \textbf{Full-text indexer} to index unstructured information
         \item \textbf{Tagging} for classification and searches
-        \item Terms, sets and regex \textbf{tracking and occurences}
+        \item Terms, sets, regex and YARA \textbf{tracking and occurences}
         \item Archives, files and raw \textbf{submission} from the UI
-        \item PGP and Decoded (Base64, ...) Correlation
+        \item PGP, Cryptocurrency, Decoded (Base64, ...) and username Correlation
         \item And many more
     \end{itemize}
 \end{frame}
@@ -421,7 +421,7 @@ response platforms
 \begin{frame}
     \frametitle{Terms Tracker}
         \begin{itemize}
-        	\item Search and monitor specific keywords
+        	\item Search and monitor specific keywords/patterns
         	\begin{itemize}
             	\item Automatic Tagging
             	\item Email Notifications
@@ -434,10 +434,13 @@ response platforms
             \begin{itemize}
             	\item booter,ddos,stresser;2
             \end{itemize}
-            \item Trag Regex
+            \item Track Regex
             \begin{itemize}
             	\item circl\textbackslash.lu
-
+            \end{itemize}
+            \item YARA rules
+            	\begin{itemize}
+            	\item https://github.com/ail-project/ail-yara-rules
             \end{itemize}
         \end{itemize}
 \end{frame}
@@ -450,9 +453,16 @@ response platforms
 \end{frame}
 
 \begin{frame}
+    \frametitle{YARA Tracker:}
+        \begin{figure}
+            \includegraphics[scale=0.22]{screenshot/term-tracker-yara.png}
+        \end{figure}
+\end{frame}
+
+\begin{frame}
     \frametitle{Terms Tracker - Practical part}
         \begin{itemize}
-        	\item \textbf{Create and test} your own term tracker
+        	\item \textbf{Create and test} your own tracker
         	\includegraphics[scale=0.3]{images/term-tracker-create.png}
         \end{itemize}
 \end{frame}
@@ -1071,7 +1081,6 @@ if __name__ == '__main__':
             \begin{itemize}
             	\item duplicate crawled domains
             	\item tor indexer
-            	\item {\bf New crawler and proxy manager (coming in one or two week) }
             \end{itemize}
         \end{itemize}
 \end{frame}
