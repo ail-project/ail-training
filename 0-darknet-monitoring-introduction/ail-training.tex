@@ -1,0 +1,235 @@
+\documentclass{beamer}
+\usetheme[pageofpages=of,% String used between the current page and the
+                         % total page count.
+          bullet=circle,% Use circles instead of squares for bullets.
+          titleline=true,% Show a line below the frame title.
+          alternativetitlepage=true,% Use the fancy title page.
+	  titlepagelogo=logo-circl.pdf,% Logo for the first page.
+%          watermark=watermark-polito,% Watermark used in every page.
+%          watermarkheight=100px,% Height of the watermark.
+%          watermarkheightmult=4,% The watermark image is 4 times bigger
+                                % than watermarkheight.
+          ]{Torino}
+
+\usepackage[utf8x]{inputenc}
+\usepackage{listings}
+\usepackage{soul}
+\usepackage{siunitx}
+\usepackage{booktabs}
+%\lstset{ 
+%  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+%  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+%  breakatwhitespace=false
+%}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,snakes,automata,positioning,matrix,fit}
+
+
+\usepackage[listings]{tcolorbox}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygreen2}{rgb}{0,0.56,0.16}
+\definecolor{myred}{rgb}{0.6,0.066,0.066}
+\definecolor{redCIRCL}{RGB}{213,43,30}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{mygray}{gray}{0.9}
+\definecolor{mywhite}{rgb}{1,1,1}
+\definecolor{myblack}{rgb}{0,0,0}
+\definecolor{mybeige}{HTML}{eeeeee}
+%\usepackage{tcolorbox}
+\usepackage[listings]{tcolorbox}
+\tcbuselibrary{listings}
+
+\lstdefinestyle{code}{ %
+  backgroundcolor=\color{mybeige},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+  basicstyle=\footnotesize\ttfamily,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,	                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=Python,                 % the language of the code
+  morekeywords={*,...},           % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{myblack}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+\lstdefinestyle{bash}{ %
+  backgroundcolor=\color{black!85},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+  basicstyle=\footnotesize\color{mywhite},        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single	                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{white}\bfseries,       % keyword style
+  language=bash,                 % the language of the code
+  morekeywords={*,$,git, clone,... },           % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mywhite}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+\lstdefinestyle{default}{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+  basicstyle=\footnotesize\color{black},        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single	                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{white}\bfseries,       % keyword style
+  language=bash,                 % the language of the code
+  morekeywords={*,$,git, clone,... },           % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{black}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+\lstset{style=code}
+
+
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+      {\color{white} \usebeamerfont{title}\insertsectionhead}\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+
+\author{\Large{Alexandre Dulaunoy}\\ \scriptsize{alexandre.dulaunoy@circl.lu}\\ \large{Aurelien Thirion}\\ \scriptsize{aurelien.thirion@circl.lu}\\ \large{Jean-Louis Huynen}\\ \scriptsize{jean-louis.huynen@circl.lu}\\}
+\title{Darknet and Social Network Monitoring}
+\subtitle{Introduction to Challenges, Concepts and Data Mining of the Deep Web}
+\institute{info@circl.lu}
+\date{\today}
+
+\begin{document}
+
+
+\begin{frame}[t,plain]
+\titlepage
+\end{frame}
+
+\begin{frame}
+ % \frametitle{CIRCL}
+ \includegraphics[scale=0.5]{logo-circl.pdf}
+ \begin{itemize}
+ \item The Computer Incident Response Center Luxembourg (CIRCL) is a government-driven initiative designed to provide a systematic response facility to computer security threats and incidents.
+ \item CIRCL is the CERT for the private sector, communes and non-governmental entities in Luxembourg.
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{CIRCL Missions 1/2}
+\begin{itemize}
+\item Provide a {\bf systematic response} facility to ICT-incidents;
+\item Support national ICT users to {\bf recover quickly and efficiently} from security incidents;
+\item {\bf Minimize ICT incident-based losses}, theft of information and disruption of services for the private sector;
+\end{itemize}
+\end{frame}
+
+\begin{frame}{CIRCL Missions 2/2}
+\begin{itemize}
+\item Gather information related to incident handling to better {\bf prepare future incidents} management and provide optimized protection for systems and data;
+\item {\bf Coordinate communication} among national and international incident response teams during security emergencies and to help prevent future incidents;
+\item Provide a security related {\bf alert and warning system} for organisations in Luxembourg and abroad;
+\item Foster {\bf knowledge and information} exchange in cybersecurity {\bf lead the development of MISP project};
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Links}
+    \begin{itemize}
+        \item AIL project: \url{https://github.com/ail-project}
+        \item AIL framework: \url{https://github.com/ail-project/ail-framework}
+        \item Training materials: \url{https://github.com/ail-project/ail-training}
+        \item Online chat: \url{https://gitter.im/ail-project/community}
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+        \frametitle{Ethics in Information Security and Cybersecurity}
+        \begin{itemize}
+        \item The materials and tools presented can open a significant numbers of questions regarding ethics;
+        \item Our researches and tools are there for education, supporting the public good and improve incident response;
+        \item We ask all users and participants to {\bf follow ethical principles and act professionaly}\footnote{\url{https://www.acm.org/code-of-ethics} \url{https://www.first.org/global/sigs/ethics/ethics-first}}.
+        \end{itemize}
+\end{frame}
+
+\begin{frame}
+        \frametitle{Privacy, AIL and GDPR (PII) - An Ethical Question}
+        \begin{itemize}
+                \item Many modules in AIL can process personal data and even special categories of data as defined in GDPR (Art. 9).
+                \item The data controller is often the operator of the AIL framework (limited to the organisation) and has to define {\bf legal grounds for processing personal data}.
+                \item To help users of AIL framework, a document is available which describe points of AIL in regards to the regulation\footnote{\url{https://www.circl.lu/assets/files/information-leaks-analysis-and-gdpr.pdf}}.
+        \end{itemize}
+\end{frame}
+
+\section{Objectives}
+\begin{frame}
+\frametitle{Our objectives}
+    \begin{itemize}
+        \item Provide a quick overview to darknet, deepweb, collection and cyber threat intelligence lifecycle;
+        \item Review different {\bf collection mechanisms} and {\bf sources};
+        \item Some practical examples of criminal activities and their use of modern technologies;
+        \item Show the benefits of developing open source tools to monitor web pages, pastes, forums and hidden services;
+        \item Quick introduction to the open source AIL project;
+    \end{itemize}
+\end{frame}
+
+\section{Introduction}
+\begin{frame}
+        \frametitle{Concepts}
+        \begin{itemize}
+                \item {\bf Deep Web} is the part of World Wide Web not indexed or directly accessible by standard web search-engines;
+                \item This can be content hidden from {\bf crawlers} by requiring a specific access and this can includes private social media, password-protected forums or content protected
+                        by different measures such as paywalls or specific security interface to access the information;
+                \item A large portion of content accessible via Internet is part of the deep web\footnote{also called invisible web, hidden web or non-indexed web}.
+        \end{itemize}
+
+\end{frame}
+
+\end{document}
+
