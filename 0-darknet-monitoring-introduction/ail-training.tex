@@ -274,5 +274,60 @@
 
 \end{frame}
 
+\begin{frame}
+        \frametitle{Concepts - tor}
+        \begin{itemize}
+		\item tor makes use of {\bf onion routing} to obfuscate user identify,
+        \end{itemize}
+	\includegraphics[scale=0.5]{images/tor1.png}
+\end{frame}
+
+
+\begin{frame}
+        \frametitle{Concepts - tor}
+	\includegraphics[scale=0.3]{images/tor2.png}
+\end{frame}
+
+\begin{frame}
+        \frametitle{Concepts - tor}
+	\includegraphics[scale=0.3]{images/tor3.png}
+\end{frame}
+
+
+\begin{frame}
+        \frametitle{Concepts - tor}
+        \begin{itemize}
+		\item tor provide hidden services: addresses in {\bf.onion},
+		\item one can only reach such service when one knows its address,
+		\item hidden services' information are stored in a {\bf Distributed Hash Table},
+		\item these are really interesting for attackers as:
+        	\begin{itemize}
+		\item these are anonymous,
+		\item these can be provided through NATs,
+		\item these can be moved easily.
+        	\end{itemize}
+        \end{itemize}
+\end{frame}
+
+\begin{frame}
+        \frametitle{Concepts - search engines}
+        \begin{itemize}
+		\item Building a search engine on the web is a challenging task because:
+        	\begin{itemize}
+			\item it has to crawl webpages,
+			\item it has to to make sense of unstructured data,
+			\item it has to index these data,
+			\item it has to provide a way to retrieve data.
+        	\end{itemize}
+		\item Doing so on tor is even more challenging because:
+
+        	\begin{itemize}
+			\item services don't always want to be found,
+			\item parts of the dataset have to be discarded.
+        	\end{itemize}
+	\item in each case, it requires a lot of bandwidth, storage and computing power.
+        \end{itemize}
+\end{frame}
+
 \end{document}
 

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="875" height="575" id="svg2">
+  <defs id="defs4">
+    <marker refX="0" refY="0" orient="auto" style="overflow:visible" id="Arrow2Lend">
+      <path d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.97309,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z " transform="matrix(-1.1,0,0,-1.1,-1.1,0)" style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round" id="path11195"/>
+    </marker>
+    <linearGradient id="linearGradient8094">
+      <stop style="stop-color:#000000;stop-opacity:1" offset="0" id="stop8096"/>
+      <stop style="stop-color:#ffffff;stop-opacity:1" offset="1" id="stop8098"/>
+    </linearGradient>
+    <linearGradient id="linearGradient7114">
+      <stop style="stop-color:#800000;stop-opacity:1" offset="0" id="stop7116"/>
+      <stop style="stop-color:#ff8181;stop-opacity:1" offset="1" id="stop7118"/>
+    </linearGradient>
+    <linearGradient id="linearGradient6134">
+      <stop style="stop-color:#008000;stop-opacity:1" offset="0" id="stop6136"/>
+      <stop style="stop-color:#81ff81;stop-opacity:1" offset="1" id="stop6138"/>
+    </linearGradient>
+    <linearGradient id="linearGradient5152">
+      <stop style="stop-color:#000080;stop-opacity:1" offset="0" id="stop5154"/>
+      <stop style="stop-color:#8181ff;stop-opacity:1" offset="1" id="stop5156"/>
+    </linearGradient>
+    <linearGradient x1="0" y1="275" x2="350" y2="275" id="linearGradient5158" xlink:href="#linearGradient5152" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0,1,-1,0,550,50)"/>
+    <linearGradient x1="0" y1="275" x2="350" y2="275" id="linearGradient5163" xlink:href="#linearGradient6134" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0,0.7142858,-1,0,600,100)"/>
+    <linearGradient x1="0" y1="275" x2="350" y2="275" id="linearGradient6143" xlink:href="#linearGradient7114" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0,0.4285714,-1,0,650,150)"/>
+    <linearGradient x1="0" y1="275" x2="350" y2="275" id="linearGradient7123" xlink:href="#linearGradient8094" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0,0.1428571,-1,0,700,200)"/>
+    <linearGradient x1="0" y1="275" x2="350" y2="275" id="linearGradient8104" xlink:href="#linearGradient8094" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0,-0.1428571,1,0,200,250)"/>
+    <linearGradient x1="0" y1="275" x2="350" y2="275" id="linearGradient8109" xlink:href="#linearGradient7114" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0,-0.4285714,1,0,150,300)"/>
+    <linearGradient x1="0" y1="275" x2="350" y2="275" id="linearGradient8132" xlink:href="#linearGradient6134" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0,-0.7142858,1,0,100,350)"/>
+    <linearGradient x1="0" y1="275" x2="350" y2="275" id="linearGradient8137" xlink:href="#linearGradient5152" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0,-1,1,0,50,400)"/>
+  </defs>
+  <g style="opacity:1" id="layer1">
+    <path d="M 500,50 L 100,50 C 72.4,50 50,128.4 50,225 C 50,321.6 72.4,400 100,400 L 500,400 C 472.4,400 450,321.6 450,225 C 450,128.4 472.4,50 500,50 z " style="opacity:1;fill:url(#linearGradient5158);fill-opacity:1;stroke:none" id="path3195"/>
+  </g>
+  <g style="opacity:1" id="layer2">
+    <path d="M 550,100 L 150,100 C 122.4,100 100,156 100,225 C 100,294 122.4,350 150,350 L 550,350 C 522.4,350 500,294 500,225 C 500,156 522.4,100 550,100 z " style="opacity:1;fill:url(#linearGradient5163);fill-opacity:1;stroke:none" id="path5161"/>
+  </g>
+  <g style="opacity:1;display:inline" id="layer3">
+    <path d="M 600,150 L 200,150 C 172.4,150 150,183.6 150,225 C 150,266.4 172.4,300 200,300 L 600,300 C 572.4,300 550,266.4 550,225 C 550,183.6 572.4,150 600,150 z " style="opacity:1;fill:url(#linearGradient6143);fill-opacity:1;stroke:none" id="path6141"/>
+  </g>
+  <g style="opacity:1;display:inline" id="layer4">
+    <path d="M 650,200 L 250,200 C 222.4,200 200,211.2 200,225 C 200,238.8 222.4,250 250,250 L 650,250 C 622.4,250 600,238.8 600,225 C 600,211.2 622.4,200 650,200 z " style="opacity:1;fill:url(#linearGradient7123);fill-opacity:1;stroke:none" id="path7121"/>
+  </g>
+  <g style="opacity:0.66699997" id="layer5">
+    <path d="M 250,250 L 650,250 C 677.6,250 700,238.8 700,225 C 700,211.2 677.6,200 650,200 L 250,200 C 277.6,200 300,211.2 300,225 C 300,238.8 277.6,250 250,250 z " style="opacity:1;fill:url(#linearGradient8104);fill-opacity:1;stroke:none" id="path8102"/>
+  </g>
+  <g style="opacity:0.66699997;display:inline" id="layer6">
+    <path d="M 200,300 L 600,300 C 627.6,300 650,266.4 650,225 C 650,183.6 627.6,150 600,150 L 200,150 C 227.6,150 250,183.6 250,225 C 250,266.4 227.6,300 200,300 z " style="opacity:1;fill:url(#linearGradient8109);fill-opacity:1;stroke:none" id="path8107"/>
+  </g>
+  <g style="opacity:0.66699997;display:inline" id="layer7">
+    <path d="M 150,350 L 550,350 C 577.6,350 600,294 600,225 C 600,156 577.6,100 550,100 L 150,100 C 177.6,100 200,156 200,225 C 200,294 177.6,350 150,350 z " style="opacity:1;fill:url(#linearGradient8132);fill-opacity:1;stroke:none" id="path8130"/>
+  </g>
+  <g style="opacity:0.66699997;display:inline" id="layer8">
+    <path d="M 100,400 L 500,400 C 527.6,400 550,321.6 550,225 C 550,128.4 527.6,50 500,50 L 100,50 C 127.6,50 150,128.4 150,225 C 150,321.6 127.6,400 100,400 z " style="opacity:1;fill:url(#linearGradient8137);fill-opacity:1;stroke:none" id="path8135"/>
+  </g>
+  <g id="layer12">
+    <text x="699.00153" y="220.00809" style="font-size:12px;font-style:normal;font-weight:normal;opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:Bitstream Vera Sans" id="text9130" xml:space="preserve"><tspan x="699.00153" y="220.00809" style="font-size:24px" id="tspan9132">Message</tspan></text>
+    <text x="633.98853" y="170.00793" style="font-size:12px;font-style:normal;font-weight:normal;opacity:1;fill:#800000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:Bitstream Vera Sans" id="text9126" xml:space="preserve"><tspan x="633.98853" y="170.00793" style="font-size:24px;fill:#800000" id="tspan9128">Router C Key</tspan></text>
+    <text x="577.13354" y="120.00825" style="font-size:12px;font-style:normal;font-weight:normal;opacity:1;fill:#008000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans" id="text9122" xml:space="preserve"><tspan x="577.13354" y="120.00825" style="font-size:24px;fill:#008000" id="tspan9124">Router B Key</tspan></text>
+    <text x="522.64453" y="70.007813" style="font-size:12px;font-style:normal;font-weight:normal;opacity:1;fill:#000080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans" id="text9118" xml:space="preserve"><tspan x="522.64453" y="70.007813" style="font-size:24px;fill:#000080" id="tspan9120">Router A Key</tspan></text>
+    <text x="49.417969" y="499.66016" style="font-size:12px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans" id="text9183" xml:space="preserve"><tspan x="49.417969" y="499.66016" style="font-size:24px" id="tspan9185">Source</tspan></text>
+    <text x="549.18726" y="424.66016" style="font-size:12px;font-style:normal;font-weight:normal;text-align:end;text-anchor:end;fill:#000080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans" id="text10166" xml:space="preserve"><tspan x="549.18726" y="424.66016" style="font-size:24px;text-align:end;text-anchor:end;fill:#000080" id="tspan10168">Router A</tspan></text>
+    <text x="600.68713" y="449.66016" style="font-size:12px;font-style:normal;font-weight:normal;text-align:end;text-anchor:end;fill:#008000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans" id="text10180" xml:space="preserve"><tspan x="600.68713" y="449.66016" style="font-size:24px;text-align:end;text-anchor:end;fill:#008000" id="tspan10182">Router B</tspan></text>
+    <text x="650.32428" y="474.66016" style="font-size:12px;font-style:normal;font-weight:normal;text-align:end;text-anchor:end;fill:#800000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans" id="text10184" xml:space="preserve"><tspan x="650.32428" y="474.66016" style="font-size:24px;text-align:end;text-anchor:end;fill:#800000" id="tspan10186">Router C</tspan></text>
+    <text x="701.06213" y="499.66016" style="font-size:12px;font-style:normal;font-weight:normal;text-align:end;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans" id="text10192" xml:space="preserve"><tspan x="701.06213" y="499.66016" style="font-size:24px;text-align:end;text-anchor:end" id="tspan10194">Destination</tspan></text>
+    <g id="g2219">
+      <path d="M 51.375,511.5625 L 51.375,514.3125 L 696.375,514.3125 L 696.375,511.5625 L 51.375,511.5625 z " style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2.73842454;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" id="path10200"/>
+      <path d="M 667.08836,500.7951 L 700.00002,512.89755 L 667.08836,525 C 672.34626,517.85472 672.31597,508.07874 667.08836,500.7951 z " style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round" id="path2225"/>
+    </g>
+    <path d="M 48,226 L 48,499 L 50,499 L 50,226 L 48,226 z " style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" id="path11369"/>
+    <path d="M 700,226 L 700,499 L 702,499 L 702,226 L 700,226 z " style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" id="path13310"/>
+    <path d="M 650,226 L 650,474 L 652,474 L 652,226 L 650,226 z " style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.99999988;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" id="path13312"/>
+    <path d="M 600,226 L 600,449 L 602,449 L 602,226 L 600,226 z " style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" id="path13314"/>
+    <path d="M 550,226 L 550,424 L 552,424 L 552,226 L 550,226 z " style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" id="path13316"/>
+  </g>
+</svg>
