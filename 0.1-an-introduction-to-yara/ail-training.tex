@@ -205,5 +205,87 @@ yara disneyplus.yara -r /home/adulau/dataset/2021/09/01/
 	\end{itemize}
 \end{frame}
 
+\begin{frame}
+\frametitle{Regular Expressions}
+    \begin{itemize}
+        \item Regular Expressions (Regex) are extremely useful in extracting information from text
+	    \item A regex is a sequence of characters that specifies a search pattern
+        \item They can be used to match, locate extract and replace text
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Regular Expressions}
+You can search for simple letters and specifiy repetition or existence
+
+\begin{lstlisting}
+String: `Cookie`
+
+// `.` Any single character
+$re1: /Co.kie/
+
+// `*` Zero or more for the previous sequence
+$re2: /Co*kie/
+
+// `+` One or more for the previous sequence
+$re3: /Co+kie/
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Regular Expressions}
+\begin{lstlisting}
+// `{2,3}` Between 2 and 3
+$re4: /Co{2,3}kie/
+
+// `[a-zA-Z]` Any letter between `a` and `Z`
+$re5: /Co[a-zA-Z]kie/ 
+\end{lstlisting}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Regular Expressions}
+Usecase: Email addresses
+\begin{lstlisting}
+$re1: /.+@.+\..+/ 
+// The address `1@.` is valid
+
+
+$re2: /.+@.+\.[a-zA-Z]{2,4}/ 
+// We enforce a correct TLD (i.e. `.com`)
+
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Regular Expressions}
+Usecase: Email addresses
+\begin{lstlisting}
+$re2: /.+@[a-zA-Z0-9_.-]+\.[a-zA-Z]{2,4}/ 
+// We enforce a correct domain (i.e. `gmail` or `hotmail`)
+
+$re3: /[a-zA-Z0-9_.%+-]+@[a-zA-Z0-9_.-]+\.[a-zA-Z]{2,4}/ 
+// We enforce a correct email format
+// `!john@doe~@gmail.com` is not valid anymore
+
+\end{lstlisting}
+
+\begin{center}
+\includegraphics[width=1.0\textwidth]{pics/regex101}
+\end{center}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Fun with Regular Expressions}
+\texttt{https://regexcrossword.com/}
+
+\begin{center}
+\includegraphics[width=0.8\textwidth]{pics/crosswords}
+\end{center}
+\end{frame}
+
+
 \end{document}
 
