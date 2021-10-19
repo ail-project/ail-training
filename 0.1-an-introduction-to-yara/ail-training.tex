@@ -128,7 +128,7 @@
 
 
 \AtBeginSection[]{
-  \begin{frame}
+	\begin{frame}[fragile]
   \vfill
   \centering
   \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
@@ -143,7 +143,6 @@
 \subtitle{An introduction to YARA for AIL usage}
 \institute{info@circl.lu}
 \date{\today}
-
 \begin{document}
 
 
@@ -162,7 +161,7 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
 \frametitle{What's YARA?}
 	\begin{itemize}
 	\item {\it The pattern matching swiss knife for malware researchers (and everyone else)};
@@ -171,6 +170,24 @@
 	\end{itemize}
 \end{frame}
 
+\lstset{language=Python}
+\begin{frame}[fragile]
+\frametitle{A sample rule}
+	\begin{lstlisting}
+	rule disney_plus : credential_leak 
+{
+    meta:                                        
+        description = "Finding list of credentials for Disney Plus"
+        leak = 1
+    strings: 
+        $a = "gmail.com:"
+        $b = "DISNEY_PLUS"
+        $c = "Disney Plus"
+    condition:
+        $a and ($b or $c) 
+}
+	\end{lstlisting}
+\end{frame}
 
 
 \end{document}
