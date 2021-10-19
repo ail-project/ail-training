@@ -172,7 +172,7 @@
 
 \lstset{language=Python}
 \begin{frame}[fragile]
-\frametitle{A sample rule}
+\frametitle{A sample rule - disneyplus.yara}
 	\begin{lstlisting}
 	rule disney_plus : credential_leak 
 {
@@ -189,6 +189,21 @@
 	\end{lstlisting}
 \end{frame}
 
+
+\lstset{language=sh}
+\begin{frame}[fragile]
+\frametitle{Calling yara from command line}
+	\begin{itemize}
+	\item Searching a single file
+	\begin{lstlisting}
+yara disneyplus.yara /home/adulau/dataset/2021/09/01/nv6RsKFm
+	\end{lstlisting}
+	\item Searching a directory
+	\begin{lstlisting}
+yara disneyplus.yara -r /home/adulau/dataset/2021/09/01/
+	\end{lstlisting}
+	\end{itemize}
+\end{frame}
 
 \end{document}
 
