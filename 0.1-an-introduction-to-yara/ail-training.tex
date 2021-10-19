@@ -167,6 +167,7 @@
 	\item {\it The pattern matching swiss knife for malware researchers (and everyone else)};
 	\item It's an improved {\bf grep} to create pattern matching rule to search for {\bf strings}, {\bf binary patterns}, {\bf regular expressions};
 	\item A YARA rule can be contextualised with metadata and tags describing a specific set of pattern matching rules.
+	\item Easier definiton of conditions compared to regex.
 	\end{itemize}
 \end{frame}
 
@@ -284,6 +285,28 @@ $re3: /[a-zA-Z0-9_.%+-]+@[a-zA-Z0-9_.-]+\.[a-zA-Z]{2,4}/
 \begin{center}
 \includegraphics[width=0.8\textwidth]{pics/crosswords}
 \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Searching in binaries}
+Binaries packed with UPX but made unusable by UPX -d by modifying the magic UPX string:
+  \begin{figure}[h]
+    \includegraphics[width=\textwidth]{images/unpack.png}
+  \end{figure}
+\end{frame}
+
+\lstset{language=Python}
+\begin{frame}[fragile]
+\frametitle{Searching in binaries}
+	\begin{lstlisting}
+rule torcryptomining
+{
+    strings:
+        $upx_erase = {(00 FF 99 41|DF DD 30 33)}
+    condition:
+	$upx_erase at 236
+}
+	\end{lstlisting}
 \end{frame}
 
 
