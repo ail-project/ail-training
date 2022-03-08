@@ -1057,31 +1057,24 @@ cd bin/
 \begin{frame}[fragile]
     \frametitle{Writing your own modules - \texttt{/bin/template.py}}
     \begin{lstlisting}
-import time
-from pubsublogger import publisher
-from Helper import Process
+from modules.abstract_module import AbstractModule
+
+class NewModule(AbstractModule):
+
+	def __init__(self):
+		    super(NewModule, self).__init__()
+
+	# Do something with the message from the queue
+	def compute(self, message, r_result=False):
+		# Process Message
+
+# LAUNCH MODULE
 if __name__ == '__main__':
-    # logger setup
-    publisher.port = 6380
-    publisher.channel = 'Script'
-    # Section name in configs/core.cfg
-    config_section = '<section name>'
-    # Setup the I/O queues
-    p = Process(config_section)
-    # Endless loop getting messages from the input queue
-    while True:
-        # Get one message from the input queue
-        message = p.get_from_set()
-        if message is None:
-            publisher.debug("{} queue is empty, waiting".format(config_section))
-            time.sleep(1)
-            continue
-        # Do something with the message from the queue
-        something_has_been_done = do_something(message)
+    module = NewModule()
+    module.run()
+
     \end{lstlisting}
 \end{frame}
-
-
 
 \section{Contribution rules}
 \begin{frame}
