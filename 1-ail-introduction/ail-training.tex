@@ -666,6 +666,28 @@ response platforms
 \end{frame}
 
 \begin{frame}
+    \frametitle{Splash manager}
+    	\begin{itemize}
+            \item Splash manager\footnote{\url{https://github.com/ail-project/ail-splash-manager}} is a standalone software\footnote{Crawlers can installed and executed outside AIL} to run the containers for crawling
+		    \item AIL crawlers are using Splash dockers to fetch and render domains
+		    \item Manage and control Splash Crawlers
+			\begin{itemize}
+				\item Install and run Splash crawlers on another server,
+				\item Handle proxies (Web and Tor by default),
+				\item Launch/Kill Splash Dockers automatically,
+				\item Restart crawlers if these crash,
+			\end{itemize}
+        \end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Splash manager - UI in AIL}
+		\begin{figure}
+		    \includegraphics[scale=0.185]{images/ail_splash_manager.png}
+		\end{figure}
+\end{frame}
+
+\begin{frame}
     \frametitle{Crawler: DDoS Booter}
     \centerline{
         \includegraphics[scale=0.23]{images/crawled-ddos.png}
