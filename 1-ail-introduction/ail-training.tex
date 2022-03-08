@@ -895,16 +895,9 @@ cd AIL-framework
  
 \end{frame}
 
-\begin{frame}[fragile]
-   \frametitle{Feeding AIL with Twitter posts and associated urls}
-        \begin{itemize}
-                \item AIL - feeder from Twitter\footnote{\url{https://github.com/ail-project/ail-feeder-twitter}}
-                \item The AIL-feeder-twitter search in Twitter using Twint (without API), crawls the urls and pushes the results in AIL
-                \item The JSON format format can be extended via meta fields
-        \end{itemize}
-
-\end{frame}
-
+\include{feeder}
+%% CONTI leak example
+\include{conti}
 \begin{frame}
     \frametitle{Feeding AIL with your own data - \texttt{import\_dir.py} (1)}
     /!$\backslash$ requirements:
