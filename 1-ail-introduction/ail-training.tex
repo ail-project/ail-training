@@ -666,6 +666,28 @@ response platforms
 \end{frame}
 
 \begin{frame}
+    \frametitle{Splash manager}
+    	\begin{itemize}
+            \item Splash manager\footnote{\url{https://github.com/ail-project/ail-splash-manager}} is a standalone software\footnote{Crawlers can installed and executed outside AIL} to run the containers for crawling
+		    \item AIL crawlers are using Splash dockers to fetch and render domains
+		    \item Manage and control Splash Crawlers
+			\begin{itemize}
+				\item Install and run Splash crawlers on another server,
+				\item Handle proxies (Web and Tor by default),
+				\item Launch/Kill Splash Dockers automatically,
+				\item Restart crawlers if these crash,
+			\end{itemize}
+        \end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Splash manager - UI in AIL}
+		\begin{figure}
+		    \includegraphics[scale=0.185]{images/ail_splash_manager.png}
+		\end{figure}
+\end{frame}
+
+\begin{frame}
     \frametitle{Crawler: DDoS Booter}
     \centerline{
         \includegraphics[scale=0.23]{images/crawled-ddos.png}
@@ -984,7 +1006,7 @@ cd bin/
     \frametitle{AIL ecosystem: Technologies used}
     \begin{itemize}
         \item[] \textbf{Programming language:} Full python3
-        \item[] \textbf{Databases:} Redis and ARDB\footnote(We are migrating to kvrocks)
+        \item[] \textbf{Databases:} Redis and ARDB\footnote{We are migrating to kvrocks}
         \item[] \textbf{Server:} Flask
         \item[] \textbf{Data message passing:} ZMQ, Redis list and Redis Publisher/Subscriber
     \end{itemize}
@@ -1057,31 +1079,24 @@ cd bin/
 \begin{frame}[fragile]
     \frametitle{Writing your own modules - \texttt{/bin/template.py}}
     \begin{lstlisting}
-import time
-from pubsublogger import publisher
-from Helper import Process
+from modules.abstract_module import AbstractModule
+
+class NewModule(AbstractModule):
+
+	def __init__(self):
+		    super(NewModule, self).__init__()
+
+	# Do something with the message from the queue
+	def compute(self, message, r_result=False):
+		# Process Message
+
+# LAUNCH MODULE
 if __name__ == '__main__':
-    # logger setup
-    publisher.port = 6380
-    publisher.channel = 'Script'
-    # Section name in configs/core.cfg
-    config_section = '<section name>'
-    # Setup the I/O queues
-    p = Process(config_section)
-    # Endless loop getting messages from the input queue
-    while True:
-        # Get one message from the input queue
-        message = p.get_from_set()
-        if message is None:
-            publisher.debug("{} queue is empty, waiting".format(config_section))
-            time.sleep(1)
-            continue
-        # Do something with the message from the queue
-        something_has_been_done = do_something(message)
+    module = NewModule()
+    module.run()
+
     \end{lstlisting}
 \end{frame}
-
-
 
 \section{Contribution rules}
 \begin{frame}
@@ -1127,26 +1142,28 @@ if __name__ == '__main__':
    \end{itemize}
 \end{frame}
 
+\begin{frame}
+    \frametitle{Implementation Steps in AIL project}
+    \begin{itemize}
+            \item {\bf Gradual changes} in AIL to add required functionalities to support the objectives.
+            \item {\bf Time-memory trade-off} can be challenging to ensure a functional framework.
+            \item Evaluation and integration of new modules in AIL based on time-memory comparisons.
+            \item Semantic aspects (task with Corexalys) are challenging due to the diverse data sources, unstructured data and languages seen.
+    \end{itemize}
+\end{frame}
+
 
 
 \begin{frame}
     \frametitle{Ongoing developments}
         \begin{itemize}
         	\item New JSON feeders
-            \item Python API wrapper
-            \item Data retention (export/import)
+            \item Data retention and lifetime management of objects
             \item MISP modules expansion
-            \item auto Classify content by set of terms
-            \begin{itemize}
-            	\item CE contents
-            	\item DDOS booters
-            	\item ...
-            \end{itemize}
-            \item Crawled items
-            \begin{itemize}
-            	\item duplicate crawled domains
-            	\item tor indexer
-            \end{itemize}
+            \item Extension of the tracker with typo-squatting library
+            \item Auto classification of content by set of terms (semantic analysis)
+            \item Improved export stream to third parties software 
+            \item Improved indexing relying on Solr, Lucene or other components
         \end{itemize}
 \end{frame}
 
