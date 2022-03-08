@@ -164,6 +164,7 @@
 \end{frame}
 
 
+\section{Legal and Ethics}
 \begin{frame}
         \frametitle{Privacy, AIL and GDPR (PII)}
         \begin{itemize}
@@ -182,15 +183,113 @@
         \end{itemize}
 \end{frame}
 
-\section{Objectives}
 \begin{frame}
-\frametitle{Our objectives}
+        \frametitle{Ethics in Information Security and Cybersecurity}
+        \begin{itemize}
+        \item The materials and tools presented can open a significant numbers of questions regarding ethics;
+        \item Our researches and tools are there for education, supporting the public good and improve incident response;
+        \item We ask all users and participants to {\bf follow ethical principles and act professionaly}\footnote{\url{https://www.acm.org/code-of-ethics} \url{https://www.first.org/global/sigs/ethics/ethics-first}}.
+        \end{itemize}
+\end{frame}
+
+\section{Introduction}
+\begin{frame}
+        \frametitle{Concepts - Deep Web}
+        \begin{itemize}
+                \item {\bf Deep Web} is the part of World Wide Web not indexed or directly accessible by standard web search-engines;
+                \item This can be content hidden from {\bf crawlers} by requiring a specific access and this can includes private social media, password-protected forums or content protected
+                        by different measures such as paywalls or specific security interface to access the information;
+                \item A large portion of content accessible via Internet is part of the deep web\footnote{also called invisible web, hidden web or non-indexed web}.
+        \end{itemize}
+\end{frame}
+
+\begin{frame}
+        \frametitle{Concepts - darknet}
+        \begin{itemize}
+                \item {\bf Darknet} is an overlay network running on top of Internet requiring specific software to access the network and its services;
+                \item Tor, I2P and Freenet are the most commonly used ones. Many are used for hidden services access and some for proxy access to the Internet;
+		\item There are {\bf legitimate use-cases} for such network but also many {\bf illegal or criminal usage}.
+        \end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Lifecycle of collection and analysis}
+	\center
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=0.8cm,text centered, draw=black, fill=red!30]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+	\begin{tikzpicture}[node distance=1.4cm]
+
+\node (start) [startstop] {Planning};
+\node (collect) [startstop, below of =start] {Collect};
+\node (processing) [startstop, below of =collect] {Processing};
+\node (analysing) [startstop, below of=processing] {Analysing};
+\node (dissemination) [startstop, below of=analysing] {Dissemination};
+\draw [arrow] (start) -- (collect);
+\draw [arrow] (collect) -- (processing);
+\draw [arrow] (processing) -- (analysing);
+\draw [arrow] (analysing) -- (dissemination);
+%\draw [arrow] (analysing) |- (collect);
+\end{tikzpicture}
+
+\end{frame}
+
+\begin{frame}
+        \frametitle{Collecting, processing and analysing content - web pages}
+        \begin{itemize}
+		\item Building a search engine on the web is a challenging task because:
+        	\begin{itemize}
+			\item it has to crawl webpages,
+			\item it has to to make sense of {\bf unstructured data},
+			\item it has to {\bf index} these data,
+			\item it has to provide a way to retrieve data and structure data (e.g. correlation).
+        	\end{itemize}
+		\item Doing so on Tor is even more challenging because:
+
+        	\begin{itemize}
+			\item services don't always want to be found,
+			\item parts of the dataset have to be discarded.
+        	\end{itemize}
+	\item in each case, it requires a lot of bandwidth, storage and computing power.
+        \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+        \frametitle{Collecting, processing and analysing content - structured data}
+        \begin{itemize}
+		\item Some data are structured and are easy to process:
+        	\begin{itemize}
+			\item metadata!
+			\item API responses.
+        	\end{itemize}
+		\item Some even provide cryptographic evidences:
+			        \begin{itemize}
+
+         \item authentication mechanisms between peers,
+         \item openGPG can leak a lot of metadata
+        \begin{itemize}
+          \item key ids,
+          \item subject of email in thunderbird,
+        \end{itemize}
+          \item Bitcoin's Blockchain is public,
+          \item pivoting on these data with external sources yields interesting results.
+        \end{itemize}
+
+
+        \end{itemize}
+\end{frame}
+
+\section{AIL design Objectives}
+\begin{frame}
+\frametitle{Objectives of the session}
     \begin{itemize}
         \item Show how to use and extend an open source tool to monitor web pages, pastes, forums and hidden services
         \item Explain challenges and the design of the AIL open source framework
+        \item Review different {\bf collection mechanisms} and {\bf sources}
         \item Learn how to create new modules
         \item Learn how to use, install and start AIL
-        \item {\bf Supporting investigation using the AIL framework}
+        \item {\bf Supporting investigation using the AIL framework} and including it in cyber threat intelligence lifecycle
     \end{itemize}
 \end{frame}
 
@@ -203,44 +302,6 @@
         \item In 2019, AIL framework is an \textbf{open source software} in Python. The software is actively used (and maintained) by CIRCL and many organisations.
         \item In 2020, AIL framework is now a complete project called \textbf{ail project}\footnote{\url{https://github.com/ail-project/}}.
     \end{itemize}
-\end{frame}
-
-\begin{frame}
-    \frametitle{AIL Framework: A framework for Analysis of Information Leaks}
-    \begin{quote}
-"AIL is a modular framework to analyse potential information leaks from unstructured data sources."
-    \end{quote}
-    \vskip0.5cm
-
-    \begin{tikzpicture}[scale=1.0]
-        \tikzstyle{flux}=[->,>=latex, thick]
-
-        \tikzstyle{node}=[circle,draw, align=center]
-        \tikzstyle{rect}=[rectangle,draw, align=center]
-        \tikzstyle{simplenode}=[align=center]
-
-        \node[simplenode] (item) at (0, 0) {\includegraphics[scale=0.20]{images/file_text_icon.png}};
-        \node[simplenode] (leaks) at (4, -2) {Other leaks};
-        \node[simplenode] (ail) at (4, 0) {\includegraphics[scale=0.14]{images/ail-project.png}};
-        \node[simplenode] (res) at (8, 0) {\includegraphics[scale=0.1]{images/alert.png}};
-
-        \begin{scope}
-            \draw[flux] (item.east) to (ail.west);
-        \foreach \i in {-2,...,-1}{% 
-            \pgfmathsetlengthmacro{\radius}{(sin(atan(\i*0.1))+0.1)*1cm}
-            %\draw[->] ([yshift=\i * 0.2 cm]item.east) to [out=-50,in=-130] ([yshift=\i * 0.2 cm]ail.west) ;}
-            %\draw[->] ([xshift=\radius,yshift=\i * 0.2 cm]item.east) to [out=-10+\i*10,in=-130] ([yshift=\i * 0.2 cm]ail.west) ;}
-            \draw[flux] ([xshift=\radius,yshift=\i * 0.2 cm]item.east) to [out=-10+\i*10,in=-130] ([xshift=-\i*0.05cm,yshift=\i * 0.2 cm]ail.west) ;}
-
-        \foreach \i in {1,...,3}{% 
-            \pgfmathsetlengthmacro{\radius}{(sin(atan(\i*0.1))-0.1)*1cm}
-            \draw[flux] ([xshift=-\radius,yshift=\i * 0.2 cm]item.east) to [out=10+\i*10,in=130] ([xshift=\i*0.05cm,yshift=\i * 0.2 cm]ail.west) ;}
-        \draw[->,>=latex, very thick] (ail) to (res);
-        \draw[->,>=latex, very thick] (leaks) to (ail);
-        \end{scope}
-
-
-    \end{tikzpicture}
 \end{frame}
 
 \section{Capabilities Overview}
@@ -447,14 +508,14 @@ response platforms
 \end{frame}
 
 \begin{frame}
-    \frametitle{Terms Tracker:}
+    \frametitle{Terms Tracker}
         \begin{figure}
             \includegraphics[scale=0.22]{images/term-tracker.png}
         \end{figure}
 \end{frame}
 
 \begin{frame}
-    \frametitle{YARA Tracker:}
+    \frametitle{YARA Tracker}
         \begin{figure}
             \includegraphics[scale=0.22]{screenshot/term-tracker-yara.png}
         \end{figure}
