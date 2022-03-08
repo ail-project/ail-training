@@ -984,7 +984,7 @@ cd bin/
     \frametitle{AIL ecosystem: Technologies used}
     \begin{itemize}
         \item[] \textbf{Programming language:} Full python3
-        \item[] \textbf{Databases:} Redis and ARDB\footnote(We are migrating to kvrocks)
+        \item[] \textbf{Databases:} Redis and ARDB\footnote{We are migrating to kvrocks}
         \item[] \textbf{Server:} Flask
         \item[] \textbf{Data message passing:} ZMQ, Redis list and Redis Publisher/Subscriber
     \end{itemize}
@@ -1127,26 +1127,28 @@ if __name__ == '__main__':
    \end{itemize}
 \end{frame}
 
+\begin{frame}
+    \frametitle{Implementation Steps in AIL project}
+    \begin{itemize}
+            \item {\bf Gradual changes} in AIL to add required functionalities to support the objectives.
+            \item {\bf Time-memory trade-off} can be challenging to ensure a functional framework.
+            \item Evaluation and integration of new modules in AIL based on time-memory comparisons.
+            \item Semantic aspects (task with Corexalys) are challenging due to the diverse data sources, unstructured data and languages seen.
+    \end{itemize}
+\end{frame}
+
 
 
 \begin{frame}
     \frametitle{Ongoing developments}
         \begin{itemize}
         	\item New JSON feeders
-            \item Python API wrapper
-            \item Data retention (export/import)
+            \item Data retention and lifetime management of objects
             \item MISP modules expansion
-            \item auto Classify content by set of terms
-            \begin{itemize}
-            	\item CE contents
-            	\item DDOS booters
-            	\item ...
-            \end{itemize}
-            \item Crawled items
-            \begin{itemize}
-            	\item duplicate crawled domains
-            	\item tor indexer
-            \end{itemize}
+            \item Extension of the tracker with typo-squatting library
+            \item Auto classification of content by set of terms (semantic analysis)
+            \item Improved export stream to third parties software 
+            \item Improved indexing relying on Solr, Lucene or other components
         \end{itemize}
 \end{frame}
 
