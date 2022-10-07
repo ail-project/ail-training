@@ -164,6 +164,7 @@
 \end{frame}
 
 
+\section{Legal and Ethics}
 \begin{frame}
         \frametitle{Privacy, AIL and GDPR (PII)}
         \begin{itemize}
@@ -182,15 +183,113 @@
         \end{itemize}
 \end{frame}
 
-\section{Objectives}
 \begin{frame}
-\frametitle{Our objectives}
+        \frametitle{Ethics in Information Security and Cybersecurity}
+        \begin{itemize}
+        \item The materials and tools presented can open a significant numbers of questions regarding ethics;
+        \item Our researches and tools are there for education, supporting the public good and improve incident response;
+        \item We ask all users and participants to {\bf follow ethical principles and act professionaly}\footnote{\url{https://www.acm.org/code-of-ethics} \url{https://www.first.org/global/sigs/ethics/ethics-first}}.
+        \end{itemize}
+\end{frame}
+
+\section{Introduction}
+\begin{frame}
+        \frametitle{Concepts - Deep Web}
+        \begin{itemize}
+                \item {\bf Deep Web} is the part of World Wide Web not indexed or directly accessible by standard web search-engines;
+                \item This can be content hidden from {\bf crawlers} by requiring a specific access and this can includes private social media, password-protected forums or content protected
+                        by different measures such as paywalls or specific security interface to access the information;
+                \item A large portion of content accessible via Internet is part of the deep web\footnote{also called invisible web, hidden web or non-indexed web}.
+        \end{itemize}
+\end{frame}
+
+\begin{frame}
+        \frametitle{Concepts - darknet}
+        \begin{itemize}
+                \item {\bf Darknet} is an overlay network running on top of Internet requiring specific software to access the network and its services;
+                \item Tor, I2P and Freenet are the most commonly used ones. Many are used for hidden services access and some for proxy access to the Internet;
+		\item There are {\bf legitimate use-cases} for such network but also many {\bf illegal or criminal usage}.
+        \end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Lifecycle of collection and analysis}
+	\center
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=0.8cm,text centered, draw=black, fill=red!30]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+	\begin{tikzpicture}[node distance=1.4cm]
+
+\node (start) [startstop] {Planning};
+\node (collect) [startstop, below of =start] {Collect};
+\node (processing) [startstop, below of =collect] {Processing};
+\node (analysing) [startstop, below of=processing] {Analysing};
+\node (dissemination) [startstop, below of=analysing] {Dissemination};
+\draw [arrow] (start) -- (collect);
+\draw [arrow] (collect) -- (processing);
+\draw [arrow] (processing) -- (analysing);
+\draw [arrow] (analysing) -- (dissemination);
+%\draw [arrow] (analysing) |- (collect);
+\end{tikzpicture}
+
+\end{frame}
+
+\begin{frame}
+        \frametitle{Collecting, processing and analysing content - web pages}
+        \begin{itemize}
+		\item Building a search engine on the web is a challenging task because:
+        	\begin{itemize}
+			\item it has to crawl webpages,
+			\item it has to to make sense of {\bf unstructured data},
+			\item it has to {\bf index} these data,
+			\item it has to provide a way to retrieve data and structure data (e.g. correlation).
+        	\end{itemize}
+		\item Doing so on Tor is even more challenging because:
+
+        	\begin{itemize}
+			\item services don't always want to be found,
+			\item parts of the dataset have to be discarded.
+        	\end{itemize}
+	\item in each case, it requires a lot of bandwidth, storage and computing power.
+        \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+        \frametitle{Collecting, processing and analysing content - structured data}
+        \begin{itemize}
+		\item Some data are structured and are easy to process:
+        	\begin{itemize}
+			\item metadata!
+			\item API responses.
+        	\end{itemize}
+		\item Some even provide cryptographic evidences:
+			        \begin{itemize}
+
+         \item authentication mechanisms between peers,
+         \item OpenGPG can leak a lot of metadata
+        \begin{itemize}
+          \item key ids,
+          \item subject of email in thunderbird,
+        \end{itemize}
+          \item Bitcoin's Blockchain is public,
+          \item pivoting on these data with external sources yields interesting results.
+        \end{itemize}
+
+
+        \end{itemize}
+\end{frame}
+
+\section{AIL design Objectives}
+\begin{frame}
+\frametitle{Objectives of the session}
     \begin{itemize}
         \item Show how to use and extend an open source tool to monitor web pages, pastes, forums and hidden services
         \item Explain challenges and the design of the AIL open source framework
+        \item Review different {\bf collection mechanisms} and {\bf sources}
         \item Learn how to create new modules
         \item Learn how to use, install and start AIL
-        \item {\bf Supporting investigation using the AIL framework}
+        \item {\bf Supporting investigation using the AIL framework} and including it in cyber threat intelligence lifecycle
     \end{itemize}
 \end{frame}
 
@@ -203,44 +302,6 @@
         \item In 2019, AIL framework is an \textbf{open source software} in Python. The software is actively used (and maintained) by CIRCL and many organisations.
         \item In 2020, AIL framework is now a complete project called \textbf{ail project}\footnote{\url{https://github.com/ail-project/}}.
     \end{itemize}
-\end{frame}
-
-\begin{frame}
-    \frametitle{AIL Framework: A framework for Analysis of Information Leaks}
-    \begin{quote}
-"AIL is a modular framework to analyse potential information leaks from unstructured data sources."
-    \end{quote}
-    \vskip0.5cm
-
-    \begin{tikzpicture}[scale=1.0]
-        \tikzstyle{flux}=[->,>=latex, thick]
-
-        \tikzstyle{node}=[circle,draw, align=center]
-        \tikzstyle{rect}=[rectangle,draw, align=center]
-        \tikzstyle{simplenode}=[align=center]
-
-        \node[simplenode] (item) at (0, 0) {\includegraphics[scale=0.20]{images/file_text_icon.png}};
-        \node[simplenode] (leaks) at (4, -2) {Other leaks};
-        \node[simplenode] (ail) at (4, 0) {\includegraphics[scale=0.14]{images/ail-project.png}};
-        \node[simplenode] (res) at (8, 0) {\includegraphics[scale=0.1]{images/alert.png}};
-
-        \begin{scope}
-            \draw[flux] (item.east) to (ail.west);
-        \foreach \i in {-2,...,-1}{% 
-            \pgfmathsetlengthmacro{\radius}{(sin(atan(\i*0.1))+0.1)*1cm}
-            %\draw[->] ([yshift=\i * 0.2 cm]item.east) to [out=-50,in=-130] ([yshift=\i * 0.2 cm]ail.west) ;}
-            %\draw[->] ([xshift=\radius,yshift=\i * 0.2 cm]item.east) to [out=-10+\i*10,in=-130] ([yshift=\i * 0.2 cm]ail.west) ;}
-            \draw[flux] ([xshift=\radius,yshift=\i * 0.2 cm]item.east) to [out=-10+\i*10,in=-130] ([xshift=-\i*0.05cm,yshift=\i * 0.2 cm]ail.west) ;}
-
-        \foreach \i in {1,...,3}{% 
-            \pgfmathsetlengthmacro{\radius}{(sin(atan(\i*0.1))-0.1)*1cm}
-            \draw[flux] ([xshift=-\radius,yshift=\i * 0.2 cm]item.east) to [out=10+\i*10,in=130] ([xshift=\i*0.05cm,yshift=\i * 0.2 cm]ail.west) ;}
-        \draw[->,>=latex, very thick] (ail) to (res);
-        \draw[->,>=latex, very thick] (leaks) to (ail);
-        \end{scope}
-
-
-    \end{tikzpicture}
 \end{frame}
 
 \section{Capabilities Overview}
@@ -447,14 +508,14 @@ response platforms
 \end{frame}
 
 \begin{frame}
-    \frametitle{Terms Tracker:}
+    \frametitle{Terms Tracker}
         \begin{figure}
             \includegraphics[scale=0.22]{images/term-tracker.png}
         \end{figure}
 \end{frame}
 
 \begin{frame}
-    \frametitle{YARA Tracker:}
+    \frametitle{YARA Tracker}
         \begin{figure}
             \includegraphics[scale=0.22]{screenshot/term-tracker-yara.png}
         \end{figure}
@@ -602,6 +663,28 @@ response platforms
     \centerline{
         \includegraphics[scale=0.23]{screenshot/crawler-cookiejar-domain-crawled.png}
     }
+\end{frame}
+
+\begin{frame}
+    \frametitle{Splash manager}
+    	\begin{itemize}
+            \item Splash manager\footnote{\url{https://github.com/ail-project/ail-splash-manager}} is a standalone software\footnote{Crawlers can installed and executed outside AIL} to run the containers for crawling
+		    \item AIL crawlers are using Splash dockers to fetch and render domains
+		    \item Manage and control Splash Crawlers
+			\begin{itemize}
+				\item Install and run Splash crawlers on another server,
+				\item Handle proxies (Web and Tor by default),
+				\item Launch/Kill Splash Dockers automatically,
+				\item Restart crawlers if these crash,
+			\end{itemize}
+        \end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Splash manager - UI in AIL}
+		\begin{figure}
+		    \includegraphics[scale=0.185]{images/ail_splash_manager.png}
+		\end{figure}
 \end{frame}
 
 \begin{frame}
@@ -783,7 +866,7 @@ curl https://127.0.0.1:7000/api/v1/get/item/default
 \section{Setting up the framework}
 \lstset{style=bash}
 \begin{frame}[fragile]
-    \frametitle{Setting up AIL-Framework from source or virtual machine}
+    \frametitle{Setting up AIL-Framework from source}
     \begin{tcblisting}{colback=black!85,coltext=green,listing only,
         title=Setting up AIL-Framework from source, fonttitle=\bfseries}
 git clone https://github.com/ail-project/ail-framework.git
@@ -834,16 +917,9 @@ cd AIL-framework
  
 \end{frame}
 
-\begin{frame}[fragile]
-   \frametitle{Feeding AIL with Twitter posts and associated urls}
-        \begin{itemize}
-                \item AIL - feeder from Twitter\footnote{\url{https://github.com/ail-project/ail-feeder-twitter}}
-                \item The AIL-feeder-twitter search in Twitter using Twint (without API), crawls the urls and pushes the results in AIL
-                \item The JSON format format can be extended via meta fields
-        \end{itemize}
-
-\end{frame}
-
+\include{feeder}
+%% CONTI leak example
+\include{conti}
 \begin{frame}
     \frametitle{Feeding AIL with your own data - \texttt{import\_dir.py} (1)}
     /!$\backslash$ requirements:
@@ -891,21 +967,21 @@ cd bin/
 \end{tcblisting}
 \end{frame}
 
-\begin{frame}[fragile]
-    \frametitle{Running your own instance using the virtual machine}
-    \begin{tcblisting}{colback=black!85,coltext=green,listing only,
-        title=Login and passwords:, fonttitle=\bfseries}
-# Web interface (default network settings)
-    https://127.0.0.1:7000/
-# Web interface:
-    admin@admin.test
-    Password1234
-# SSH:
-    ail
-    Password1234
-\end{tcblisting}
+%%\begin{frame}[fragile]
+%%    \frametitle{Running your own instance using the virtual machine}
+%%    \begin{tcblisting}{colback=black!85,coltext=green,listing only,
+%%        title=Login and passwords:, fonttitle=\bfseries}
+%%# Web interface (default network settings)
+%%    https://127.0.0.1:7000/
+%%# Web interface:
+%%    admin@admin.test
+%%    Password1234
+%%# SSH:
+%%    ail
+%%    Password1234
+%%\end{tcblisting}
 
-\end{frame}
+%\end{frame}
 
 \begin{frame}[fragile]
     \frametitle{Updating AIL}
@@ -930,7 +1006,7 @@ cd bin/
     \frametitle{AIL ecosystem: Technologies used}
     \begin{itemize}
         \item[] \textbf{Programming language:} Full python3
-        \item[] \textbf{Databases:} Redis and ARDB
+        \item[] \textbf{Databases:} Redis and ARDB\footnote{We are migrating to kvrocks}
         \item[] \textbf{Server:} Flask
         \item[] \textbf{Data message passing:} ZMQ, Redis list and Redis Publisher/Subscriber
     \end{itemize}
@@ -1003,31 +1079,24 @@ cd bin/
 \begin{frame}[fragile]
     \frametitle{Writing your own modules - \texttt{/bin/template.py}}
     \begin{lstlisting}
-import time
-from pubsublogger import publisher
-from Helper import Process
+from modules.abstract_module import AbstractModule
+
+class NewModule(AbstractModule):
+
+	def __init__(self):
+		    super(NewModule, self).__init__()
+
+	# Do something with the message from the queue
+	def compute(self, message, r_result=False):
+		# Process Message
+
+# LAUNCH MODULE
 if __name__ == '__main__':
-    # logger setup
-    publisher.port = 6380
-    publisher.channel = 'Script'
-    # Section name in configs/core.cfg
-    config_section = '<section name>'
-    # Setup the I/O queues
-    p = Process(config_section)
-    # Endless loop getting messages from the input queue
-    while True:
-        # Get one message from the input queue
-        message = p.get_from_set()
-        if message is None:
-            publisher.debug("{} queue is empty, waiting".format(config_section))
-            time.sleep(1)
-            continue
-        # Do something with the message from the queue
-        something_has_been_done = do_something(message)
+    module = NewModule()
+    module.run()
+
     \end{lstlisting}
 \end{frame}
-
-
 
 \section{Contribution rules}
 \begin{frame}
@@ -1073,26 +1142,28 @@ if __name__ == '__main__':
    \end{itemize}
 \end{frame}
 
+\begin{frame}
+    \frametitle{Implementation Steps in AIL project}
+    \begin{itemize}
+            \item {\bf Gradual changes} in AIL to add required functionalities to support the objectives.
+            \item {\bf Time-memory trade-off} can be challenging to ensure a functional framework.
+            \item Evaluation and integration of new modules in AIL based on time-memory comparisons.
+            \item Semantic aspects are challenging due to the diverse data sources, unstructured data and languages seen.
+    \end{itemize}
+\end{frame}
+
 
 
 \begin{frame}
     \frametitle{Ongoing developments}
         \begin{itemize}
         	\item New JSON feeders
-            \item Python API wrapper
-            \item Data retention (export/import)
+            \item Data retention and lifetime management of objects
             \item MISP modules expansion
-            \item auto Classify content by set of terms
-            \begin{itemize}
-            	\item CE contents
-            	\item DDOS booters
-            	\item ...
-            \end{itemize}
-            \item Crawled items
-            \begin{itemize}
-            	\item duplicate crawled domains
-            	\item tor indexer
-            \end{itemize}
+            \item Extension of the tracker with typo-squatting library
+            \item Auto classification of content by set of terms (semantic analysis)
+            \item Improved export stream to third parties software 
+            \item Improved indexing relying on Solr, Lucene or other components
         \end{itemize}
 \end{frame}
 

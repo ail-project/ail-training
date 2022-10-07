@@ -5,8 +5,11 @@ rule disney_plus : credential_leak
         leak = 1
     strings: 
         $a = "gmail.com:"
+        $d = "hotmail.com:"
+        $e = ".com:"
+        $f = ".de:"
         $b = "DISNEY_PLUS"
         $c = "Disney Plus"
     condition:
-        $a and ($b or $c) 
+        ($a or $d or $e or $f) and ($b or $c) 
 }
