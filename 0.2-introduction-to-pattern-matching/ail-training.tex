@@ -128,16 +128,16 @@
 \lstset{style=code}
 
 
-\AtBeginSection[]{
-	\begin{frame}[fragile]
-  \vfill
-  \centering
-  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
-      {\color{white} \usebeamerfont{title}\insertsectionhead}\par%
-  \end{beamercolorbox}
-  \vfill
-  \end{frame}
-}
+% \AtBeginSection[]{
+% 	\begin{frame}[fragile]
+%   \vfill
+%   \centering
+%   \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+%       {\color{white} \usebeamerfont{title}\insertsectionhead}\par%
+%   \end{beamercolorbox}
+%   \vfill
+%   \end{frame}
+% }
 
 \author{\large{Alexandre Dulaunoy}\\ \scriptsize{alexandre.dulaunoy@circl.lu}\\ \large{Jean-Louis Huynen}\\ \scriptsize{jean-louis.huynen@circl.lu}\\ \large{Sami Mokaddem}\\ \scriptsize{sami.mokaddem@circl.lu}\\}
 \title{Introduction to pattern matching}
@@ -557,6 +557,182 @@ filename with spaces are evil.pdf
 \end{frame}
 
 \begin{frame}[fragile]
+    \frametitle{Regular Expressions: Final question}
+    \begin{center}
+        What does these regexes do?
+    \end{center}
+    \vspace{1em}
+    \begin{enumerate}
+        \item \begin{verbatim}/ ([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])) /\end{verbatim}
+        \vspace{1em}
+        \item \begin{verbatim}/ <([a-z]+)(>(.*)<\/\1>|\s+\/>) /\end{verbatim}
+        \begin{itemize}
+            \item \texttt{\textbackslash 1} is used to reference the first capturing group
+            \item First capturing group is \texttt{([a-z]+)}
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Regexes: Going further}
+    \begin{itemize}
+        \item \textbf{\textasciicircum} and \textbf{\$} anchors
+        \item Capture \textbf{groups}
+        \item \textbf{Greedy} and \textbf{Lazy} quantifiers
+        \item \textbf{Possessive} quantifier
+    \end{itemize}
+\end{frame}
+
+% grep -ir disney | wc
+% grep -ir 'disney' | egrep -i '[a-zA-Z0-9_\-\+\.]+@\w+(\.\w+)+:\S+'
+% egrep -inr 'disney(\+)?((_\s)?(plus))?' | egrep -i '[a-zA-Z0-9_\-\+\.]+@\w+(\.\w+)+:\S+'
+% egrep -inr 'disney(\+)?((_\s)?(plus))?' | egrep -i '(hotmail|live|outlook|gmail|yahoo)' | egrep -i '[a-zA-Z0-9_\-\+\.]+@\w+(\.\w+)+:\S+'
+% egrep -inr 'disney(\+)?((_\s)?(plus))?' | egrep -i '(hotmail|live|outlook|gmail|yahoo)' | egrep -i '[a-zA-Z0-9_\-\+\.]+@\w+(\.\w+)+:\S+' | cut -d ':' -f1 - | sort | uniq
+% egrep -inr 'disney(\+)?((_\s)?(plus))?' | egrep -i '(hotmail|live|outlook|gmail|yahoo)' | egrep -i '[a-zA-Z0-9_\-\+\.]+@\w+(\.\w+)+:\S+' | cut -d ':' -f1 - | cut --d ' ' -f1
+% egrep -inr '(disney|psn)' | egrep -i '(hotmail|live|outlook|gmail|yahoo)' | egrep -i '[a-zA-Z0-9_\-\+\.]+@\w+(\.\w+)+:\S+' | cut -d ':' -f1 - | cut --d ' ' -f1
+% egrep -hiro '[a-zA-Z0-9_\-\+\.]+@\w+(\.\w+)+:\S+' | cut -d ':' -f2 | sort | uniq -c | sort
+
+\begin{frame}
+    \vfill
+    \centering
+    \LARGE Linux commands and Regexes
+    \vfill
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Linux commands and Regexes}
+    You have a small subset of a files crawled on Pastebin
+\begin{lstlisting}
+$ du -hd1
+158M    .
+$ ls | wc
+11875   11875  106875
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Linux commands and Regexes}
+    Let's list the number of files that have the \texttt{disney} keyword
+\begin{lstlisting}
+$ grep -irl disney | wc
+88      88     792
+\end{lstlisting}
+
+    Let's filter on common email providers
+\begin{lstlisting}
+$ egrep -ir 'disney'
+    | egrep -i '(hotmail|live|outlook|gmail|yahoo)'
+    | wc
+52  122772 1566533
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Linux commands and Regexes}
+    Let's filter on the \texttt{email:password} pattern
+\begin{lstlisting}
+$ egrep -ir 'disney'
+    | egrep -i '(hotmail|live|outlook|gmail|yahoo)'
+    | egrep -i '[a-zA-Z0-9_\-\+\.]+@\w+(\.\w+)+:\S+'
+    | wc
+13     902   21758
+\end{lstlisting}
+
+    Let's extract all credentials and only the credentials
+\begin{lstlisting}
+$ egrep -ir 'disney'
+    | egrep -i '(hotmail|live|outlook|gmail|yahoo)'
+    | egrep -io '[a-zA-Z0-9_\-\+\.]+@\w+(\.\w+)+:\S+'
+    | wc
+13      13     438
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Linux commands and Regexes}
+    Let's search for other type of accounts
+\begin{lstlisting}
+$ egrep -ir 'psn'
+    | egrep -i '(hotmail|live|outlook|gmail|yahoo)'
+    | egrep -i '[a-zA-Z0-9_\-\+\.]+@\w+(\.\w+)+:\S+'
+    | wc
+2     124     583
+\end{lstlisting}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Fun with Regular Expressions}
+\texttt{https://regexcrossword.com/}
+\begin{center}
+\includegraphics[width=0.4\textwidth]{pics/regex/crossword1.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Fun with Regular Expressions}
+\texttt{https://regexcrossword.com/}
+\begin{center}
+\includegraphics[width=0.4\textwidth]{pics/regex/crossword2.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Fun with Regular Expressions}
+\texttt{https://regexcrossword.com/}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{pics/crosswords}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Fun with Regular Expressions}
+\texttt{https://regexcrossword.com/}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{pics/crosswords-solved.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Simple CTF challenge with regular expressions}
+    \begin{itemize}
+        \item Hidden 4 flags in the dump
+        \item They have the following pattern
+        \begin{itemize}
+            \item \texttt{flag} letters in any order
+            \item \texttt{\_} The underscore character
+            \item 2 upper case character
+            \item at least one special character from the list \texttt{\textbf{@}} , \texttt{\textbf{\&}}, \texttt{\textbf{:}}
+            \item 2 lower case character
+        \end{itemize}
+        \item Example: \texttt{falg\_AA\&:bb}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Simple CTF challenge with regular expressions}
+    SHA1 Sum of the flags
+    % solution: [flag]{4}_[A-Z]{2}[@&:]+[a-z]{2}
+\begin{lstlisting}
+$ echo 'falg_AA&:bb' | md5sum
+ee9326ee21572fe4bba8e686a7ba6e5e
+\end{lstlisting}
+    \begin{tabular}{ lr } 
+        \texttt{falg\_AA\&:bb} & \texttt{ee9326ee21572fe4bba8e686a7ba6e5e} \\
+        \texttt{?} & \texttt{53923b8f8490072107b3e8bb614749ce} \\
+        \texttt{?} & \texttt{429698c6d1742f02212ae89d3696577d} \\
+        \texttt{?} & \texttt{40178e8ef4264385fb7194176faf2318} \\
+       \end{tabular}
+\end{frame}
+
+\begin{frame}
+    \vfill
+    \centering
+    \Huge Annex
+    \vfill
+\end{frame}
+
+\begin{frame}[fragile]
     \frametitle{Regular Expressions: Tag matching (1)}
     Create a Regex that validates the following tags:
 \begin{lstlisting}
@@ -621,67 +797,6 @@ namespace:predicate="qwert"yuiop"
     \begin{center}
         \includegraphics[width=1.0\textwidth]{pics/regex/regex_tag4.png}
     \end{center}
-\end{frame}
-
-% (?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])
-
-\begin{frame}[fragile]
-    \frametitle{Regular Expressions: Final question}
-    \begin{center}
-        What does these regexes do?
-    \end{center}
-    \vspace{1em}
-    \begin{enumerate}
-        \item \begin{verbatim}/ ([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])) /\end{verbatim}
-        \vspace{1em}
-        \item \begin{verbatim}/ <([a-z]+)(>(.*)<\/\1>|\s+\/>) /\end{verbatim}
-        \begin{itemize}
-            \item \texttt{\textbackslash 1} is used to reference the first capturing group
-            \item First capturing group is \texttt{([a-z]+)}
-        \end{itemize}
-    \end{enumerate}
-\end{frame}
-
-\begin{frame}[fragile]
-    \frametitle{Regexes: Going further}
-    \begin{itemize}
-        \item \textbf{\textasciicircum} and \textbf{\$} anchors
-        \item Capture \textbf{groups}
-        \item \textbf{Greedy} and \textbf{Lazy} quantifiers
-        \item \textbf{Possessive} quantifier
-    \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{Fun with Regular Expressions}
-\texttt{https://regexcrossword.com/}
-\begin{center}
-\includegraphics[width=0.4\textwidth]{pics/regex/crossword1.png}
-\end{center}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{Fun with Regular Expressions}
-\texttt{https://regexcrossword.com/}
-\begin{center}
-\includegraphics[width=0.4\textwidth]{pics/regex/crossword2.png}
-\end{center}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{Fun with Regular Expressions}
-\texttt{https://regexcrossword.com/}
-\begin{center}
-\includegraphics[width=0.8\textwidth]{pics/crosswords}
-\end{center}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{Fun with Regular Expressions}
-\texttt{https://regexcrossword.com/}
-\begin{center}
-\includegraphics[width=0.8\textwidth]{pics/crosswords-solved}
-\end{center}
 \end{frame}
 
 \end{document}
