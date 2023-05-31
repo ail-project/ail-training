@@ -481,14 +481,14 @@ response platforms
 
 
 \begin{frame}
-    \frametitle{Terms Tracker}
+    \frametitle{Trackers - Retro Hunt}
         \begin{itemize}
         	\item Search and monitor specific keywords/patterns
         	\begin{itemize}
             	\item Automatic Tagging
             	\item Email Notifications
             \end{itemize}
-            \item Track Term
+            \item Track Word
             \begin{itemize}
             	\item ddos
             \end{itemize}
@@ -508,25 +508,25 @@ response platforms
 \end{frame}
 
 \begin{frame}
-    \frametitle{Terms Tracker}
-        \begin{figure}
-            \includegraphics[scale=0.22]{images/term-tracker.png}
-        \end{figure}
-\end{frame}
-
-\begin{frame}
     \frametitle{YARA Tracker}
         \begin{figure}
-            \includegraphics[scale=0.22]{screenshot/term-tracker-yara.png}
+            \includegraphics[scale=0.22]{screenshot/tracker_yara.png}
         \end{figure}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Terms Tracker - Practical part}
+    \frametitle{Trackers - Practical part}
         \begin{itemize}
         	\item \textbf{Create and test} your own tracker
-        	\includegraphics[scale=0.3]{images/term-tracker-create.png}
+        	\includegraphics[scale=0.21]{screenshot/tracker_create.png}
         \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Retro Hunt}
+        \begin{figure}
+            \includegraphics[scale=0.22]{screenshot/retro_hunt.png}
+        \end{figure}
 \end{frame}
 
 \begin{frame}
@@ -565,7 +565,7 @@ response platforms
 				\item Binary
 			\end{itemize}
     	\item Guess Mime-type
-    	\item Correlate paste with decoded items
+    	\item Items/Domains Correlation
     \end{itemize}
 \end{frame}
 
@@ -579,7 +579,14 @@ response platforms
 \begin{frame}
     \frametitle{Decoder:}
     \centerline{
-        \includegraphics[scale=0.23]{images/decoded-dos.png}
+        \includegraphics[scale=0.23]{screenshot/decodeds_dashboard.png}
+    }
+\end{frame}
+
+\begin{frame}
+    \frametitle{Decoder:}
+    \centerline{
+        \includegraphics[scale=0.23]{screenshot/decodeds_dos.png}
     }
 \end{frame}
 
@@ -587,7 +594,7 @@ response platforms
         \frametitle {Crawler}
         \begin{itemize}
                 \item Crawlers are used to navigate on regular website as well as .onion addresses (via automatic extraction of urls or manual submission)
-                \item Splash ("scriptable" browser) is rending the pages (including javascript) and produce screenshots (HAR archive too)
+                \item Lacus ("scriptable" browser) is rending the pages (including javascript) and produce screenshots (HAR archive too)
         \end{itemize}
 \begin{figure}[h] 
     \centering 
@@ -599,15 +606,15 @@ response platforms
     ] 
  
     %styles 
-    \tikzstyle{Docker}=[ellipse,draw,align=center] 
+    \tikzstyle{Lacus}=[ellipse,draw,align=center]
     \tikzstyle{AIL}=[rectangle,draw, align=center, fill={rgb:red,1;green,2;blue,5}] 
-    \tikzstyle{Splash}=[rectangle,draw, align=center, fill={rgb:red,1;green,2;blue,5}] 
+    \tikzstyle{playwright}=[rectangle,draw, align=center, fill={rgb:red,1;green,2;blue,5}]
     \tikzstyle{commu}=[<->,>=latex,very thick] 
  
     %nodes 
     \matrix[mymatrix] (mx1) at (0, 0) { 
-        |[title]|Docker container \\ 
-        Splash \\ 
+        |[title]|Lacus \\
+        playwright \\
     }; 
     \matrix[mymatrix, right=of mx1.north east, matrix anchor=north west] (mx2) { 
     %\matrix[mymatrix] (mx2) at (1, 0) { 
@@ -615,8 +622,8 @@ response platforms
     }; 
     \matrix[mymatrix, right=of mx2.north east, matrix anchor=north west] (mx3) { 
     %\matrix[mymatrix] (mx3) (2, 0){ 
-        |[title]|Docker container \\ 
-        Splash \\ 
+        |[title]|Lacus \\
+        playwright \\
     }; 
  
     \node[mycontainer, fit=(mx1)] (c1) {}; 
@@ -666,24 +673,23 @@ response platforms
 \end{frame}
 
 \begin{frame}
-    \frametitle{Splash manager}
+    \frametitle{Lacus}
     	\begin{itemize}
-            \item Splash manager\footnote{\url{https://github.com/ail-project/ail-splash-manager}} is a standalone software\footnote{Crawlers can installed and executed outside AIL} to run the containers for crawling
-		    \item AIL crawlers are using Splash dockers to fetch and render domains
-		    \item Manage and control Splash Crawlers
+            \item Lacus\footnote{\url{https://github.com/ail-project/lacus}} is a capturing system using playwright, as a web service
+		    \item AIL utilizes Lacus for fetching and rendering domains.
 			\begin{itemize}
-				\item Install and run Splash crawlers on another server,
-				\item Handle proxies (Web and Tor by default),
-				\item Launch/Kill Splash Dockers automatically,
-				\item Restart crawlers if these crash,
+				\item Lacus can be installed and executed outside of AIL,
+				\item Enqueue what you want to capture,
+				\item Trigger the capture,
+				\item Get the capture result,
 			\end{itemize}
         \end{itemize}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Splash manager - UI in AIL}
+	\frametitle{Crawler Settings - Lacus}
 		\begin{figure}
-		    \includegraphics[scale=0.185]{images/ail_splash_manager.png}
+		    \includegraphics[scale=0.28]{screenshot/crawler_settings.png}
 		\end{figure}
 \end{frame}
 
@@ -698,6 +704,13 @@ response platforms
     \frametitle{Correlations and relationship}
     \begin{figure}
         \includegraphics[scale=0.18, angle=0]{images/ail-correlation.png}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Investigations}
+    \begin{figure}
+        \includegraphics[scale=0.22, angle=0]{screenshot/investigation_mixer.png}
     \end{figure}
 \end{frame}
 
@@ -757,7 +770,7 @@ response platforms
 \begin{frame}
     \frametitle{Example: Search by tags}
     \begin{figure}
-        \includegraphics[scale=0.26, angle=0]{images/ail_14.png}
+        \includegraphics[scale=0.22, angle=0]{screenshot/tags_search_items.png}
     \end{figure}
 \end{frame}
 \section{MISP}
@@ -842,8 +855,8 @@ response platforms.
 \end{frame}
 
 \begin{frame}
-    \frametitle{Automatic submission on tags}
-    \centerline{\includegraphics[scale=0.25]{screenshot/tag_auto_export.png}}
+    \frametitle{Automatic MISP Export on tags}
+    \centerline{\includegraphics[scale=0.25]{screenshot/tags_misp_auto.png}}
 \end{frame}
 
 
@@ -875,35 +888,58 @@ cd AIL-framework
 \end{tcblisting}
 \end{frame}
 
-%FEEDER AND IMPORTER
+%IMPORTERS
 \section{Feeding the framework}
+
 \begin{frame}
-\frametitle{Feeding AIL}
-    There are different way to feed AIL with data:
+\frametitle{Feeding Data to AIL}
+    There are different ways to feed data into AIL:
     \begin{enumerate}
-%        \item Be a trusted partner with CIRCL and ask to get access to our feed {\tiny \href{mailto:info@circl.lu}{info@circl.lu}}
-        \item Setup \textit{pystemon} and use the custom feeder
+        \item AIL Importers:
             \begin{itemize}
-                \item \textit{pystemon} will collect items for you
+                \item Dir / Files
+                \item ZMQ
+                % \item Be a trusted partner with CIRCL and ask to get access to our zmq feed {\tiny \href{mailto:info@circl.lu}{info@circl.lu}}
+                \item \textit{pystemon}
             \end{itemize}
-        \item Use the new JSON Feeder (twitter)
-        \item Feed your own data using the API or the \texttt{import\_dir.py} script
+        \item AIL Feeders (discord, telegram, ...)
+        \item Feed your own data using the API
         \item Feed your own file/text using the UI (\texttt{Submit section})
     \end{enumerate}
 \end{frame}
 
 \begin{frame}
+    \frametitle{Feeding Data to AIL - Limitation}
+    \centerline{\includegraphics[scale=0.1]{images/alert.png}}
+    \alert{/!$\backslash$ Limitation:}
+    \vskip 1em
+    \begin{itemize}
+        \item Each file to be fed must be of a reasonable size:
+        \begin{itemize}
+            \item \texttt{$\sim$ 3 Mb /} file is already large
+            \item This is because some modules are doing regex matching (default timeout of 30 seconds)
+            \item If you want to feed a large file, better split it in multiple ones
+        \end{itemize}
+
+    \end{itemize}
+\end{frame}
+
+\subsection{UI}
+
+\begin{frame}
     \frametitle{Via the UI (1)}
-    \centerline{\includegraphics[scale=0.20]{screenshot/paste_submit.png}}
+    \centerline{\includegraphics[scale=0.20]{screenshot/ui_submit.png}}
 \end{frame}
 
 \begin{frame}
     \frametitle{Via the UI (2)}
-    \centerline{\includegraphics[scale=0.25]{screenshot/paste_submitted.png}}
+    \centerline{\includegraphics[scale=0.29]{screenshot/ui_submit0.png}}
 \end{frame}
 
+\subsection{API}
+
 \begin{frame}[fragile]
-    \frametitle{Feeding AIL with your own data - API}
+    \frametitle{API - Feeding AIL with your own data}
     \begin{tcblisting}{colback=black!85,coltext=green,listing only,
         title=api/v1/import/item, fonttitle=\bfseries}
 {
@@ -917,40 +953,50 @@ cd AIL-framework
  
 \end{frame}
 
-\include{feeder}
-%% CONTI leak example
-\include{conti}
-\begin{frame}
-    \frametitle{Feeding AIL with your own data - \texttt{import\_dir.py} (1)}
-    /!$\backslash$ requirements:
-    \vskip 1em
-    \begin{itemize}
-        \item Each file to be fed must be of a reasonable size:
-        \begin{itemize}
-            \item \texttt{$\sim$ 3 Mb /} file is already large
-            \item This is because some modules are doing regex matching
-            \item If you want to feed a large file, better split it in multiple ones
-        \end{itemize}
+\subsection{Importers}
 
+\begin{frame}
+    \frametitle{Importers}
+    \begin{itemize}
+        \item Importers are located in the \texttt{/bin/importer} directory
+        \item They are used to import different types of data into AIL
+        \item Adding new Importers is straightforward.
+        \item Available Importers:
+            \begin{itemize}
+                \item AIL Feeders
+                \item ZMQ
+                \item pystemon
+                \item Files
+            \end{itemize}
     \end{itemize}
 \end{frame}
 
-\begin{frame}
-    \frametitle{Feeding AIL with your own data - \texttt{import\_dir.py} (2)}
-    \begin{enumerate}
-        \item Check your local configuration \texttt{\large{configs/core.cfg}}
-            \begin{itemize}
-                \item In the file \texttt{\large{configs/core.cfg}},
-                \item Add \texttt{127.0.0.1:5556} in \texttt{ZMQ\_Global}
-                \item (should already be set by default)
-            \end{itemize}
-%        \pause
-        \item Launch \texttt{import\_dir.py} with de directory you want to import
-            \begin{itemize}
-                \item \texttt{import\_dir.py -d dir\_path}
-            \end{itemize}
-    \end{enumerate}
+% ZMQ
+% Pystemon
+
+\lstset{style=bash}
+\begin{frame}[fragile]
+    \frametitle{File Importer}
+    \begin{itemize}
+        \item \texttt{importer/FileImporter.py}
+    \end{itemize}
+    \begin{tcblisting}{colback=black!85,coltext=green,listing only,
+        title=Import File, fonttitle=\bfseries}
+. ./AILENV/bin/activate
+cd tools/
+./file_dir_importer.py -f MY_FILE_PATH
+    \end{tcblisting}
+    \begin{tcblisting}{colback=black!85,coltext=green,listing only,
+        title=Import Dir, fonttitle=\bfseries}
+. ./AILENV/bin/activate
+cd tools/
+./file_dir_importer.py -d MY_DIR_PATH
+    \end{tcblisting}
 \end{frame}
+
+\include{feeder_importer}
+%% CONTI leak example
+\include{feeder_conti}
 
 %STARTING THE SYSTEM
 \section{Starting the framework}
@@ -1006,21 +1052,21 @@ cd bin/
     \frametitle{AIL ecosystem: Technologies used}
     \begin{itemize}
         \item[] \textbf{Programming language:} Full python3
-        \item[] \textbf{Databases:} Redis and ARDB\footnote{We are migrating to kvrocks}
+        \item[] \textbf{Databases:} Redis and Kvrocks
         \item[] \textbf{Server:} Flask
-        \item[] \textbf{Data message passing:} ZMQ, Redis list and Redis Publisher/Subscriber
+        \item[] \textbf{Data message passing:} Redis Set
     \end{itemize}
 \end{frame}
 
 
 \begin{frame}
     \frametitle{AIL global architecture: Data streaming between module}
-    \centerline{\includegraphics[scale=0.15]{images/module-data-flow.png}}
+    \centerline{\includegraphics[scale=0.09]{images/ail_queues.png}}
 \end{frame}
 
 \begin{frame}
     \frametitle{AIL global architecture: Data streaming between module (Credential example)}
-    \centerline{\includegraphics[scale=0.31]{images/stream_exemp_cred.png}}
+    \centerline{\includegraphics[scale=0.26]{images/ail_queues_credential.png}}
 \end{frame}
 
 \begin{frame}
@@ -1065,11 +1111,11 @@ cd bin/
         \item[] Choose where to put your module in the data flow:
     \end{enumerate}
     \begin{figure}
-        \centerline{\includegraphics[scale=0.15]{images/module-data-flow.png}}
+        \centerline{\includegraphics[scale=0.15]{images/ail_queues_simplified.png}}
     \end{figure}
     \vskip -1em
     \begin{enumerate}
-        \item[] Then, modify \texttt{bin/package/modules.cfg} accordingly
+        \item[] Then, modify \texttt{configs/modules.cfg} accordingly
     \end{enumerate}
 \end{frame}
 
@@ -1077,17 +1123,18 @@ cd bin/
 \lstset{style=code}
 \lstset{basicstyle=\fontsize{6}{8}\ttfamily}
 \begin{frame}[fragile]
-    \frametitle{Writing your own modules - \texttt{/bin/template.py}}
+    \frametitle{Writing your own modules - \texttt{/bin/modules/TemplateModule.py}}
     \begin{lstlisting}
 from modules.abstract_module import AbstractModule
 
 class NewModule(AbstractModule):
 
 	def __init__(self):
-		    super(NewModule, self).__init__()
+		    super().__init__()
+		    self.logger.info(f'Module {self.module_name} initialized')
 
 	# Do something with the message from the queue
-	def compute(self, message, r_result=False):
+	def compute(self, message):
 		# Process Message
 
 # LAUNCH MODULE
@@ -1157,10 +1204,10 @@ if __name__ == '__main__':
 \begin{frame}
     \frametitle{Ongoing developments}
         \begin{itemize}
-        	\item New JSON feeders
+        	\item MISP Importer
+        	\item Bloom filter filtering
             \item Data retention and lifetime management of objects
             \item MISP modules expansion
-            \item Extension of the tracker with typo-squatting library
             \item Auto classification of content by set of terms (semantic analysis)
             \item Improved export stream to third parties software 
             \item Improved indexing relying on Solr, Lucene or other components
