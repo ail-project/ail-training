@@ -1130,8 +1130,8 @@ from modules.abstract_module import AbstractModule
 class NewModule(AbstractModule):
 
 	def __init__(self):
-		    super().__init__()
-		    self.logger.info(f'Module {self.module_name} initialized')
+        super().__init__()
+		self.logger.info(f'Module {self.module_name} initialized')
 
 	# Do something with the message from the queue
 	def compute(self, message):
@@ -1145,7 +1145,63 @@ if __name__ == '__main__':
     \end{lstlisting}
 \end{frame}
 
+\lstset{style=code}
+\lstset{basicstyle=\fontsize{6}{8}\ttfamily}
+\begin{frame}[fragile]
+    \frametitle{Writing your own Importer - \texttt{/bin/importer/}}
+    \begin{lstlisting}
+from importer.abstract_importer import AbstractImporter
+from modules.abstract_module import AbstractModule
+
+class MyNewImporter(AbstractImporter):
+
+    def __init__(self):
+        super().__init__()
+        # super().__init__(queue=True)   # if it's an one-time run importer
+        self.logger.info(f'Importer {self.name} initialized')
+
+    def importer(self, my_var): # import function
+        # Process my_var and get content to import
+        content = GET_MY_CONTENT_TO_IMPORT
+        # if content is not gzipped and/or not b64 encoded,
+        # set gzipped and/or b64 to False
+        message = self.create_message(item_id, content)
+        return message
+        # if it's an one-time run, otherwise create an AIL Module
+        # self.add_message_to_queue(message)
+
+class MyNewModuleImporter(AbstractModule):
+    def __init__(self):
+        super().__init__() # init module ...
+        # init module ...
+        self.importer = MyNewImporter()
+
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Writing your own Importer - \texttt{/bin/importer/}}
+    \begin{lstlisting}
+
+    def get_message(self):
+        return self.importer.importer()
+
+    def compute(self, message):
+        self.add_message_to_queue(message)
+
+if __name__ == '__main__':
+    module = MyNewModuleImporter()
+    module.run()
+
+    # if it's an one-time run:
+    # importer = MyImporter()
+    # importer.importer(my_var)
+
+    \end{lstlisting}
+\end{frame}
+
 \section{Contribution rules}
+
 \begin{frame}
 \frametitle{How to contribute}
     \centerline{\includegraphics[scale=0.5]{images/one-does-not-simply.jpeg}}
