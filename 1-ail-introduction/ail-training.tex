@@ -871,9 +871,9 @@ curl https://127.0.0.1:7000/api/v1/get/item/default
         -H "Content-Type: application/json"
         --data @input.json -X POST
         \end{lstlisting}
-        \begin{itemize}
-                \item AIL API is currently covering 60\% of the functionality of back-end.
-        \end{itemize}
+%         \begin{itemize}
+%                 \item AIL API is currently covering 60\% of the functionality of back-end.
+%         \end{itemize}
 \end{frame}
 
 \section{Setting up the framework}
@@ -1013,22 +1013,6 @@ cd bin/
 \end{tcblisting}
 \end{frame}
 
-%%\begin{frame}[fragile]
-%%    \frametitle{Running your own instance using the virtual machine}
-%%    \begin{tcblisting}{colback=black!85,coltext=green,listing only,
-%%        title=Login and passwords:, fonttitle=\bfseries}
-%%# Web interface (default network settings)
-%%    https://127.0.0.1:7000/
-%%# Web interface:
-%%    admin@admin.test
-%%    Password1234
-%%# SSH:
-%%    ail
-%%    Password1234
-%%\end{tcblisting}
-
-%\end{frame}
-
 \begin{frame}[fragile]
     \frametitle{Updating AIL}
     \begin{tcblisting}{colback=black!85,coltext=green,listing only,
@@ -1046,8 +1030,24 @@ cd bin/
 
 \end{frame}
 
+\begin{frame}[fragile]
+   \frametitle{Running your own instance using the virtual machine}
+   \begin{tcblisting}{colback=black!85,coltext=green,listing only,
+       title=Login and passwords:, fonttitle=\bfseries}
+# Web interface (default network settings)
+   https://127.0.0.1:7000/
+# Web interface:
+   admin@admin.test
+   Password1234
+# SSH:
+   test
+   Password1234
+\end{tcblisting}
+\end{frame}
+
 
 \section{AIL ecosystem - Challenges and design}
+
 \begin{frame}
     \frametitle{AIL ecosystem: Technologies used}
     \begin{itemize}
