@@ -156,9 +156,9 @@
 \begin{frame}
 \frametitle{Links}
     \begin{itemize}
-        \item AIL project \url{https://github.com/ail-project}
-        \item AIL framework \url{https://github.com/ail-project/ail-framework}
-        \item Training materials \url{https://github.com/ail-project/ail-training}
+        \item AIL project \url{https://github.com/ail-project} ({\bf all components including feeders and crawler infrastructure})
+        \item AIL framework \url{https://github.com/ail-project/ail-framework} ({\bf analysis framework})
+        \item Training materials and slide deck \url{https://github.com/ail-project/ail-training}
         \item Online chat \url{https://gitter.im/ail-project/community}
     \end{itemize}
 \end{frame}
@@ -228,7 +228,7 @@
 \item Discuss the challenges involved and delve into the design principles of the AIL open source framework
 \item Explore various {\bf collection mechanisms and sources utilized} by the AIL framework
 \item Gain knowledge on creating new modules within the AIL framework
-\item Acquire proficiency in using, installing, and initializing AIL
+\item Acquire (quickly) proficiency in using, installing, and initializing AIL
 \item Understand the significance of integrating the AIL framework into the cyber threat intelligence life cycle, with notable tools such as MISP
 \end{itemize}
 \end{frame}
@@ -258,20 +258,20 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Support CERT and Law Enforcement activities}
-        \begin{itemize}
-            \item Proactive investigation: leaks detection
-            \begin{itemize}
-		        \item List of emails and passwords
-		        \item Leaked database
-		        \item AWS Keys
-		        \item Credit-cards
-		        \item PGP private keys
-		        \item Certificate private keys
-		    \end{itemize}
-		    \item Feed Passive DNS or any passive collection system
-		    \item CVE and PoC of vulnerabilities most used by attackers
-		\end{itemize}
+\frametitle{Supporting CERT and Law Enforcement Activities}
+\begin{itemize}
+\item Proactive Investigation: Detection of Leaks
+\begin{itemize}
+	\item Compilation of leaked emails and passwords
+	\item Analysis of leaked databases
+    \item Identification of exposed SaaS keys (AWS, Google,...)
+	\item Detection of compromised credit card information
+	\item Identification and analysis of compromised PGP private keys and certificate keys
+\end{itemize}
+	\item Contributing to Passive DNS and Metadata Collection Systems
+	\item Sharing CVEs and Proof-of-Concepts (PoCs) for commonly exploited vulnerabilities
+	\item Deanonymization of Hidden Services
+\end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -279,31 +279,31 @@
     	\begin{itemize}
 		    \item Website monitoring
 		    	\begin{itemize}
-				    \item monitor booters
-                    \item Detect encoded exploits (WebShell, malware encoded in Base64, ...)
+				    \item Monitor booters, marketplaces, forums
+                    \item Detect encoded exploits (WebShell, malware encoded in Base64,...)
 				    \item SQL injections
 		    	\end{itemize}
-		    \item Automatic and manual submission to threat sharing and incident
+		    \item Automatic and manual submission to threat intelligence sharing and incident
 response platforms
 			\begin{itemize}
 				\item MISP
 				\item TheHive
 			\end{itemize}
-		    \item Term/Regex/YARA monitoring for local companies/government
+		    \item Term/Regex/YARA monitoring for local companies/government keywords
         \end{itemize}
 \end{frame}
 
 \section{Sources of leaks}
 
 \begin{frame}
-    \frametitle{Mistakes from users:}
+    \frametitle{Catching mistakes from users}
         \begin{figure}
             \includegraphics[scale=0.4]{images/git-pass.png}
         \end{figure}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Sources of leaks: Paste monitoring}
+    \frametitle{Example - Sources of leaks - paste monitoring}
     \begin{itemize}
         \item Example: \url{https://gist.github.com/}
             \begin{itemize}
@@ -332,50 +332,55 @@ response platforms
 \end{frame}
 
 \begin{frame}
-        \frametitle{Why so many leaks?}
-        \begin{itemize}
-                \item Economical interests (e.g. Adversaries promoting services)
-                \item Ransom model (e.g. To publicly pressure the victims)
-                \item Political motives (e.g. Adversaries showing off)
-                \item Collaboration (e.g. Criminals need to collaborate)
-                \item Operational infrastructure (e.g. malware exfiltrating information on a pastie website)
-                \item Mistakes and errors
-        \end{itemize}
+\frametitle{Purposes of Leaks}
+\begin{itemize}
+\item {\bf Economic Interests}: Adversaries may promote services for their own financial gain.
+\item {\bf Ransom Model}: Leaks can be used to publicly pressure victims into meeting certain demands.
+\item {\bf Political Motives}: Adversaries may leak information to showcase their power or influence.
+\item {\bf Collaboration}: Criminals may need to collaborate and share leaked information for their operations.
+\item {\bf Operational Infrastructure}: Examples include malware that exfiltrates information to pastie websites.
+\item {\bf Mistakes and Errors}: Leaks can also occur due to unintentional mistakes or errors.
+\end{itemize}
 \end{frame}
+
+%\begin{frame}
+%    \frametitle{Objectives for SOC/CSIRT teams}
+%    \begin{itemize}
+%            \item {\bf Contacting companies or organisations} who did specific accidental leaks
+%            \item {\bf Discussing with media} about specific case of leaks and how to make it more practical/factual for everyone
+%            \item Evaluating the economical market for cyber criminals (e.g. DDoS booters\footnote{\url{https://github.com/D4-project/}} or reselling personal information - reality versus media coverage)
+%            \item Analysing collateral effects of malware, software vulnerabilities or exfiltration
+%    \end{itemize}
+%
+%    \begin{center}
+%    $\rightarrow$ And it's important to detect them automatically.
+%    \end{center}
+%\end{frame}
 
 \begin{frame}
-    \frametitle{Are leaks frequent?}
-    \begin{center}
-    \Large{Yes!}\\ and we have to deal with this as a CSIRT.
-    \end{center}
-
-    \begin{itemize}
-            \item {\bf Contacting companies or organisations} who did specific accidental leaks
-            \item {\bf Discussing with media} about specific case of leaks and how to make it more practical/factual for everyone
-            \item Evaluating the economical market for cyber criminals (e.g. DDoS booters\footnote{\url{https://github.com/D4-project/}} or reselling personal information - reality versus media coverage)
-            \item Analysing collateral effects of malware, software vulnerabilities or exfiltration
-    \end{itemize}
-
-    \begin{center}
-    $\rightarrow$ And it's important to detect them automatically.
-    \end{center}
+\frametitle{Objectives for SOC/CSIRT Teams}
+\begin{itemize}
+\item \textbf{Contacting Companies or Organizations}: Reach out to companies or organizations responsible for specific accidental leaks to address the issue
+\item \textbf{Engaging with Media}: Collaborate with the media to discuss specific leak cases and find practical ways to increase factual information available to the public
+\item Evaluate the Cybercriminal Economy: Analyze the cybercriminal market, including activities such as DDoS booters\footnote{\url{https://github.com/D4-project/}} and the reselling of personal information, in order to understand the disparity between reality and media coverage
+\item Analyze the Collateral Effects: Investigate the broader impact of malware, software vulnerabilities, or data exfiltration incidents
+\end{itemize}
 \end{frame}
-
 
 \section{Current capabilities}
 
 \begin{frame}
-    \frametitle{AIL Framework: Current capabilities}
+    \frametitle{AIL Framework - Current capabilities}
     \begin{itemize}
         \item Extending AIL to add a new {\bf analysis module} can be done in 50 lines of Python
         \item The framework {\bf supports multi-processors/cores by default}. Any analysis module can be started multiple times to support faster processing during peak times or bulk import
         \item \textbf{Multiple} concurrent \textbf{data input}
-        \item Tor Crawler (handle cookies authentication)
+        \item Automatic Tor Crawler and website crawling (handle cookies authentication) via Lacus\footnote{\url{https://github.com/ail-project/lacus}}
     \end{itemize}
 \end{frame}
 
 \begin{frame}
-    \frametitle{AIL Framework: Current features}
+    \frametitle{AIL Framework - features}
     \begin{itemize}
         \item Extracting \textbf{credit cards numbers, credentials, phone numbers, ...}
         \item Extracting and validating potential \textbf{hostnames}
@@ -385,7 +390,7 @@ response platforms
         \item \textbf{Tagging} for classification and searches
         \item Terms, sets, regex and YARA \textbf{tracking and occurrences}
         \item Archives, files and raw \textbf{submission} from the UI
-        \item PGP, Cryptocurrency, Decoded (Base64, ...) and username Correlation
+        \item PGP, Cryptocurrencies, Decoded (Base64, ...) and username Correlation
         \item And many more
     \end{itemize}
 \end{frame}
@@ -560,7 +565,7 @@ response platforms
     \item[] How a domain is crawled by default
 		\begin{enumerate}
 		    \item Fetch the first url
-            \item Render javascript (webkit browser)
+            \item Render the {\bf web page including javascript} (done by playwright via Lacus)
 		    \item Extract all urls
 		    \item Filter url: keep all url of this domain
 		    \item crawl next url (max depth = 1)
@@ -743,7 +748,7 @@ response platforms.
 
     \vskip 2em
     \begin{enumerate}
-            \item Use infoleak taxonomy\footnote{\url{https://www.misp-project.org/taxonomies.html}}
+        \item Use infoleak taxonomy\footnote{\url{https://www.misp-project.org/taxonomies.html}}
         \item Add your own tags
 	\item Export AIL objects to MISP core format
 	\item Download it or Create a MISP Event\footnote{\url{https://www.misp-standard.org/rfc/misp-standard-core.txt}}
@@ -813,26 +818,22 @@ cd AIL-framework
                 % \item Be a trusted partner with CIRCL and ask to get access to our zmq feed {\tiny \href{mailto:info@circl.lu}{info@circl.lu}}
                 \item \textit{pystemon}
             \end{itemize}
-        \item AIL Feeders (discord, telegram, ...)
+        \item AIL Feeders (discord, telegram, ActivityPub, ...)
         \item Feed your own data using the API
         \item Feed your own file/text using the UI (\texttt{Submit section})
     \end{enumerate}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Feeding Data to AIL - Limitation}
-    \centerline{\includegraphics[scale=0.1]{images/alert.png}}
-    \alert{/!$\backslash$ Limitation:}
-    \vskip 1em
-    \begin{itemize}
-        \item Each file to be fed must be of a reasonable size:
-        \begin{itemize}
-            \item \texttt{$\sim$ 3 Mb /} file is already large
-            \item This is because some modules are doing regex matching (default timeout of 30 seconds)
-            \item If you want to feed a large file, better split it in multiple ones
-        \end{itemize}
-
-    \end{itemize}
+\frametitle{Feeding Data to AIL - Technical Considerations}
+\begin{itemize}
+\item It is important to consider the size of each file being fed into AIL:
+\begin{itemize}
+\item For optimal processing and efficiency, it is recommended to keep each file around 3 MB in size
+\item This balance between processing capabilities and file size is crucial, as certain modules perform various computations, such as regexp matching, which has a default timeout of 30 seconds
+\item If you need to process a large file, it is advisable to split it into multiple smaller files. The AIL leak feeder tool\footnote{\url{https://github.com/ail-project/ail-feeder-leak}} can assist you in this task.
+\end{itemize}
+\end{itemize}
 \end{frame}
 
 \subsection{UI}
