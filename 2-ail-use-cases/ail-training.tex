@@ -138,7 +138,7 @@
   \end{frame}
 }
 
-\author{\Large{Alexandre Dulaunoy}\\ \scriptsize{alexandre.dulaunoy@circl.lu}\\ \large{Aurelien Thirion}\\ \scriptsize{aurelien.thirion@circl.lu}\\ \large{Jean-Louis Huynen}\\ \scriptsize{jean-louis.huynen@circl.lu}\\ \Large{Sami Mokaddem}\\ \scriptsize{sami.mokaddem@circl.lu}}
+\author{\large{Aurelien Thirion}\\ \scriptsize{aurelien.thirion@circl.lu}}
 \title{AIL Project}
 \subtitle{Open source framework to efficiently collect, crawl, dig, and analyze unstructured data}
 \institute{info@circl.lu}
@@ -151,6 +151,9 @@
 \titlepage
 \end{frame}
 
+% moove misp section ??
+
+
 
 % LINKS
 \begin{frame}
@@ -161,6 +164,9 @@
         \item Training materials and slide deck \url{https://github.com/ail-project/ail-training}
         \item Online chat \url{https://gitter.im/ail-project/community}
     \end{itemize}
+    \begin{figure}
+        \includegraphics[scale=0.10, angle=0]{images/ail-project.png}
+    \end{figure}
 \end{frame}
 
 
@@ -416,6 +422,7 @@ response platforms
             \begin{itemize}
             	\item circl\textbackslash.lu
             \end{itemize}
+            \item Track Typo-squatting
             \item YARA rules
             	\begin{itemize}
             	\item https://github.com/ail-project/ail-yara-rules
@@ -443,67 +450,6 @@ response platforms
         \begin{figure}
             \includegraphics[scale=0.22]{screenshot/retro_hunt.png}
         \end{figure}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Recon and intelligence gathering tools}
-        \begin{itemize}
-            \item {\bf Attacker also share informations}
-            \item Recon tools detected: 94
-            \begin{itemize}
-            	\item sqlmap
-            	\item dnscan
-            	\item whois
-            	\item msfconsole (metasploit)
-            	\item dnmap
-            	\item nmap
-            	\item ...
-            \end{itemize}
-        \end{itemize}
-\end{frame}
-
-
-\begin{frame}
-    \frametitle{Recon and intelligence gathering tools}
-        \begin{figure}
-            \includegraphics[scale=0.4]{images/recon-paste.png}
-        \end{figure}
-\end{frame}
-
-
-\begin{frame}
-    \frametitle{Decoder}
-    \begin{itemize}
-    	\item Search for encoded strings
-    		\begin{itemize}
-				\item Base64
-				\item Hexadecimal
-				\item Binary
-			\end{itemize}
-    	\item Guess Mime-type
-    	\item Items/Domains Correlation
-    \end{itemize}
-\end{frame}
-
-%\begin{frame}
-%    \frametitle{Decoder: Practical Part}
-%    \begin{itemize}
-%    	\item[] Which type of decoded file have the highest size ?
-%    \end{itemize}
-%\end{frame}
-
-\begin{frame}
-    \frametitle{Decoder:}
-    \centerline{
-        \includegraphics[scale=0.23]{screenshot/decodeds_dashboard.png}
-    }
-\end{frame}
-
-\begin{frame}
-    \frametitle{Decoder:}
-    \centerline{
-        \includegraphics[scale=0.23]{screenshot/decodeds_dos.png}
-    }
 \end{frame}
 
 \begin{frame}
@@ -560,7 +506,7 @@ response platforms
 \end{frame}
 
 \begin{frame}
-    \frametitle{Crawler}
+    \frametitle{Auto Crawler}
     \begin{itemize}
     \item[] How a domain is crawled by default
 		\begin{enumerate}
@@ -614,6 +560,68 @@ response platforms
     \centerline{
         \includegraphics[scale=0.23]{images/crawled-ddos.png}
     }
+\end{frame}
+
+\begin{frame}
+    \frametitle{Recon and intelligence gathering tools}
+        \begin{itemize}
+            \item {\bf Attacker also share informations}
+            \item Recon tools detected: 94
+            \begin{itemize}
+            	\item sqlmap
+            	\item dnscan
+            	\item whois
+            	\item msfconsole (metasploit)
+            	\item dnmap
+            	\item nmap
+            	\item ...
+            \end{itemize}
+        \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Recon and intelligence gathering tools}
+        \begin{figure}
+            \includegraphics[scale=0.4]{images/recon-paste.png}
+        \end{figure}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Decoder}
+    \begin{itemize}
+    	\item Search for encoded strings
+    		\begin{itemize}
+				\item Base64
+				\item Hexadecimal
+				\item Binary
+			\end{itemize}
+    	\item Guess Mime-type
+    	\item Items/Domains Correlation
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Decoder:}
+    \centerline{
+        \includegraphics[scale=0.23]{screenshot/decodeds_dashboard.png}
+    }
+\end{frame}
+
+\begin{frame}
+    \frametitle{Decoder:}
+    \centerline{
+        \includegraphics[scale=0.23]{screenshot/decodeds_dos.png}
+    }
+\end{frame}
+
+\begin{frame}
+    \frametitle{AIL Objects}
+    \begin{figure}
+        \includegraphics[scale=0.45, angle=0]{screenshot/ail-objs-legend-1.png}
+        \includegraphics[scale=0.5, angle=0]{screenshot/ail-objs-legend-2.png}
+    \end{figure}
 \end{frame}
 
 \begin{frame}
@@ -804,6 +812,53 @@ cd AIL-framework
 \end{tcblisting}
 \end{frame}
 
+%STARTING THE SYSTEM
+\section{Starting the framework}
+\lstset{style=bash}
+\begin{frame}[fragile]
+    \frametitle{Running your own instance from source}
+    \begin{tcblisting}{colback=black!85,coltext=green,listing only,
+        title=Accessing the environment and starting AIL, fonttitle=\bfseries}
+
+# Launch the system and the web interface
+cd bin/
+./LAUNCH -l
+
+\end{tcblisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Updating AIL}
+    \begin{tcblisting}{colback=black!85,coltext=green,listing only,
+        title=Launch the updater:, fonttitle=\bfseries}
+cd bin/
+# git pull and launch all updates:
+./LAUNCH -u
+
+
+# PS:
+# The Updater is launched by default each time
+# you start the framework with
+# ./LAUNCH -l
+\end{tcblisting}
+
+\end{frame}
+
+% \begin{frame}[fragile]
+%    \frametitle{Running your own instance using the virtual machine}
+%    \begin{tcblisting}{colback=black!85,coltext=green,listing only,
+%        title=Login and passwords:, fonttitle=\bfseries}
+% # Web interface (default network settings)
+%    https://127.0.0.1:7000/
+% # Web interface:
+%    admin@admin.test
+%    Password1234
+% # SSH:
+%    test
+%    Password1234
+% \end{tcblisting}
+% \end{frame}
+
 %IMPORTERS
 \section{Feeding the framework}
 
@@ -909,54 +964,6 @@ cd tools/
 \include{feeder_importer}
 %% CONTI leak example
 \include{feeder_conti}
-
-%STARTING THE SYSTEM
-\section{Starting the framework}
-\lstset{style=bash}
-\begin{frame}[fragile]
-    \frametitle{Running your own instance from source}
-    \begin{tcblisting}{colback=black!85,coltext=green,listing only,
-        title=Accessing the environment and starting AIL, fonttitle=\bfseries}
-
-# Launch the system and the web interface
-cd bin/
-./LAUNCH -l
-
-\end{tcblisting}
-\end{frame}
-
-\begin{frame}[fragile]
-    \frametitle{Updating AIL}
-    \begin{tcblisting}{colback=black!85,coltext=green,listing only,
-        title=Launch the updater:, fonttitle=\bfseries}
-cd bin/
-# git pull and launch all updates:
-./LAUNCH -u
-
-
-# PS:
-# The Updater is launched by default each time
-# you start the framework with
-# ./LAUNCH -l
-\end{tcblisting}
-
-\end{frame}
-
-\begin{frame}[fragile]
-   \frametitle{Running your own instance using the virtual machine}
-   \begin{tcblisting}{colback=black!85,coltext=green,listing only,
-       title=Login and passwords:, fonttitle=\bfseries}
-# Web interface (default network settings)
-   https://127.0.0.1:7000/
-# Web interface:
-   admin@admin.test
-   Password1234
-# SSH:
-   test
-   Password1234
-\end{tcblisting}
-\end{frame}
-
 
 \section{AIL ecosystem - Challenges and design}
 
