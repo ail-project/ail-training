@@ -153,7 +153,8 @@
 \end{frame}
 
 \begin{frame}
-\begin{adjustbox}{max totalsize={.9\textwidth}{.7\textheight},center}
+    \frametitle{Threat Intelligence Cycle}
+    \begin{adjustbox}{max totalsize={.9\textwidth}{.7\textheight},center}
 \begin{tikzpicture}[node distance=1.5cm, tblock/.style = {draw, trapezium, minimum height=10mm, 
                  trapezium left angle=75, trapezium right angle=105, align=center}, block/.style = {draw, rectangle, draw=green!60, fill=green!5, minimum height=10mm, minimum width=28mm,align=center}]
 
@@ -163,7 +164,7 @@
 \node (processing) [block, rounded corners, minimum width=3cm, minimum height=1cm, text centered, right of=collection, xshift=2.5cm] {Processing};
 \node (analysis) [block, rounded corners, minimum width=3cm, minimum height=1cm, text centered, right of=processing, xshift=2.5cm] {Analysis};
 \node (production) [block, rounded corners, minimum width=3cm, minimum height=1cm, text centered, right of=analysis, xshift=2.5cm] {Intelligence Production};
-\node (dissemination) [block, rounded corners, minimum width=3cm, minimum height=1cm, text centered, right of=production, xshift=2.5cm] {Dissemination};
+\node (dissemination) [block, rounded corners, minimum width=3cm, minimum height=1cm, text centered, right of=production, xshift=2.5cm] {Dissemination and\\ Notification};
 \node (integration) [block, rounded corners, minimum width=3cm, minimum height=1cm, text centered, below of=production, yshift=-1.5cm] {Integration};
 \node (evaluation) [block, rounded corners, minimum width=3cm, minimum height=1cm, text centered, below of=integration, yshift=-1.5cm] {Evaluation and Feedback};
 \node (mitigation) [block, rounded corners, minimum width=3cm, minimum height=1cm, text centered, below of=dissemination, yshift=-1.5cm] {Mitigation};
@@ -175,6 +176,7 @@
 \draw [->] (analysis) -- (production);
 \draw [->] (production) -- (dissemination);
 \draw [->] (production) -- (integration);
+\draw [->] (dissemination) -- (mitigation);
 \draw [->] (integration) -- (evaluation);
 \draw [->] (evaluation) -- (mitigation);
 \draw [->] (mitigation) |- (monitoring);
