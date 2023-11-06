@@ -171,7 +171,7 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Threat Intelligence Process}
+    \frametitle{Threat Intelligence Process at CIRCL}
     \begin{adjustbox}{max totalsize={.9\textwidth}{.7\textheight},center}
 \begin{tikzpicture}[node distance=1.5cm, tblock/.style = {draw, trapezium, minimum height=10mm, 
                  trapezium left angle=75, trapezium right angle=105, align=center}, block/.style = {draw, rectangle, draw=green!60, fill=green!5, minimum height=10mm, minimum width=28mm,align=center}]
@@ -202,6 +202,18 @@
 \draw [->] (integration) -- (mitigation);
 \end{tikzpicture}
 \end{adjustbox}
+\end{frame}
+
+\begin{frame}
+    \frametitle{{\it Collection} - automate collection}
+	\begin{itemize}
+		\item Collecting data from various chat sources can be a {\bf tedious task for analysts}.
+		\item AIL offers a set of feeders (e.g., Telegram, Discord, etc.) that can be used to subscribe to chat channels.
+        \item All the {\bf collected messages are then processed and analyzed} within the AIL's \textit{processing} and \textit{analysis} stages.
+	\end{itemize}
+\begin{center}
+    \includegraphics[scale=0.20]{images/ail-telegram.png}
+\end{center}
 \end{frame}
 
 \begin{frame}
