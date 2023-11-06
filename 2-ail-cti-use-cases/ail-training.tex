@@ -196,12 +196,55 @@
 \draw [->] (production) -- (integration);
 \draw [->] (dissemination) -- (mitigation);
 \draw [->] (integration) -- (evaluation);
-\draw [->] (evaluation) -- (mitigation);
+\draw [-] (evaluation) -- (mitigation);
 \draw [->] (mitigation) |- (monitoring);
 \draw [->] (monitoring) -| (collection);
 \draw [->] (integration) -- (mitigation);
 \end{tikzpicture}
 \end{adjustbox}
+\end{frame}
+
+\begin{frame}
+   \frametitle{{\it Processing} - extracting selector/patterns}
+	\begin{itemize}
+		\item Detecting specific search patterns in a large dataset, such as a significant ransomware leak, can be challenging for analysts.
+        \item AIL includes a {\bf rich set of existing search patterns} (e.g. IBAN) along with default Yara rules, and you have the ability to create custom ones.
+	\end{itemize}
+   \begin{center}
+        \includegraphics[scale=0.15]{images/ail-detecting.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{{\it Analysis} - evaluating vulnerability severity/risk}
+    \begin{itemize}
+         \item What is the visibility, usage, mentions, or risk of a vulnerability observed in forums, channels, pastes, or websites?
+         \item AIL can assist you in determining the severity/risk level or in {\bf reviewing the usage of a vulnerability} (e.g., the number of PoCs).
+    \end{itemize}
+    \begin{center}
+         \includegraphics[scale=0.15]{images/ail-CVE-example.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{{\it Dissemination} - distributing analysis}
+\begin{itemize}
+    \item AIL exports data using the {\bf MISP standard format} and offers complete integration with MISP to facilitate the dissemination of data.
+    \item All the context within AIL uses the {\bf MISP taxonomies and galaxy}.
+    \item The insights provided by AIL are often used as complementary information for threat intelligence reports and landscapes.
+\end{itemize}
+    \begin{center}
+      \includegraphics[scale=0.15]{images/ail-cookie.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Conclusion}
+\begin{itemize}
+    \item While AIL can be a valuable tool for {\bf organisations dealing with data leaks and information breaches}, it's important to remember that it is primarily designed for information leak analysis and not for the entire threat intelligence process.
+    \item Organizations should use \textbf{AIL in conjunction with other threat intelligence solutions} and processes to establish a comprehensive threat intelligence strategy.
+    \item AIL is an open-source project, and if you discover modules that could assist in your processes, please let us know or contribute directly.
+\end{itemize}
 \end{frame}
 
 % LINKS
