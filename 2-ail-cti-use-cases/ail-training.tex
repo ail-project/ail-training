@@ -205,6 +205,16 @@
 \end{frame}
 
 \begin{frame}
+  \frametitle{Common questions from constituents}
+  \begin{itemize}
+      \item Do you {\bf know if we are a target} of this adversary group?
+      \item We have {\bf observed a partnering company experiencing a ransomware incident}, and we are concerned about the impact on our organization.
+      \item Can you determine if our {\bf sector is a target} of this threat actor?
+      \item Have you come across phishing kits targeting our bank/service or any instances of our {\bf data being stolen} on the "dark web"?
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
     \frametitle{{\it Collection} - automate collection}
 	\begin{itemize}
 		\item Collecting data from various chat sources can be a {\bf tedious task for analysts}.
@@ -232,7 +242,7 @@
    \frametitle{{\it Processing} - extracting selector/patterns}
 	\begin{itemize}
 		\item Detecting specific search patterns in a large dataset, such as a significant ransomware leak, can be challenging for analysts.
-        \item AIL includes a {\bf rich set of existing search patterns} (e.g. IBAN) along with default Yara rules, and you have the ability to create custom ones.
+        \item AIL includes a {\bf rich set of existing search patterns} (e.g. IBAN) along with default YARA rules, and you have the ability to create custom ones.
 	\end{itemize}
    \begin{center}
         \includegraphics[scale=0.15]{images/ail-detecting.png}
@@ -277,7 +287,7 @@
     \frametitle{{\it Evaluation/Integration} - review search rules on real dataset}
     \begin{itemize}
         \item Reviewing matching rules on a large dataset, such as extensive ransomware leaks, can be cumbersome.
-        \item AIL provides a "retro-hunt" functionality to search and {\bf evaluate your Yara rules}.
+        \item AIL provides a "retro-hunt" functionality to search and {\bf evaluate your YARA rules}.
     \end{itemize}
     \begin{center}
       \includegraphics[scale=0.20]{images/ail-yara.png}
