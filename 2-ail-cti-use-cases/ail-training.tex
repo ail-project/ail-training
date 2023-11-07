@@ -212,7 +212,7 @@
         \item All the {\bf collected messages are then processed and analyzed} within the AIL's \textit{processing} and \textit{analysis} stages.
 	\end{itemize}
 \begin{center}
-    \includegraphics[scale=0.20]{images/ail-telegram.png}
+    \includegraphics[scale=0.20]{images/ail-telegram-third.png}
 \end{center}
 \end{frame}
 
@@ -220,7 +220,7 @@
     \frametitle{{\it Collection} - automate crawling}
     
 \begin{itemize}
-    \item Crawling can be a challenging task, for example, gathering all the blog posts from ransomware groups, which can be demanding for an analyst.
+    \item Crawling can be a challenging task, for example, gathering all the blog posts from ransomware groups\footnote{\url{https://www.ransomlook.io/}}, which can be demanding for an analyst.
     \item AIL offers a crawling feature that can {\bf initiate regular crawls using a standard spawned browser}.
 \end{itemize}
     \begin{center}
@@ -246,7 +246,7 @@
      \item AIL processes all the collected items for any {\bf hunting rules and utilizes MISP taxonomies to tag the matching information}.
    \end{itemize}
     \begin{center}
-        \includegraphics[scale=0.2]{images/ail-chat-detection.png}
+        \includegraphics[scale=0.2]{images/ail-detection.png}
     \end{center}
 \end{frame}
 
@@ -270,6 +270,18 @@
 \end{itemize}
     \begin{center}
       \includegraphics[scale=0.15]{images/ail-cookie.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{{\it Evaluation/Integration} - review search rules on real dataset}
+    \begin{itemize}
+        \item Reviewing matching rules on a large dataset, such as extensive ransomware leaks, can be cumbersome.
+        \item AIL provides a "retro-hunt" functionality to search and {\bf evaluate your Yara rules}.
+    \end{itemize}
+    \begin{center}
+      \includegraphics[scale=0.20]{images/ail-yara.png}
+      \includegraphics[scale=0.15]{images/ail-yara-retrohunt.png}
     \end{center}
 \end{frame}
 
