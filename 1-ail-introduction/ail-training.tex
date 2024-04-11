@@ -156,7 +156,8 @@
 \begin{frame}
 \frametitle{Links}
     \begin{itemize}
-        \item AIL project \url{https://github.com/ail-project}
+        \item AIL project \url{https://ail-project.org}
+        \item github \url{https://github.com/ail-project}
         \item AIL framework \url{https://github.com/ail-project/ail-framework}
         \item Training materials \url{https://github.com/ail-project/ail-training}
         \item Online chat \url{https://gitter.im/ail-project/community}
@@ -284,7 +285,7 @@
 \begin{frame}
 \frametitle{Objectives of the session}
     \begin{itemize}
-        \item Show how to use and extend an open source tool to monitor web pages, pastes, forums and hidden services
+        \item Show how to use and extend an open source tool to monitor web pages, pastes, chats, forums and hidden services
         \item Explain challenges and the design of the AIL open source framework
         \item Review different {\bf collection mechanisms} and {\bf sources}
         \item Learn how to create new modules
@@ -313,7 +314,7 @@
                 \item {\bf Check} if mail/password/other sensitive information (terms tracked) leaked
                 \item {\bf Detect} reconnaissance of your infrastructure
                 \item {\bf Search} for leaks inside an archive
-                \item {\bf Monitor} and crawl websites
+                \item {\bf Monitor} and crawl chats/websites
         \end{itemize}
 \end{frame}
 
@@ -343,6 +344,10 @@
 				    \item Detect encoded exploits (WebShell, malware encoded in Base64, ...)
 				    \item SQL injections
 		    	\end{itemize}
+		    \item Chat/Channel monitoring
+		    \begin{itemize}
+				\item Monitor Threat Actor Chat and Community Activities
+		    \end{itemize}
 		    \item Automatic and manual submission to threat sharing and incident
 response platforms
 			\begin{itemize}
@@ -715,6 +720,14 @@ response platforms
     \end{figure}
 \end{frame}
 
+% -> screenshot + user + images +
+% \begin{frame}
+%     \frametitle{Chats Monitoring}
+%     \begin{figure}
+%         \includegraphics[scale=0.22, angle=0]{screenshot/investigation_mixer.png}
+%     \end{figure}
+% \end{frame}
+
 \section{Live demo!}
 
 \begin{frame}
@@ -867,8 +880,8 @@ response platforms.
 AIL exposes a ReST API which can be used to interact with the back-end\footnote{\url{https://github.com/ail-project/ail-framework/blob/master/doc/README.md}}.
 
         \begin{lstlisting}
-curl https://127.0.0.1:7000/api/v1/get/item/default
-        --header "Authorization: iHc1_ChZxj1aXmiFiF1mkxxQkzawwriEaZpPqyTQj "
+curl https://127.0.0.1:7000/api/v1/add/crawler/task
+        --header "Authorization: iHc1_ChZxj1aXmiFiF1mkxxQkzawwriEaZpPqyTQj"
         -H "Content-Type: application/json"
         --data @input.json -X POST
         \end{lstlisting}
@@ -1261,8 +1274,8 @@ if __name__ == '__main__':
 \begin{frame}
     \frametitle{Ongoing developments}
         \begin{itemize}
-        	\item MISP Importer
-        	\item Bloom filter filtering
+            \item Improve OCR extraction
+        	\item Bloom filter filtering - PSS
             \item Data retention and lifetime management of objects
             \item MISP modules expansion
             \item Auto classification of content by set of terms (semantic analysis)
