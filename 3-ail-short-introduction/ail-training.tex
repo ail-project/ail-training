@@ -155,15 +155,17 @@
 \end{frame}
 
 \begin{frame}
-   \frametitle{Background}
-\begin{itemize}
-    \item Over the past seven years, we have developed the AIL project\footnote{\url{https://www.ail-project.org/}} to fulfill our needs at CIRCL in intelligence gathering and analysis.
-    \item AIL features an extensible Python-based framework for the {\bf analysis of unstructured information}, collected either through an advanced Crawler manager or from various feeders, including social networks and custom feeders.
-    \item The AIL Project is an {\bf open-source} framework\footnote{\url{https://github.com/ail-project}} comprising various modules designed for the {\bf collection, crawling, digging, and analysis of unstructured data}.
-	\begin{figure}
-        \includegraphics[scale=0.1, angle=0]{images/ail-project.png}
-    \end{figure}
-\end{itemize}
+    \frametitle{Background}
+    \begin{itemize}
+        \item Over the past years, CIRCL has developed the AIL project\footnote{\url{https://www.ail-project.org/}} to fulfill our needs at CIRCL in intelligence gathering and analysis.
+        \item AIL features an extensible Python-based framework for the \textbf{analysis of unstructured information}, collected either through an advanced crawler manager or from various feeders, including social networks and custom feeders.
+        \item The AIL Project is an \textbf{open-source} framework\footnote{\url{https://github.com/ail-project}} comprising various modules designed for the \textbf{collection, crawling, digging, and analysis of unstructured data}.
+        \item 
+            \begin{figure}
+                \centering
+                \includegraphics[scale=0.1]{images/ail-project.png}
+            \end{figure}
+    \end{itemize}
 \end{frame}
 
 % collection issue
@@ -186,8 +188,6 @@
         \includegraphics[scale=0.17]{images/ail-crawling.png}
     \end{center}
 \end{frame}
-
-% TODO deanonimize onions
 
 \begin{frame}
     \frametitle{{\it Collection} - Lacus Crawler\footnote{\url{https://github.com/ail-project/lacus}}}
@@ -249,17 +249,17 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{AIL Framework: Current features}
+    \frametitle{AIL Framework: Features}
     \begin{itemize}
-        \item Extracting \textbf{credit cards numbers, credentials, phone numbers, ...}
+        \item Extracting \textbf{credit card numbers, credentials, phone numbers, ...}
         \item Extracting and validating potential \textbf{hostnames}
         \item Keeps track of \textbf{duplicates}
-        \item Submission to threat sharing and incident response platform (\textbf{MISP} and \textbf{TheHive})
+        \item Submission to threat sharing and incident response platforms (\textbf{MISP} and \textbf{TheHive})
         \item \textbf{Full-text indexer} to index unstructured information
         \item \textbf{Tagging} for classification and searches
-        \item Terms, sets, regex and YARA \textbf{tracking and occurrences}
-        \item Archives, files and raw \textbf{submission} from the UI
-        \item PGP, Cryptocurrency, Decoded (Base64, ...) and username Correlation
+        \item Terms, sets, regex, and YARA \textbf{tracking, occurrences, and history}
+        \item Archives, files, and raw \textbf{submission} from the UI
+        \item Correlation engine based on PGP ID, cryptocurrencies, decoded (Base64, ...), usernames, cookie names, and many selectors to find relationships
         \item And many more
     \end{itemize}
 \end{frame}
@@ -267,29 +267,29 @@
 
 \begin{frame}
     \frametitle{Trackers - Retro Hunt}
+    \begin{itemize}
+        \item Search and monitor specific keywords/patterns
         \begin{itemize}
-        	\item Search and monitor specific keywords/patterns
-        	\begin{itemize}
-            	\item Automatic Tagging
-            	\item Email Notifications
-            \end{itemize}
-            \item Track Word
-            \begin{itemize}
-            	\item ddos
-            \end{itemize}
-            \item Track Set
-            \begin{itemize}
-            	\item booter,ddos,stresser;2
-            \end{itemize}
-            \item Track Regex
-            \begin{itemize}
-            	\item circl\textbackslash.lu
-            \end{itemize}
-            \item YARA rules
-            	\begin{itemize}
-            	\item https://github.com/ail-project/ail-yara-rules
-            \end{itemize}
+            \item Automatic tagging
+            \item Email/webhook notifications
         \end{itemize}
+        \item Track Word
+        \begin{itemize}
+            \item ddos
+        \end{itemize}
+        \item Track Set
+        \begin{itemize}
+            \item booter, ddos, stresser; 2
+        \end{itemize}
+        \item Track Regex
+        \begin{itemize}
+            \item circl\textbackslash lu
+        \end{itemize}
+        \item YARA rules
+        \begin{itemize}
+            \item \url{https://github.com/ail-project/ail-yara-rules}
+        \end{itemize}
+    \end{itemize}
 \end{frame}
 
 \section{Live Demo}
@@ -325,28 +325,14 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{AIL Framework: Current capabilities}
+    \frametitle{AIL Framework: Extensible Capabilities}
     \begin{itemize}
-        \item Extending AIL to add a new {\bf analysis module} can be done in 50 lines of Python
-        \item The framework {\bf supports multi-processors/cores by default}. Any analysis module can be started multiple times to support faster processing during peak times or bulk import
-        \item \textbf{Multiple} concurrent \textbf{data input}
-        \item Tor Crawler (handle cookies authentication)
+        \item Extending AIL to add a new \textbf{analysis module} can be done in 50 lines of Python.
+        \item The framework \textbf{supports multi-processors/cores by default}. Any analysis module can be started multiple times to support faster processing during peak times or bulk import.
+        \item \textbf{Multiple} concurrent \textbf{data inputs}.
+        \item Tor Crawler (handles cookies and authentication).
         \item Feeders: Discord, Telegram, ...
     \end{itemize}
-\end{frame}
-
-
-\begin{frame}
-    \frametitle{\textbf{MISP - LEA}}
-    \begin{itemize}
-        \item Law Enforcement Agency Information Sharing Community
-        \item AIL-LEA Instance Hosted by CIRCL
-        \item Request access by sending an email to \textbf{info@misp-lea.org} or \textbf{info@circl.lu}
-        \item Request free training at \textbf{info@misp-lea.org} or \textbf{info@circl.lu}
-    \end{itemize}
-    \begin{center}
-        \includegraphics[scale=0.3]{images/misp-lea.png}
-    \end{center}
 \end{frame}
 
 
@@ -354,8 +340,8 @@
     \frametitle{Ongoing Developments}
     \begin{itemize}
         \item Two-Factor Authentication (2FA) - One-Time Password (OTP)
-        \item Bloom Filter Filtering - Privaye Search Set (PSS)
-        \item Relationships between Chats: message forwards, replies, etc.
+        \item Bloom Filter Filtering - Private Search Set (PSS)
+        \item Relationships and activity between chats: message forwards, replies, etc.
     \end{itemize}
 \end{frame}
 
@@ -367,19 +353,31 @@
     \end{center}
 \end{frame}
 
-
 % LINKS
 \begin{frame}
 \frametitle{Links}
     \begin{itemize}
-        \item AIL project \url{https://ail-project.org}
-        \item Open Source \url{https://github.com/ail-project}
-        \item Training materials  \url{https://github.com/ail-project/ail-training}
+        \item AIL project website \url{https://ail-project.org}
+        \item AIL project open source framework \url{https://github.com/ail-project}
+        \item Training materials \url{https://github.com/ail-project/ail-training}
         \item Online chat \url{https://gitter.im/ail-project/community}
     \end{itemize}
     \begin{figure}
         \includegraphics[scale=0.1, angle=0]{images/ail-project.png}
     \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{\textbf{MISP - LEA}}
+    \begin{itemize}
+        \item Law Enforcement Agency Information Sharing Community
+        \item AIL-LEA instance hosted by CIRCL
+        \item Request access by sending an email to \textbf{info@misp-lea.org} or \textbf{info@circl.lu}
+        \item Request free training at \textbf{info@misp-lea.org} or \textbf{info@circl.lu}
+    \end{itemize}
+    \begin{center}
+        \includegraphics[scale=0.3]{images/misp-lea.png}
+    \end{center}
 \end{frame}
 
 \end{document}
