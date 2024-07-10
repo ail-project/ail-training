@@ -138,7 +138,8 @@
   \end{frame}
 }
 
-\author{\Large{Alexandre Dulaunoy}\\ \scriptsize{alexandre.dulaunoy@circl.lu}\\ \large{Aurelien Thirion}\\ \scriptsize{aurelien.thirion@circl.lu}\\ \large{Jean-Louis Huynen}\\ \scriptsize{jean-louis.huynen@circl.lu}\\ \Large{Sami Mokaddem}\\ \scriptsize{sami.mokaddem@circl.lu}}
+\author{\Large{Alexandre Dulaunoy}\\ \scriptsize{alexandre.dulaunoy@circl.lu}\\ \large{Aurelien Thirion}\\ \scriptsize{aurelien.thirion@circl.lu}\\ %\large{Jean-Louis Huynen}\\ \scriptsize{jean-louis.huynen@circl.lu}\\ \Large{Sami Mokaddem}\\ \scriptsize{sami.mokaddem@circl.lu}
+}
 \title{AIL Framework for Analysis of Information Leaks}
 \subtitle{Practical and Efficient Data-Mining of Suspicious Websites, Forums and Tor Hidden-Services}
 \institute{info@circl.lu}
@@ -156,12 +157,15 @@
 \begin{frame}
 \frametitle{Links}
     \begin{itemize}
-        \item AIL project \url{https://ail-project.org}
-        \item github \url{https://github.com/ail-project}
+        \item AIL project website \url{https://ail-project.org}
+        \item AIL project open source framework \url{https://github.com/ail-project}
         \item AIL framework \url{https://github.com/ail-project/ail-framework}
         \item Training materials \url{https://github.com/ail-project/ail-training}
         \item Online chat \url{https://gitter.im/ail-project/community}
     \end{itemize}
+    \begin{figure}
+        \includegraphics[scale=0.1, angle=0]{images/ail-project.png}
+    \end{figure}
 \end{frame}
 
 
@@ -460,27 +464,43 @@ response platforms
 \section{Current capabilities}
 
 \begin{frame}
-    \frametitle{AIL Framework: Current capabilities}
+    \frametitle{High Level Overview}
+    \begin{center}
+        \includegraphics[scale=0.22]{images/ail-overview.png}
+    \end{center}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{AIL Framework: Extensible capabilities}
     \begin{itemize}
         \item Extending AIL to add a new {\bf analysis module} can be done in 50 lines of Python
         \item The framework {\bf supports multi-processors/cores by default}. Any analysis module can be started multiple times to support faster processing during peak times or bulk import
-        \item \textbf{Multiple} concurrent \textbf{data input}
+        \item \textbf{Multiple} concurrent \textbf{data inputs}
         \item Tor Crawler (handle cookies authentication)
+        \item Feeders: Discord, Telegram, ...
     \end{itemize}
 \end{frame}
 
 \begin{frame}
-    \frametitle{AIL Framework: Current features}
+    \frametitle{Analysis of unstructured information}
+    \begin{center}
+        \includegraphics[scale=0.225]{images/ail-internal.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{AIL Framework: Features}
     \begin{itemize}
-        \item Extracting \textbf{credit cards numbers, credentials, phone numbers, ...}
+        \item Extracting \textbf{credit card numbers, credentials, phone numbers, ...}
         \item Extracting and validating potential \textbf{hostnames}
         \item Keeps track of \textbf{duplicates}
-        \item Submission to threat sharing and incident response platform (\textbf{MISP} and \textbf{TheHive})
+        \item Submission to threat sharing and incident response platforms (\textbf{MISP} and \textbf{TheHive})
         \item \textbf{Full-text indexer} to index unstructured information
         \item \textbf{Tagging} for classification and searches
-        \item Terms, sets, regex and YARA \textbf{tracking and occurrences}
-        \item Archives, files and raw \textbf{submission} from the UI
-        \item PGP, Cryptocurrency, Decoded (Base64, ...) and username Correlation
+        \item Terms, sets, regex and YARA \textbf{tracking, occurrences, and history}
+        \item Archives, files, and raw \textbf{submission} from the UI
+        \item Correlation engine based on PGP ID, cryptocurrencies, decoded (Base64, ...), usernames, cookie names, and many selectors to find relationships
         \item And many more
     \end{itemize}
 \end{frame}
@@ -597,62 +617,18 @@ response platforms
 \end{frame}
 
 \begin{frame}
+    \frametitle{Collection - Lacus Crawler}
+    \centerline{
+        \includegraphics[scale=0.28]{images/ail-lacus.png}
+    }
+\end{frame}
+
+\begin{frame}
         \frametitle {Crawler}
         \begin{itemize}
                 \item Crawlers are used to navigate on regular website as well as .onion addresses (via automatic extraction of urls or manual submission)
                 \item Lacus\footnote{\url{https://github.com/ail-project/lacus}} ("scriptable" browser) is rending the pages (including javascript) and produce screenshots (HAR archive too)
-        \end{itemize}
-\begin{figure}[h] 
-    \centering 
-    \begin{tikzpicture}[scale=1.0, 
-        mymatrix/.style={matrix of nodes, nodes=typetag, row sep=1em}, 
-        mycontainer/.style={draw=gray, inner sep=1ex}, 
-        typetag/.style={draw=gray, inner sep=1ex, anchor=west}, 
-        title/.style={draw=none, color=gray, inner sep=0pt} 
-    ] 
- 
-    %styles 
-    \tikzstyle{Lacus}=[ellipse,draw,align=center]
-    \tikzstyle{AIL}=[rectangle,draw, align=center, fill={rgb:red,1;green,2;blue,5}] 
-    \tikzstyle{playwright}=[rectangle,draw, align=center, fill={rgb:red,1;green,2;blue,5}]
-    \tikzstyle{commu}=[<->,>=latex,very thick] 
- 
-    %nodes 
-    \matrix[mymatrix] (mx1) at (0, 0) { 
-        |[title]|Lacus \\
-        playwright \\
-    }; 
-    \matrix[mymatrix, right=of mx1.north east, matrix anchor=north west] (mx2) { 
-    %\matrix[mymatrix] (mx2) at (1, 0) { 
-        |[title]|... \\ 
-    }; 
-    \matrix[mymatrix, right=of mx2.north east, matrix anchor=north west] (mx3) { 
-    %\matrix[mymatrix] (mx3) (2, 0){ 
-        |[title]|Lacus \\
-        playwright \\
-    }; 
- 
-    \node[mycontainer, fit=(mx1)] (c1) {}; 
-    \node[mycontainer, fit=(mx2)] (c2) {}; 
-    \node[mycontainer, fit=(mx3)] (c3) {}; 
- 
-    %\node[AIL, below=of mx2.south, matrix anchor=north] (ail) {\color{white}AIL-framework}; 
-    \node[AIL, below= 3cm of mx2.south, matrix anchor=north] (ail) {\color{white}AIL-framework}; 
- 
-    %arraws 
-    \draw[commu] (ail)--(c1); 
-    \draw[commu] (ail)--(c2); 
-    \draw[commu] (ail)--(c3); 
- 
- 
-    \end{tikzpicture} 
-\end{figure} 
-\end{frame}
-
-\begin{frame}
-    \frametitle{Crawler}
-    \begin{itemize}
-    \item[] How a domain is crawled by default
+                \item How a domain is crawled by default:
 		\begin{enumerate}
 		    \item Fetch the first url
             \item Render javascript (webkit browser)
@@ -660,7 +636,7 @@ response platforms
 		    \item Filter url: keep all url of this domain
 		    \item crawl next url (max depth = 1)
 		\end{enumerate}
-    \end{itemize}
+        \end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -1274,12 +1250,10 @@ if __name__ == '__main__':
 \begin{frame}
     \frametitle{Ongoing developments}
         \begin{itemize}
-            \item Improve OCR extraction
-        	\item Bloom filter filtering - PSS
-            \item Data retention and lifetime management of objects
-            \item MISP modules expansion
-            \item Auto classification of content by set of terms (semantic analysis)
-            \item Improved export stream to third parties software 
+            \item Two-Factor Authentication (2FA) - One-Time Password (OTP)
+            \item Bloom filter filtering - PSS
+            \item Relationships and activity between chats: message forwards,
+replies, etc.
             \item Improved indexing relying on Solr, Lucene or other components
         \end{itemize}
 \end{frame}
