@@ -1,4 +1,4 @@
-\documentclass{beamer}
+\documentclass[aspectratio=169]{beamer}
 \usetheme[pageofpages=of,% String used between the current page and the
                          % total page count.
           bullet=circle,% Use circles instead of squares for bullets.
@@ -161,6 +161,7 @@
         \item AIL project open source framework \url{https://github.com/ail-project}
         \item AIL framework \url{https://github.com/ail-project/ail-framework}
         \item Training materials \url{https://github.com/ail-project/ail-training}
+	\item Mastodon \url{https://infosec.exchange/@ail_project}
         \item Online chat \url{https://gitter.im/ail-project/community}
     \end{itemize}
     \begin{figure}
@@ -372,25 +373,25 @@ response platforms
 \end{frame}
 
 \begin{frame}
-    \frametitle{Sources of leaks: Paste monitoring}
+    \frametitle{Sources of Leaks: Paste Monitoring}
     \begin{itemize}
-        \item Example: \url{https://gist.github.com/}
-            \begin{itemize}
-                \item Easily storing and sharing text online
-                \item Used by programmers and legitimate users
-                \item[] $\to$ Source code \& information about configurations
-            \end{itemize}
-        \pause
-        \item Abused by attackers to store:
-            \begin{itemize}
-                \item List of vulnerable/compromised sites
-                \item Software vulnerabilities (e.g. exploits)
-                \item Database dumps
-                \item[] $\to$ User data
-                \item[] $\to$ Credentials
-                \item[] $\to$ Credit card details
-                \item More and more ...
-            \end{itemize}
+        \item \textbf{Example:} \url{https://gist.github.com/}
+        \begin{itemize}
+            \item Easily stores and shares text online
+            \item Used by programmers and legitimate users
+            \item[] $\rightarrow$ Source code \& configuration information
+        \end{itemize}
+        \vspace{0.3cm}
+        \item \textbf{Abused by attackers to store:}
+        \begin{itemize}
+            \item Lists of vulnerable/compromised sites
+            \item Software vulnerabilities (e.g., exploits)
+            \item Database dumps
+            \item[] $\rightarrow$ User data
+            \item[] $\rightarrow$ Credentials
+            \item[] $\rightarrow$ Credit card details
+            \item Increasingly more sensitive information
+        \end{itemize}
     \end{itemize}
 \end{frame}
 
@@ -402,60 +403,70 @@ response platforms
 \end{frame}
 
 \begin{frame}
-        \frametitle{Why so many leaks?}
+    \frametitle{Why So Many Leaks?}
+    \begin{itemize}
+        \item \textbf{Economic Interests:} 
         \begin{itemize}
-                \item Economical interests (e.g. Adversaries promoting services)
-                \item Ransom model (e.g. To publicly pressure the victims)
-                \item Political motives (e.g. Adversaries showing off)
-                \item Collaboration (e.g. Criminals need to collaborate)
-                \item Operational infrastructure (e.g. malware exfiltrating information on a pastie website)
-                \item Mistakes and errors
+            \item Adversaries promoting services
         \end{itemize}
+        \item \textbf{Ransom Model:} 
+        \begin{itemize}
+            \item To publicly pressure the victims
+        \end{itemize}
+        \item \textbf{Political Motives:} 
+        \begin{itemize}
+            \item Adversaries showing off
+        \end{itemize}
+        \item \textbf{Collaboration:} 
+        \begin{itemize}
+            \item Criminals need to collaborate
+        \end{itemize}
+        \item \textbf{Operational Infrastructure:} 
+        \begin{itemize}
+            \item Malware exfiltrating information on a paste website
+        \end{itemize}
+        \item \textbf{Mistakes and Errors from Users}
+    \end{itemize}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Are leaks frequent?}
+    \frametitle{What's your role while discovering such leak?}
     \begin{center}
-    \Large{Yes!}\\ and we have to deal with this as a CSIRT.
+        \large{As a CSIRT, we must address this issue.}
     \end{center}
+    \vspace{0.5cm}
 
     \begin{itemize}
-            \item {\bf Contacting companies or organisations} who did specific accidental leaks
-            \item {\bf Discussing with media} about specific case of leaks and how to make it more practical/factual for everyone
-            \item Evaluating the economical market for cyber criminals (e.g. DDoS booters\footnote{\url{https://github.com/D4-project/}} or reselling personal information - reality versus media coverage)
-            \item Analysing collateral effects of malware, software vulnerabilities or exfiltration
+        \item \textbf{Contacting companies or organizations} responsible for accidental leaks
+        \item \textbf{Engaging with the media} about specific leak cases to ensure practical and factual reporting
+        \item \textbf{Evaluating the economic landscape} for cyber criminals (e.g., DDoS booters\footnote{\url{https://github.com/D4-project/}} or the resale of personal information - comparing reality versus media coverage)
+        \item \textbf{Analyzing collateral effects} of malware, software vulnerabilities, or data exfiltration
     \end{itemize}
 
-    \begin{center}
-    $\rightarrow$ And it's important to detect them automatically.
-    \end{center}
 \end{frame}
-
-\begin{frame}
-    \frametitle{Paste monitoring at CIRCL: Statistics}
-    \begin{itemize}
-        \item Monitored paste sites: 27
-            \begin{itemize}
-                \item \textit{gist.github.com}
-                \item \textit{ideone.com}
-                \item \textit{...}
-            \end{itemize}
-    \end{itemize}
-    \begin{table}[h]
-		\centering
-		\begin{tabular}{|lrrr|}
-		    \hline
-		    \rowcolor{lightgray} & 2016 & 2017 & 08.2018\\
-		    Collected pastes & 18,565,124 & 19,145,300 & 11,591,987 \\
-		    Incidents & 244 & 266 & 208\\
-		    \hline
-		\end{tabular}
-		\caption{Pastes collected and incident\footnote{\url{http://www.circl.lu/pub/tr-46}} raised by CIRCL}
-		\label{circlStats}
-	\end{table}
-\end{frame}
-
-
+%\begin{frame}
+%    \frametitle{Paste monitoring at CIRCL: Statistics}
+%    \begin{itemize}
+%        \item Monitored paste sites: 27
+%            \begin{itemize}
+%               \item \textit{gist.github.com}
+%               \item \textit{ideone.com}
+%                \item \textit{...}
+%            \end{itemize}
+%   \end{itemize}
+%    \begin{table}[h]
+%		\centering
+%		\begin{tabular}{|lrrr|}
+%		    \hline
+%		    \rowcolor{lightgray} & 2016 & 2017 & 08.2018\\
+%		    Collected pastes & 18,565,124 & 19,145,300 & 11,591,987 \\
+%		    Incidents & 244 & 266 & 208\\
+%		    \hline
+%		\end{tabular}
+%		\caption{Pastes collected and incident\footnote{\url{http://www.circl.lu/pub/tr-46}} raised by CIRCL}
+%		\label{circlStats}
+%	\end{table}
+%\end{frame}
 
 
 
@@ -675,6 +686,8 @@ response platforms
     }
 \end{frame}
 
+\section{Live demo!}
+
 \begin{frame}
     \frametitle{Crawler: DDoS Booter}
     \centerline{
@@ -704,7 +717,6 @@ response platforms
 %     \end{figure}
 % \end{frame}
 
-\section{Live demo!}
 
 \begin{frame}
     \frametitle{Example: Dashboard}
@@ -1194,7 +1206,7 @@ if __name__ == '__main__':
 
 \begin{frame}
 \frametitle{How to contribute}
-    \centerline{\includegraphics[scale=0.5]{images/one-does-not-simply.jpeg}}
+    \centerline{\includegraphics[scale=0.33]{images/cat.png}}
 \end{frame}
 
 \begin{frame}
