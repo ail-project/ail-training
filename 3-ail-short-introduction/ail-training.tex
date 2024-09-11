@@ -145,7 +145,7 @@
 \title{AIL Project}
 \subtitle{Practical and Efficient Data-Mining of Chats, Suspicious Websites, Forums and Tor Hidden-Services}
 \institute{CIRCL}
-\date{\today}
+\date{13th ENISA-EC3 Workshop}
 
 \begin{document}
 
@@ -212,15 +212,15 @@
 
 
 \begin{frame}
-    \frametitle{{\it Collection} - automate collection}
-	\begin{itemize}
-		\item Collecting data from various chat sources can be a {\bf tedious task for analysts}.
-		\item AIL offers a set of feeders (e.g., Telegram, Discord, etc.) that can be used to subscribe to chat channels.
-        \item All the {\bf collected messages are then processed and analyzed} within the AIL's \textit{processing} and \textit{analysis} stages.
-	\end{itemize}
-\begin{center}
-    \includegraphics[scale=0.18]{screenshot/chat-forum.png}
-\end{center}
+    \frametitle{\textit{Collection} - Automate Collection}
+    \begin{itemize}
+        \item Collecting data from various chat sources can be a \textbf{tedious task for analysts}.
+        \item AIL offers a set of feeders (e.g., Telegram, Discord) that can be used to subscribe to chat channels.
+        \item All the \textbf{collected messages are then processed and analyzed} within AIL's \textit{processing} and \textit{analysis} stages.
+    \end{itemize}
+    \begin{center}
+        \includegraphics[scale=0.18]{screenshot/chat-forum.png}
+    \end{center}
 \end{frame}
 
 % TODO Processing ISSUES
@@ -254,7 +254,7 @@
         \item Extracting \textbf{credit card numbers, credentials, phone numbers, ...}
         \item Extracting and validating potential \textbf{hostnames}
         \item Keeps track of \textbf{duplicates}
-        \item Submission to threat sharing and incident response platforms (\textbf{MISP} and \textbf{TheHive})
+	\item Submission to threat sharing and incident response platforms (\textbf{MISP} and \textbf{FlowIntel}\footnote{https://github.com/flowintel/flowintel})
         \item \textbf{Full-text indexer} to index unstructured information
         \item \textbf{Tagging} for classification and searches
         \item Terms, sets, regex, and YARA \textbf{tracking, occurrences, and history}
@@ -316,6 +316,19 @@
     \end{figure}
 \end{frame}
 
+\begin{frame}
+    \frametitle{User Correlation - Common Chats}
+    \begin{center}
+        \includegraphics[scale=0.26]{screenshot/chat_users_correlation.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{What are the Relationships Between Chats Group?}
+    \begin{center}
+        \includegraphics[scale=0.27]{screenshot/noname-relationships.png}
+    \end{center}
+\end{frame}
 
 \begin{frame}
     \frametitle{Investigations}
@@ -339,12 +352,17 @@
 \begin{frame}
     \frametitle{Ongoing Developments}
     \begin{itemize}
-        \item Two-Factor Authentication (2FA) - One-Time Password (OTP)
-        \item Bloom Filter Filtering - Private Search Set (PSS)
-        \item Relationships and activity between chats: message forwards, replies, etc.
+        \item \textit{Upcoming in release 5.7 - September 2024}
+        \begin{itemize}
+		\item {\bf Two-Factor Authentication} (2FA) using One-Time Password (OTP) \\
+        \item Relationships and activity tracking between chats (e.g., message forwards, replies, etc.) \\
+	\item {\bf Multi-organisation support} in AIL
+	\end{itemize}
+\item {\bf Advanced video processing}
+\item {\bf Automatic geolocation}
+        \item Bloom Filter for Private Search Set (PSS) Filtering
     \end{itemize}
 \end{frame}
-
 
 \begin{frame}
     \frametitle{Private Search Set (PSS)}
