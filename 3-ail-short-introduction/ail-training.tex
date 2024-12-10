@@ -145,7 +145,7 @@
 \title{AIL Project}
 \subtitle{Practical and Efficient Data-Mining of Chats, Suspicious Websites, Forums and Tor Hidden-Services}
 \institute{CIRCL}
-\date{13th ENISA-EC3 Workshop}
+\date{SURFnet Workshop}
 
 \begin{document}
 
@@ -237,7 +237,7 @@
 \begin{frame}
     \frametitle{Processing - OCR}
     \begin{center}
-        \includegraphics[scale=0.32]{screenshot/ail-ocr.png}
+        \includegraphics[scale=0.30]{screenshot/ail-ocr.png}
     \end{center}
 \end{frame}
 
@@ -253,10 +253,8 @@
     \begin{itemize}
         \item Extracting \textbf{credit card numbers, credentials, phone numbers, ...}
         \item Extracting and validating potential \textbf{hostnames}
-        \item Keeps track of \textbf{duplicates}
 	\item Submission to threat sharing and incident response platforms (\textbf{MISP} and \textbf{FlowIntel}\footnote{https://github.com/flowintel/flowintel})
-        \item \textbf{Full-text indexer} to index unstructured information
-        \item \textbf{Tagging} for classification and searches
+	\item \textbf{Tagging}\footnote{Relying on MISP taxonomies and galaxy} for classification and searches
         \item Terms, sets, regex, and YARA \textbf{tracking, occurrences, and history}
         \item Archives, files, and raw \textbf{submission} from the UI
         \item Correlation engine based on PGP ID, cryptocurrencies, decoded (Base64, ...), usernames, cookie names, and many selectors to find relationships
@@ -266,7 +264,7 @@
 
 
 \begin{frame}
-    \frametitle{Trackers - Retro Hunt}
+	\frametitle{Live Trackers \& Retro Hunt}
     \begin{itemize}
         \item Search and monitor specific keywords/patterns
         \begin{itemize}
@@ -285,7 +283,7 @@
         \begin{itemize}
             \item circl\textbackslash lu
         \end{itemize}
-        \item YARA rules
+        \item {\bf YARA rules}
         \begin{itemize}
             \item \url{https://github.com/ail-project/ail-yara-rules}
         \end{itemize}
