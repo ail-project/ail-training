@@ -251,13 +251,13 @@
 \begin{frame}
     \frametitle{AIL Framework: Features}
     \begin{itemize}
-        \item Extracting \textbf{credit card numbers, credentials, phone numbers, ...}
+        \item Extracting \textbf{credit card numbers, credentials, phone numbers, \dots}
         \item Extracting and validating potential \textbf{hostnames}
-	\item Submission to threat sharing and incident response platforms (\textbf{MISP} and \textbf{FlowIntel}\footnote{https://github.com/flowintel/flowintel})
-	\item \textbf{Tagging}\footnote{Relying on MISP taxonomies and galaxy} for classification and searches
+        \item Submission to threat sharing and incident response platforms (\textbf{MISP} and \textbf{FlowIntel}\footnote{\url{https://github.com/flowintel/flowintel}})
+        \item \textbf{Tagging}\footnote{Relying on MISP taxonomies and galaxy} for classification and searches
         \item Terms, sets, regex, and YARA \textbf{tracking, occurrences, and history}
         \item Archives, files, and raw \textbf{submission} from the UI
-        \item Correlation engine based on PGP ID, cryptocurrencies, decoded (Base64, ...), usernames, cookie names, and many selectors to find relationships
+        \item Correlation engine based on PGP ID, cryptocurrencies, decoded (Base64, \dots), usernames, cookie names, and many selectors to find relationships
         \item And many more
     \end{itemize}
 \end{frame}
@@ -350,22 +350,14 @@
 \begin{frame}
     \frametitle{Ongoing Developments}
     \begin{itemize}
-        \item \textit{Upcoming in release 5.7 - September 2024}
-        \begin{itemize}
-		\item {\bf Two-Factor Authentication} (2FA) using One-Time Password (OTP) \\
-        \item Relationships and activity tracking between chats (e.g., message forwards, replies, etc.) \\
-	\item {\bf Multi-organisation support} in AIL
-	\end{itemize}
-\item {\bf Advanced video processing}
-\item {\bf Automatic geolocation}
-        \item Bloom Filter for Private Search Set (PSS) Filtering
+        \item \textbf{Advanced video processing and extraction}
+        \item Improved filtering in dashboard
+        \item \textbf{MISP export with new correlation types}
+        \item \textbf{Automatic geolocation}
+        \item \textbf{Bloom Filter for Private Search Set (PSS) Filtering}
     \end{itemize}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Private Search Set (PSS)}
     \begin{center}
-        \includegraphics[scale=0.27]{images/pss-overview.png}
+        \includegraphics[scale=0.18]{images/pss-overview.png}
     \end{center}
 \end{frame}
 
