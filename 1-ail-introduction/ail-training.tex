@@ -141,7 +141,7 @@
 \author{\Large{Alexandre Dulaunoy}\\ \scriptsize{alexandre.dulaunoy@circl.lu}\\ \large{Aurelien Thirion}\\ \scriptsize{aurelien.thirion@circl.lu}\\ %\large{Jean-Louis Huynen}\\ \scriptsize{jean-louis.huynen@circl.lu}\\ \Large{Sami Mokaddem}\\ \scriptsize{sami.mokaddem@circl.lu}
 }
 \title{AIL Framework for Analysis of Information Leaks}
-\subtitle{Practical and Efficient Data-Mining of Suspicious Websites, Forums and Tor Hidden-Services}
+\subtitle{Practical and Efficient Data-Mining of Suspicious Websites, Forums, Chats and Tor Hidden-Services}
 \institute{info@circl.lu}
 \date{\today}
 
@@ -350,16 +350,16 @@
 				    \item SQL injections
 		    	\end{itemize}
 		    \item Chat/Channel monitoring
-		    \begin{itemize}
-				\item Monitor Threat Actor Chat and Community Activities
-		    \end{itemize}
-		    \item Automatic and manual submission to threat sharing and incident
-response platforms
-			\begin{itemize}
-				\item MISP
-				\item TheHive
-			\end{itemize}
+		        \begin{itemize}
+				    \item Monitor Threat Actor Chat and Community Activities
+		        \end{itemize}
+		    \item Automatic and manual submission to threat sharing and incident response platforms
+			    \begin{itemize}
+				    \item MISP
+				    \item \textit{flowIntel (Coming soon)}
+			    \end{itemize}
 		    \item Term/Regex/YARA monitoring for local companies/government
+		    \item YARA Retro Hunt
         \end{itemize}
 \end{frame}
 
@@ -506,7 +506,7 @@ response platforms
         \item Extracting \textbf{credit card numbers, credentials, phone numbers, ...}
         \item Extracting and validating potential \textbf{hostnames}
         \item Keeps track of \textbf{duplicates}
-        \item Submission to threat sharing and incident response platforms (\textbf{MISP} and \textbf{TheHive})
+        \item Submission to threat sharing and incident response platforms (\textbf{MISP}) % and \textbf{flowIntel})
         \item \textbf{Full-text indexer} to index unstructured information
         \item \textbf{Tagging} for classification and searches
         \item Terms, sets, regex and YARA \textbf{tracking, occurrences, and history}
@@ -591,6 +591,7 @@ response platforms
         \end{figure}
 \end{frame}
 
+% TODO AIL OBJECTS SLIDES
 
 \begin{frame}
     \frametitle{Decoder}
@@ -606,12 +607,12 @@ response platforms
     \end{itemize}
 \end{frame}
 
-%\begin{frame}
-%    \frametitle{Decoder: Practical Part}
-%    \begin{itemize}
-%    	\item[] Which type of decoded file have the highest size ?
-%    \end{itemize}
-%\end{frame}
+% \begin{frame}
+%     \frametitle{AIL objects}
+%     \begin{center}
+%         \includegraphics[scale=0.225]{images/ail-internal.png}
+%     \end{center}
+% \end{frame}
 
 \begin{frame}
     \frametitle{Decoder:}
@@ -698,7 +699,7 @@ response platforms
 \begin{frame}
     \frametitle{Correlations and relationship}
     \begin{figure}
-        \includegraphics[scale=0.18, angle=0]{images/ail-correlation.png}
+        \includegraphics[scale=0.18, angle=0]{screenshot/correlation.png}
     \end{figure}
 \end{frame}
 
@@ -719,48 +720,25 @@ response platforms
 
 
 \begin{frame}
-    \frametitle{Example: Dashboard}
+    \frametitle{Dashboard}
     \begin{figure}
-        \includegraphics[scale=0.18, angle=0]{screenshot/dashboard.png}
-    \end{figure}
-\end{frame}
-
-
-\begin{frame}
-    \frametitle{Example: Text search}
-    \begin{figure}
-        \includegraphics[scale=0.3, angle=0]{images/ail_02.png}
+        \includegraphics[scale=0.18, angle=0]{screenshot/dashboard.jpeg}
     \end{figure}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Example: Items Metadata (1)}
+    \frametitle{Example: Items Extracted}
     \begin{figure}
-        \includegraphics[scale=0.21, angle=0]{images/ail_15.png}
+        \includegraphics[scale=0.20, angle=0]{screenshot/item_meta.png}
     \end{figure}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Example: Items Metadata (2)}
+    \frametitle{Example: Items Domain}
     \begin{figure}
-        \includegraphics[scale=0.28, angle=0]{images/ail_16.png}
+        \includegraphics[scale=0.22, angle=0]{screenshot/item_domain.png}
     \end{figure}
 \end{frame}
-
-\begin{frame}
-    \frametitle{Example: Items Metadata (3)}
-    \begin{figure}
-        \includegraphics[scale=0.28, angle=0]{images/ail_17.png}
-    \end{figure}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Example: Browsing content}
-    \begin{figure}
-        \includegraphics[scale=0.3, angle=0]{images/ail_04.png}
-    \end{figure}
-\end{frame}
-
 
 \begin{frame}
     \frametitle{Example: Browsing content}
@@ -1260,13 +1238,14 @@ if __name__ == '__main__':
 
 
 \begin{frame}
-    \frametitle{Ongoing developments}
+    \frametitle{Ongoing Developments}
         \begin{itemize}
-            \item Two-Factor Authentication (2FA) - One-Time Password (OTP)
+            \item Text Geolocation
+            \item Improved MISP Export
             \item Bloom filter filtering - PSS
-            \item Relationships and activity between chats: message forwards,
-replies, etc.
+            \item Analysis of relationships and activity between chats, including message forwards, replies, timelines, etc.
             \item Improved indexing relying on Solr, Lucene or other components
+            \item Integration with FlowIntel
         \end{itemize}
 \end{frame}
 
