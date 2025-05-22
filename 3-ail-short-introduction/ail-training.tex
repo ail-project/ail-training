@@ -234,17 +234,37 @@
 %	\end{itemize}
 %\end{frame}
 
-\begin{frame}
-    \frametitle{Processing - OCR}
-    \begin{center}
-        \includegraphics[scale=0.30]{screenshot/ail-ocr.png}
-    \end{center}
+\begin{frame}[fragile]{OCR: Optical Character Recognition}
+    \begin{columns}[T,onlytextwidth]
+        \column{0.45\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{screenshot/ocr-1.png}
+        \column{0.55\textwidth}
+            \begin{itemize}
+                \item Threat actors are often verbose and frequently {\bf share extensive details in private channels}.
+                \item Many messages contain screenshots and images.
+                \item Text detection and extraction are performed across 80+ languages using a CRNN (Convolutional Recurrent Neural Network).
+                \item {\bf Enables keyword-based matching and detection}.
+            \end{itemize}
+    \end{columns}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Analysis of unstructured information}
+    \frametitle{QR Code Extractor}
     \begin{center}
-        \includegraphics[scale=0.225]{images/ail-internal.png}
+        \includegraphics[scale=0.27]{images/qr_decoder.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{QR Codes}
+    \begin{center}
+        \includegraphics[scale=0.235]{screenshot/qr-pay.png}
+    \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Bar Codes}
+    \begin{center}
+        \includegraphics[scale=0.22]{screenshot/barcode.png}
     \end{center}
 \end{frame}
 
@@ -291,6 +311,13 @@
 \end{frame}
 
 \section{Live Demo}
+
+\begin{frame}
+    \frametitle{Dashboard}
+    \begin{figure}
+        \includegraphics[scale=0.16, angle=0]{screenshot/dashboard.jpeg}
+    \end{figure}
+\end{frame}
 
 \begin{frame}
     \frametitle{YARA Tracker}
@@ -351,7 +378,7 @@
     \frametitle{Ongoing Developments}
     \begin{itemize}
         \item \textbf{Advanced video processing and extraction}
-        \item Improved filtering in dashboard
+        \item Improve Search
         \item \textbf{MISP export with new correlation types}
         \item \textbf{Automatic geolocation}
         \item \textbf{Bloom Filter for Private Search Set (PSS) Filtering}
