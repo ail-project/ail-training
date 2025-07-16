@@ -896,10 +896,16 @@ cd AIL-framework
 \begin{frame}[fragile]
     \frametitle{AIL Feeders and Importers}
     \begin{itemize}
-        \item {\bf More than 12 feeders} are available for AIL users to import data from external sources.
+    	\item AIL supports two main types of feeders:
+        \begin{itemize}
+            \item {\bf ZMQ-based feeders} – Feeders that push data (e.g., pastes from \texttt{pystemon}) via ZeroMQ. These can run externally and stream data directly into AIL.
+            \item {\bf API-based feeders} – External feeders that send JSON-formatted data to AIL via its ReST API.
+        \end{itemize}
+    
+        \item {\bf More than 12 feeders} are available to help import data from various sources (e.g., Telegram, Discord, GitHub, leaks).
         \item External feeders can run anywhere and are completely independent of the AIL framework.
         \item Feeders can use their {\bf own internal logic} and even generate custom JSON metadata.
-        \item The resulting JSON is then pushed to the AIL API.
+        \item All data is ultimately ingested into AIL for enrichment, correlation, and analysis.
     \end{itemize}
 \end{frame}
 
@@ -913,46 +919,6 @@ cd AIL-framework
         \item This is a simple way to feed AIL with content from a set of {\bf suspicious Git repositories} or to find leaks in existing or monitored repositories.
     \end{itemize}
 \end{frame}
-
-\begin{frame}[fragile]
-    \frametitle{AIL LeakFeeder}
-
-    \begin{itemize}
-        \item \texttt{ail-feeder-leak}\footnote{\url{https://github.com/ail-project/ail-feeder-leak}} automates the process of feeding large leaked files directly into AIL.
-    \end{itemize}
-    
-    \centerline{\includegraphics[scale=0.20]{./images/feeder_leak.png}}
-\end{frame}
-
-
-\begin{frame}[fragile]
-    \frametitle{AIL Feeder – Telegram}
-
-    \begin{itemize}
-        \item \texttt{ail-feeder-telegram}\footnote{\url{https://github.com/ail-project/ail-feeder-telegram}} is a {\bf Telegram data feeder} for AIL.
-        
-        \item It requires a Telegram API ID and hash, which are linked to your Telegram phone number.
-    \end{itemize}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Importers}
-    \begin{itemize}
-        \item Importers are located in the \texttt{/bin/importer} directory.
-        \item They are used to import various types of data into AIL.
-        \item Adding new importers is straightforward and modular.
-        \item Available importers include:
-        \begin{itemize}
-            \item AIL Feeders
-            \item ZMQ
-            \item pystemon
-            \item File-based importers
-        \end{itemize}
-    \end{itemize}
-\end{frame}
-
-% ZMQ
-% Pystemon
 
 \begin{frame}[fragile]
     \frametitle{File Importer}
@@ -983,6 +949,30 @@ cd tools/
 
 \end{frame}
 
+\begin{frame}[fragile]
+    \frametitle{AIL LeakFeeder}
+
+    \begin{itemize}
+        \item \texttt{ail-feeder-leak}\footnote{\url{https://github.com/ail-project/ail-feeder-leak}} automates the process of feeding large leaked files directly into AIL.
+    \end{itemize}
+    
+    \centerline{\includegraphics[scale=0.20]{./images/feeder_leak.png}}
+\end{frame}
+
+
+\begin{frame}[fragile]
+    \frametitle{AIL Feeder – Telegram}
+
+    \begin{itemize}
+        \item \texttt{ail-feeder-telegram}\footnote{\url{https://github.com/ail-project/ail-feeder-telegram}} is a {\bf Telegram data feeder} for AIL.
+        
+        \item It requires a Telegram API ID and hash, which are linked to your Telegram phone number.
+    \end{itemize}
+\end{frame}
+
+% ZMQ
+% Pystemon
+
 
 %% CONTI leak example
 
@@ -1000,22 +990,21 @@ cd tools/
 
 \end{frame}
 
-\begin{frame}[fragile]                                                                                                                        
+\begin{frame}[fragile]
+    \frametitle{Feeding AIL with Conti Leaks}
 
-   \frametitle{Feeding AIL with Conti leaks}
-
+    \begin{itemize}
+        \item The Conti Jabber leaks are a good candidate for AIL analysis:
         \begin{itemize}
-		\item Conti jabber leaks are a good candidate for AIL analysis:
-        	\begin{itemize}
-			\item PGP keys
-			\item Bitcoin addresses, maybe others,
-			\item onion hidden services
-        	\end{itemize}
-        \item first we translated the files on english using deepl.com
-		\item then we created a feeder to import json data in AIL
-		\item Support added in AIL to correlate jabber usernames
+            \item PGP keys
+            \item Bitcoin addresses (and possibly others)
+            \item Onion hidden services
         \end{itemize}
 
+        \item First, we translated the files into English using \texttt{deepl.com}.
+        \item Then, we created a feeder to import the JSON data into AIL.
+        \item Support was added in AIL to correlate Jabber usernames.
+    \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
