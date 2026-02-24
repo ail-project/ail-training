@@ -35,12 +35,12 @@
 % set the logo to put in the title page
 \titlegraphic{\noindent\includegraphics[width=0.25\textwidth]{images/logo-circl.pdf}\hfill\includegraphics[height=0.12\textwidth]{images/ail-project.png}}
 \title{AIL Project - Practical and Efficient Data-Mining of Chats, Suspicious Websites, Forums and Tor Hidden-Services}
-\subtitle{CIRCL - Virtual Summer School 2025}
-\date{July 17, 2025}
+\subtitle{CIRCL - 2026}
+\date{March 3, 2026}
 \author{Alexandre Dulaunoy - alexandre.dulaunoy@circl.lu\\Aurelien Thirion - aurelien.thirion@circl.lu}
 \institute{CIRCL \normalurl{https://www.circl.lu}}
 % if set inserts a title link into the title page
-\titlelink{\faHome\space \normalurl{https://ail-project.org/}}
+\titlelink{\faLink\space \normalurl{https://ail-project.org/}}
 
 \begin{document}
 
@@ -70,12 +70,11 @@
         \item Over the past years, CIRCL has developed the AIL project\footnote{\url{https://www.ail-project.org/}} to fulfill our needs at CIRCL in intelligence gathering and analysis.
         \item AIL features an extensible Python-based framework for the \textbf{analysis of unstructured information}, collected either through an advanced crawler manager or from various feeders, including social networks and custom feeders.
         \item The AIL Project is an \textbf{open-source} framework\footnote{\url{https://github.com/ail-project}} comprising various modules designed for the \textbf{collection, crawling, digging, and analysis of unstructured data}.
-        \item 
-            \begin{figure}
-                \centering
-                \includegraphics[scale=0.1]{images/ail-project.png}
-            \end{figure}
-    \end{itemize}
+     \end{itemize} 
+     \begin{figure}
+        \centering
+        \includegraphics[scale=0.1]{images/ail-project.png}
+     \end{figure}
 \end{frame}
 
 % collection issue
@@ -83,7 +82,7 @@
 \begin{frame}
     \frametitle{High Level Overview}
     \begin{center}
-        \includegraphics[scale=0.24]{images/ail-overview.png}
+        \includegraphics[scale=0.22]{images/ail-overview.png}
     \end{center}
 \end{frame}
 
@@ -91,7 +90,7 @@
 \begin{frame}
     \frametitle{Analysis of unstructured information}
     \begin{center}
-        \includegraphics[scale=0.225]{images/ail-internal.png}
+        \includegraphics[scale=0.22]{images/ail-internal.png}
     \end{center}
 \end{frame}
 
@@ -279,7 +278,14 @@
 \begin{frame}
     \frametitle{Search}
     \begin{figure}
-        \includegraphics[scale=0.18, angle=0]{screenshot/search.png}
+        \includegraphics[scale=0.22, angle=0]{screenshot/search.png}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Advanced Search}
+    \begin{figure}
+        \includegraphics[scale=0.22, angle=0]{screenshot/search_advanced.png}
     \end{figure}
 \end{frame}
 
@@ -341,13 +347,11 @@
 \begin{frame}
     \frametitle{Ongoing Developments}
     \begin{itemize}
-        \item \textbf{Improved Mail Search – Next Release}
-        \item \textbf{Lacus crawler improvements:} proxy selection, local cache, and cookie state transfer
+        \item \textbf{Lacus crawler improvements:} proxy selection
         \item \textbf{Distributed Image Description Processing} - Automatic load balancing and per-domain classification across multiple Ollama servers
-        \item \textbf{Translate search:} support for searching in other languages
         \item \textbf{Advanced video processing and extraction}
         \item \textbf{MISP export with new correlation types}
-        \item \textbf{Automatic geolocation}
+        \item \textbf{Text geolocation}
     \end{itemize}
 \end{frame}
 
